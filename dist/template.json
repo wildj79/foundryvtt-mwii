@@ -603,11 +603,125 @@
           "max": 0,
           "value": 0
         }
+      },
+      "hit_location": {
+        "head": {
+          "damage_threshold": 0,
+          "incapacitated": false,
+          "disabled": false
+        },
+        "torso": {
+          "damage_threshold": 0,
+          "incapacitated": false,
+          "disabled": false
+        },
+        "left_arm": {
+          "damage_threshold": 0,
+          "incapacitated": false,
+          "disabled": false
+        },
+        "right_arm": {
+          "damage_threshold": 0,
+          "incapacitated": false,
+          "disabled": false
+        },
+        "left_leg": {
+          "damage_threshold": 0,
+          "incapacitated": false,
+          "disabled": false
+        },
+        "right_leg": {
+          "damage_threshold": 0,
+          "incapacitated": false,
+          "disabled": false
+        }
       }
     }
   },
   "Item": {
-    "types": [],
-    "templates": []
+    "types": ["advantage", "gear", "weapons", "armor", "power_pack", "vechilce"],
+    "templates": {
+      "itemDescription": {
+        "description": "",
+        "source": "",
+        "type": ""
+      },
+      "physicalItem": {
+        "quantity": 1,
+        "weight": {
+          "value": 1,
+          "uom": ""
+        },
+        "cost": 0,
+        "tech_level": 1,
+        "availability": "A",
+        "legality": "A",
+        "power_use": {
+          "value": 1,
+          "per": "hour"
+        }
+      }
+    },
+    "advantage": {
+      "templates": ["itemDescription"],
+      "cost": {
+        "min": 1,
+        "max": 3
+      }
+    },
+    "vehicle": {
+      "templates": ["itemDescription"],
+      "name": "",
+      "chasis": "",
+      "weight_class": "",
+      "weight": 20
+    },
+    "gear": {
+      "templates": ["itemDescription", "physicalItem"]
+    },
+    "power_pack": {
+      "templates": ["itemDescription", "physicalItem"],
+      "capacity": {
+        "min": 0,
+        "max": 20
+      }
+    },
+    "armor": {
+      "templates": ["itemDescription", "physicalItem"],
+      "energy": 0.5,
+      "ballistic": 0.5,
+      "melee": 1,
+      "damage_capacity": 20,
+      "encumbrance": {
+        "movement": 1,
+        "physical": 0,
+        "athletic": 0
+      },
+      "coverage": "",
+      "build": 0,
+      "critical": {
+        "head": false,
+        "torso": false,
+        "left_arm": false,
+        "right_arm": false,
+        "left_leg": false,
+        "right_leg": false
+      }
+    },
+    "weapon": {
+      "templates": ["itemDescription", "physicalItem"],
+      "skill": "small_arms",
+      "damage": "1d6",
+      "range": {
+        "short": 1,
+        "medium": 2,
+        "long": 3
+      },
+      "aoe": 0,
+      "ammo": {
+        "max": 10,
+        "value": 10
+      }
+    }
   }
 }
