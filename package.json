@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "name": "mwii",
+  "version": "0.1.0",
+  "description": "Game system definition of Mechwarrior 2nd Edition for the Foundry Virtual Tabletop",
+  "scripts": {
+    "package": "fpc package",
+    "publish": "fpc publish",
+    "build": "fpc build && fpc copy",
+    "clean": "fpc clean && fpc copy --clean"
+  },
+  "author": "wildj79",
+  "license": "MIT",
+  "devDependencies": {
+    "foundry-pc-scripts": "gitlab:foundry-projects/foundry-pc/foundry-pc-scripts#master",
+    "foundry-pc-types": "gitlab:foundry-projects/foundry-pc/foundry-pc-types"
+  },
+  "foundry": {
+    "dataPath": "/Users/wildj79/Library/Application Support/FoundryVTT",
+    "manifest": "dist",
+    "repository": "",
+    "rawURL": ""
+  },
+  "dependencies": {}
+}

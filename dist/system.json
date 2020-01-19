@@ -1,0 +1,18 @@
+{
+  "name": "mwii",
+  "title": "MechWarrior, 2nd Edition",
+  "description": "Game system definition of Mechwarrior 2nd Edition for the Foundry Virtual Tabletop",
+  "version": "0.1.0",
+  "author": "wildj79",
+  "scripts": [],
+  "esmodules": ["mwii.js"],
+  "styles": ["mwii.css"],
+  "packs": [],
+  "languages": [],
+  "gridDistance": 5,
+  "gridUnits": "m",
+  "minimumCoreVersion": "0.4.4",
+  "url": "http://your.module.url/here",
+  "manifest": "http://raw.module.manifest/link.json",
+  "download": "http://your.packaged.module/directory.zip"
+}
