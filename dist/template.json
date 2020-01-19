@@ -32,10 +32,18 @@
         }
       },
       "characteristics": {
-        "athletic": 18,
-        "physical": 18,
-        "mental": 18,
-        "social": 18
+        "athletic": {
+          "save": 18
+        },
+        "physical": {
+          "save": 18
+        },
+        "mental": {
+          "save": 18
+        },
+        "social": {
+          "save": 18
+        }
       },
       "skills": {
         "acrobatics": {
