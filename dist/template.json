@@ -1,7 +1,107 @@
 {
   "Actor": {
-    "types": [],
-    "templates": []
+    "types": [
+      "character"
+    ],
+    "character": {
+      "attributes": {
+        "bld": {
+          "value": 0,
+          "save": 0,
+          "exceptional": false
+        },
+        "ref": {
+          "value": 0,
+          "save": 0,
+          "exceptional": false
+        },
+        "itn": {
+          "value": 0,
+          "save": 0,
+          "exceptional": false
+        },
+        "lrn": {
+          "value": 0,
+          "save": 0,
+          "exceptional": false
+        },
+        "cha": {
+          "value": 0,
+          "save": 0,
+          "exceptional": false
+        }
+      },
+      "skills": {
+        "acrobatics": {
+          "level": 0,
+          "target": 0,
+          "sp": 0
+        },
+        "administration": {
+          "level": 0,
+          "target": 0,
+          "sp": 0
+        },
+        "alternate_identity": {
+          "level": 0,
+          "target": 0,
+          "sp": 0
+        },
+        "appraisal": {
+          "level": 0,
+          "target": 0,
+          "sp": 0
+        },
+        "archery": {
+          "level": 0,
+          "target": 0,
+          "sp": 0
+        },
+        "blade": {
+          "level": 0,
+          "target": 0,
+          "sp": 0
+        },
+        "bureaucracy": {
+          "level": 0,
+          "target": 0,
+          "sp": 0
+        },
+        "career_skills": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "subskill": ""
+        }
+      },
+      "details": {
+        "battlemech": "",
+        "planet": "",
+        "faction": "",
+        "subfaction": "",
+        "unit": "",
+        "age": 0,
+        "height": "",
+        "weight": "",
+        "ap": 0
+      },
+      "edge": 0,
+      "currency": {
+        "cbill": 0
+      },
+      "condition": {
+        "lethal": {
+          "min": 0,
+          "max": 0,
+          "value": 0
+        },
+        "bruise": {
+          "min": 0,
+          "max": 0,
+          "value": 0
+        }
+      }
+    }
   },
   "Item": {
     "types": [],

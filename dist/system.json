@@ -8,11 +8,19 @@
   "esmodules": ["mwii.js"],
   "styles": ["mwii.css"],
   "packs": [],
-  "languages": [],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+  }
+  ],
+  "socket": true,
+  "initiative": "2d6 + @attributes.rfl.value",
   "gridDistance": 5,
   "gridUnits": "m",
   "minimumCoreVersion": "0.4.4",
-  "url": "http://your.module.url/here",
-  "manifest": "http://raw.module.manifest/link.json",
+  "url": "https://github.com/wildj79/foundryvtt-mwii",
+  "manifest": "https://raw.githubusercontent.com/wildj79/foundryvtt-mwii/master/dist/system.json",
   "download": "http://your.packaged.module/directory.zip"
 }
