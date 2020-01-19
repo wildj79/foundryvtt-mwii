@@ -31,47 +31,550 @@
           "exceptional": false
         }
       },
+      "characteristics": {
+        "athletic": 18,
+        "physical": 18,
+        "mental": 18,
+        "social": 18
+      },
       "skills": {
         "acrobatics": {
           "level": 0,
           "target": 0,
-          "sp": 0
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "athletic",
+          "specialization": ""
         },
         "administration": {
           "level": 0,
           "target": 0,
-          "sp": 0
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
         },
         "alternate_identity": {
           "level": 0,
           "target": 0,
-          "sp": 0
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
         },
         "appraisal": {
           "level": 0,
           "target": 0,
-          "sp": 0
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
         },
         "archery": {
           "level": 0,
           "target": 0,
-          "sp": 0
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "athletic",
+          "specialization": ""
         },
         "blade": {
           "level": 0,
           "target": 0,
-          "sp": 0
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "athletic",
+          "specialization": ""
         },
         "bureaucracy": {
           "level": 0,
           "target": 0,
-          "sp": 0
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "social",
+          "specialization": ""
         },
         "career_skills": {
           "level": 0,
           "target": 0,
           "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": "",
           "subskill": ""
+        },
+        "climbing": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "athletic",
+          "specialization": ""
+        },
+        "communications-conventional": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "communications-hyperpulse_generator": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "computer": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "cyrptography": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "demolitions": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "disguise": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "drive-ground": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "physical",
+          "specialization": ""
+        },
+        "drive-naval": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "physical",
+          "specialization": ""
+        },
+        "engineering": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "escape_artist": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "physical",
+          "specialization": ""
+        },
+        "forgery": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "gambling": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "gunnery-aerospace": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "physical",
+          "specialization": ""
+        },
+        "gunnery-battlemech": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "physical",
+          "specialization": ""
+        },
+        "gunnery-battlesuit": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "physical",
+          "specialization": ""
+        },
+        "gunnery-conventional": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "physical",
+          "specialization": ""
+        },
+        "gunnery-spacecraft": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "physical",
+          "specialization": ""
+        },
+        "impersonation": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "social",
+          "specialization": ""
+        },
+        "interrogation": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "social",
+          "specialization": ""
+        },
+        "jump_pack": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "athletic",
+          "specialization": ""
+        },
+        "leadership": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "social",
+          "specialization": ""
+        },
+        "medtech": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "navigation": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "negotiation": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "social",
+          "specialization": ""
+        },
+        "perception": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "piloting-aerospace": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "physical",
+          "specialization": ""
+        },
+        "piloting-battlemech": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "physical",
+          "specialization": ""
+        },
+        "piloting-battlesuit": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "athletic",
+          "specialization": ""
+        },
+        "piloting-spacecraft": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "physical",
+          "specialization": ""
+        },
+        "protocol": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "social",
+          "specialization": ""
+        },
+        "quickdraw": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "physical",
+          "specialization": ""
+        },
+        "riding": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "athletic",
+          "specialization": ""
+        },
+        "running": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "athletic",
+          "specialization": ""
+        },
+        "scrounge": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "social",
+          "specialization": ""
+        },
+        "security_systems": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "seduction": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "social",
+          "specialization": ""
+        },
+        "small_arms": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "physical",
+          "specialization": ""
+        },
+        "special_interests": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": "",
+          "subskill": ""
+        },
+        "stealth": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "physical",
+          "specialization": ""
+        },
+        "strategy": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "streetwise": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "social",
+          "specialization": ""
+        },
+        "support_weapons": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "physical",
+          "specialization": ""
+        },
+        "survival": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "swimming": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "athletic",
+          "specialization": ""
+        },
+        "tactics": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "technician-aerospace": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "technician-battlemech": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "technician-battlesuit": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "technician-electronics": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "technician-mechanic": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "technician-spacecraft": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "technician-weapons": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "throwing_weapons": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "tinker": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "tracking": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "mental",
+          "specialization": ""
+        },
+        "training": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "social",
+          "specialization": ""
+        },
+        "unarmed_combat": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "athletic",
+          "specialization": ""
+        },
+        "zerog_operations": {
+          "level": 0,
+          "target": 0,
+          "sp": 0,
+          "natural_aptitude": false,
+          "characteristic": "physical",
+          "specialization": ""
         }
       },
       "details": {
