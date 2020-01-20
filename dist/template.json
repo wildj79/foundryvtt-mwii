@@ -15,7 +15,7 @@
           "save": 0,
           "exceptional": false
         },
-        "itn": {
+        "int": {
           "value": 0,
           "save": 0,
           "exceptional": false
@@ -33,16 +33,24 @@
       },
       "characteristics": {
         "athletic": {
-          "save": 18
+          "save": 18,
+          "attribute1": "bld",
+          "attribute2": "ref"
         },
         "physical": {
-          "save": 18
+          "save": 18,
+          "attribute1": "ref",
+          "attribute2": "int"
         },
         "mental": {
-          "save": 18
+          "save": 18,
+          "attribute1": "int",
+          "attribute2": "lrn"
         },
         "social": {
-          "save": 18
+          "save": 18,
+          "attribute1": "int",
+          "attribute2": "cha"
         }
       },
       "skills": {
@@ -594,23 +602,20 @@
         "age": 0,
         "height": "",
         "weight": "",
-        "ap": 0
+        "ap": 0,
+        "biography": ""
       },
-      "edge": 0,
+      "edge": {
+        "value": 0,
+        "max": 1
+      },
       "currency": {
         "cbill": 0
       },
       "condition": {
-        "lethal": {
-          "min": 0,
-          "max": 0,
-          "value": 0
-        },
-        "bruise": {
-          "min": 0,
-          "max": 0,
-          "value": 0
-        }
+        "max": 0,
+        "lethal": 0,
+        "bruise": 0
       },
       "hit_location": {
         "head": {

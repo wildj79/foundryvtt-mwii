@@ -17,7 +17,7 @@
 
             {{!-- Header Attributes --}}
             <ul class="attributes flexrow">
-                <li class="attribute health">
+                <!--<li class="attribute health">
                     <h4 class="attribute-name box-title">{{ localize "MWII.Health" }}</h4>
                     <div class="attribute-value multiple">
                         <input name="data.attributes.hp.value" type="text" value="{{data.attributes.hp.value}}"
@@ -76,222 +76,109 @@
                             value="{{data.attributes.speed.special}}"
                             placeholder="{{ localize 'MWII.SpeedSpecial' }}" />
                     </footer>
-                </li>
+                </li>-->
             </ul>
         </div>
     </header>
 
-    {{!-- NPC Sheet Navigation --}}
+    {{!-- Sheet Navigation --}}
     <nav class="sheet-navigation tabs" data-group="primary">
         <a class="item active" data-tab="attributes">{{ localize "MWII.Attributes" }}</a>
-        <a class="item" data-tab="inventory">{{ localize "MWII.Inventory" }}</a>
-        <a class="item" data-tab="features">{{ localize "MWII.Features" }}</a>
-        <a class="item" data-tab="spellbook">{{ localize "MWII.Spellbook" }}</a>
+        <a class="item" data-tab="skills">{{ localize "MWII.Skills" }}</a>
+        <a class="item" data-tab="equipment">{{ localize "MWII.Equipment" }}</a>
         <a class="item" data-tab="biography">{{ localize "MWII.Biography" }}</a>
     </nav>
 
-    {{!-- NPC Sheet Body --}}
+    {{!-- Sheet Body --}}
     <section class="sheet-body">
 
         <div class="tab attributes flexrow" data-group="primary" data-tab="attributes">
 
-            {{!-- Ability Scores --}}
-            <ul class="ability-scores flexrow">
-                {{#each data.abilities as |ability id|}}
-                <li class="ability {{#if ability.proficient}}proficient{{/if}}" data-ability="{{id}}">
-                    <h4 class="ability-name box-title rollable">{{ability.label}}</h4>
-                    <input class="ability-score" name="data.abilities.{{id}}.value" type="text"
-                        value="{{ability.value}}" data-dtype="Number" placeholder="10" />
-                    <div class="ability-modifiers flexrow">
-                        <span class="ability-mod"
-                            title="Modifier">{{numberFormat ability.mod decimals=0 sign=true}}</span>
-                        {{!-- <input type="hidden" name="data.abilities.{{id}}.proficient" value="{{ability.proficient}}" data-dtype="Number"/> --}}
-                        {{!-- <a class="proficiency-toggle ability-proficiency" title="Proficiency">{{{ability.icon}}}</a> --}}
-                        {{!-- <span class="ability-save" title="Saving Throw">{{numberFormat ability.save decimals=0 sign=true}}</span> --}}
+            {{!-- Attribute Scores --}}
+            <ul class="attributes flexrow">
+                {{#each data.attributes as |attribute id|}}
+                <li class="attribute" data-ability="{{id}}">
+                    <h4 class="attribute-name box-title rollable">{{attribute.label}}</h4>
+                    <input class="attribute-score" name="data.attributes.{{id}}.value" type="text"
+                        value="{{attribute.value}}" data-dtype="Number" placeholder="10" />
+                    <div class="attribute-save flexrow">
+                        <span class="attribute-save" title="Save">{{attribute.save}}+</span>
                     </div>
                 </li>
                 {{/each}}
             </ul>
 
-            {{!-- Skills --}}
-            <ul class="skills-list">
-                {{#each data.skills as |skill s|}}
-                <li class="skill flexrow {{#if skill.value}}proficient{{/if}}" data-skill="{{s}}">
-                    <input type="hidden" name="data.skills.{{s}}.value" value="{{skill.value}}" data-dtype="Number" />
-                    <a class="proficiency-toggle skill-proficiency" title="{{skill.hover}}">{{{skill.icon}}}</a>
-                    <h4 class="skill-name rollable">
-                        {{skill.label}}
-                        {{#if skill.isTrainedOnly}}<span>&dagger;</span>{{/if}}
-                        {{#if skill.hasArmorCheckPenalty}}<span>*</span>{{/if}}
+
+            {{!-- Characteristics --}}
+            <ul class="characteristics flexrow">
+                {{#each data.characteristics as |char id|}}
+                <li class="characteristic" data-characteristic="{{id}}">
+                    <h4 class="characteristic-name box-title">
+                        {{char.label}}
                     </h4>
-                    <span class="skill-ability">{{skill.ability}}</span>
-                    {{!-- <input type="text" class="skill-ranks" title="Skill Ranks" name="data.skills.{{s}}.ranks"
-                        value="{{skill.ranks}}" data-dtype="Number" />
-                    <input type="text" class="skill-misc" title="Misc Modifiers" name="data.skills.{{s}}.misc"
-                        value="{{skill.misc}}" data-dtype="Number" /> --}}
-                    <span class="skill-mod">{{numberFormat skill.mod decimals=0 sign=true}}</span>
-                </li>
-                {{/each}}
-                <li class="flexrow">
-                    <div class="form-group">
-                        <button id="add-profession"><i class="fas fa-plus"></i> Add Profession</button>
+                    <div class="characteristic-save multiple">
+                        {{char.save}}+
                     </div>
                 </li>
-                <li class="flexrow">
-                    <small>* = Armor Check Penatly, &dagger; = Trained Only</small>
-                </li>
+                {{/each}}
             </ul>
 
-            <section class="center-pane">
+            {{!-- Advantages --}}
+            {{!-- {{> "systems/mwii/templates/actors/parts/actor-traits.html"}} --}}
+            {{!-- Edge --}}
+            <div class="edge flexrow">
+                <label>{{localize "MWII.Edge"}}</label>
+                <input type="text" name="data.edge.value" value="{{data.edge.value}}" data-dtype="Number" />
+                <span class="sep"> / </span>
+                <span class="">{{data.edge.max}}</span>
+            </div>
+        </div>
 
-                {{!-- Body Attributes --}}
-                <ul class="attributes flexrow">
-                    {{!-- {{#each resources as |res|}}
-                    <li class="attribute resource">
-                        <h4 class="attribute-name box-title">
-                            <input name="data.resources.{{res.name}}.label" type="text" value="{{res.label}}"
-                                   placeholder="{{res.placeholder}}" />
+
+
+        {{!-- Skills Tab --}}
+        <div class="tab skills flexcol" data-group="primary" data-tab="skills">
+            {{!-- Skills --}}
+            <table class="skills-list">
+                <tr class="flexrow">
+                    <th>Name</th>
+                    <th>Characteristic</th>
+                    <th>Level</th>
+                    <th>Target Number</th>
+                    <th>Skill Points</th>
+                </tr>
+                {{#each data.skills as |skill s|}}
+                <tr class="skill flexrow" data-skill="{{s}}">
+                    <td>
+                        <h4 class="skill-name rollable">
+                            {{skill.label}}
                         </h4>
-                        <div class="attribute-value multiple">
-                            <input name="data.resources.{{res.name}}.value" type="text" value="{{res.value}}"
-                                   data-dtype="Number" placeholder="0"/>
-                            <span class="sep"> / </span>
-                           <input name="data.resources.{{res.name}}.max" type="text" value="{{res.max}}"
-                                  data-dtype="Number" placeholder="0"/>
-                        </div>
-                        <footer class="attribute-footer">
-                            <label class="checkbox">
-                                SR <input name="data.resources.{{res.name}}.sr" type="checkbox" {{checked res.sr}}/>
-                            </label>
-                            <label class="checkbox">
-                                LR <input name="data.resources.{{res.name}}.lr" type="checkbox" {{checked res.lr}}/>
-                            </label>
-                        </footer>
-                    </li>
-                    {{/each}} --}}
-
-                    <li class="attribute save" data-save="fort">
-                        <h4 class="attribute-name save-name box-title rollable">{{localize "MWII.FortitudeSave"}}</h4>
-                        <div class="attribute-value">
-                            <span>{{numberFormat data.attributes.fort.bonus decimals=0 sign=true}}</span>
-                        </div>
-                        <footer class="attribute-footer">
-                            <div>
-                                <span>Base</span>
-                                <input name="data.attributes.fort.value" type="text" placeholder="0" data-dtype="Number"
-                                    value="{{numberFormat data.attributes.fort.value decimals=0 sign=true}}" />
-                            </div>
-                            <div>
-                                <span>Misc</span>
-                                <input name="data.attributes.fort.misc" type="text" placeholder="0" data-dtype="Number"
-                                    value="{{numberFormat data.attributes.fort.misc decimals=0 sign=true}}" />
-                            </div>
-                        </footer>
-                    </li>
-
-                    <li class="attribute save" data-save="reflex">
-                        <h4 class="attribute-name save-name box-title rollable">{{localize "MWII.ReflexSave"}}</h4>
-                        <div class="attribute-value">
-                            <span>{{numberFormat data.attributes.reflex.bonus decimals=0 sign=true}}</span>
-                        </div>
-                        <footer class="attribute-footer">
-                            <div>
-                                <span>Base</span>
-                                <input name="data.attributes.reflex.value" type="text" placeholder="0"
-                                    data-dtype="Number"
-                                    value="{{numberFormat data.attributes.reflex.value decimals=0 sign=true}}" />
-                            </div>
-                            <div>
-                                <span>Misc</span>
-                                <input name="data.attributes.reflex.misc" type="text" placeholder="0"
-                                    data-dtype="Number"
-                                    value="{{numberFormat data.attributes.reflex.misc decimals=0 sign=true}}" />
-                            </div>
-                        </footer>
-                    </li>
-
-                    <li class="attribute save" data-save="will">
-                        <h4 class="attribute-name save-name box-title rollable">{{localize "MWII.WillSave"}}</h4>
-                        <div class="attribute-value">
-                            <span>{{numberFormat data.attributes.will.bonus decimals=0 sign=true}}</span>
-                        </div>
-                        <footer class="attribute-footer">
-                            <div>
-                                <span>Base</span>
-                                <input name="data.attributes.will.value" type="text" placeholder="0" data-dtype="Number"
-                                    value="{{numberFormat data.attributes.will.value decimals=0 sign=true}}" />
-                            </div>
-                            <div>
-                                <span>Misc</span>
-                                <input name="data.attributes.will.misc" type="text" placeholder="0" data-dtype="Number"
-                                    value="{{numberFormat data.attributes.will.misc decimals=0 sign=true}}" />
-                            </div>
-                        </footer>
-                    </li>
-
-                </ul>
-
-                <ul class="attributes flexrow last">
-                    <li class="attribute initiative">
-                        <h4 class="attribute-name box-title">Initiative</h4>
-                        <div class="attribute-value">
-                            <span>{{numberFormat data.attributes.init.total decimals=0 sign=true}}</span>
-                        </div>
-                        <footer class="attribute-footer">
-                            <span>Modifier</span>
-                            <input name="data.attributes.init.value" type="text" placeholder="0" data-dtype="Number"
-                                value="{{numberFormat data.attributes.init.value decimals=0 sign=true}}" />
-                        </footer>
-                    </li>
-                    <li class="attribute cmd">
-                        <h4 class="attribute-name box-title" title="AC vs Combat Maneuvers">CMD</h4>
-                        <div class="attribute-value">
-                            <span>{{numberFormat data.attributes.cmd.value decimal=0 sign=false}}</span>
-                        </div>
-                    </li>
-                    <li class="attribute bab">
-                        <h4 class="attribute-name box-title" title="Base Attack Bonus">BAB</h4>
-                        <div class="attribute-value">
-                            <input type="text" name="data.attributes.bab"
-                                value="{{numberFormat data.attributes.bab decimal=0 sign=true}}" placeholder="0"
-                                data-dtype="Number" />
-                        </div>
-                    </li>
-                    <li class="attribute resolve">
-                        <h4 class="attribute-name box-title">{{ localize "MWII.Resolve" }}</h4>
-                        <div class="attribute-value multiple">
-                            <input name="data.attributes.rp.value" type="text" value="{{data.attributes.rp.value}}"
-                                data-dtype="Number" placeholder="10" />
-                            <span class="sep"> / </span>
-                            <input name="data.attributes.rp.max" type="text" value="{{data.attributes.rp.max}}"
-                                data-dtype="Number" placeholder="10" />
-                        </div>
-                    </li>
-                </ul>
-
-                {{!-- Traits --}}
-                {{!-- {{> "systems/mwii/templates/actors/parts/actor-traits.html"}} --}}
-            </section>
+                    </td>
+                    <td><span class="skill-characteristic">{{skill.characteristic}}</span></td>
+                    <td>
+                        <input type="text" class="skill-level" title="Skill Ranks" name="data.skills.{{s}}.level"
+                            value="{{skill.level}}" data-dtype="Number" />
+                    </td>
+                    <td>
+                        <span class="skill-target">{{skill.target}}+</span>
+                    </td>
+                    <td>
+                        <input type="text" class="skill-points" title="Skill Points" name="data.skills.{{s}}.sp"
+                            value="{{skill.sp}}" data-dtype="Number" />
+                    </td>
+                </tr>
+                {{/each}}
+            </table>
         </div>
 
         {{!-- Inventory Tab --}}
-        <div class="tab features flexcol" data-group="primary" data-tab="inventory">
-            {{!-- {{> "systems/mwii/templates/actors/parts/actor-inventory.html" sections=inventory}} --}}
-        </div>
-
-        {{!-- Features Tab --}}
-        <div class="tab features flexcol" data-group="primary" data-tab="features">
-            {{!-- {{> "systems/mwii/templates/actors/parts/actor-features.html" sections=features}} --}}
-        </div>
-
-        {{!-- Spellbook Tab --}}
-        <div class="tab spellbook flexcol" data-group="primary" data-tab="spellbook">
-            {{!-- {{> "systems/mwii/templates/actors/parts/actor-spellbook.html"}} --}}
+        <div class="tab equipment flexcol" data-group="primary" data-tab="equipment">
+            {{!-- {{> "systems/mwii/templates/actors/parts/actor-equipment.html" sections=equipment}} --}}
         </div>
 
         {{!-- Biography Tab --}}
         <div class="tab biography flexcol" data-group="primary" data-tab="biography">
-            {{!-- {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}} --}}
+            {{editor content=data.details.biography target="data.details.biography" button=true owner=owner editable=editable}}
         </div>
     </section>
 </form>

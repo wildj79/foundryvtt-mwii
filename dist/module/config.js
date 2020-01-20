@@ -3,7 +3,7 @@ export const MWII = {};
 MWII.attributes = {
     "bld": "MWII.AttributeBld",
     "ref": "MWII.AttributeRef",
-    "itn": "MWII.AttributeItn",
+    "int": "MWII.AttributeItn",
     "lrn": "MWII.AttributeLrn",
     "cha": "MWII.AttributeCha"
 };

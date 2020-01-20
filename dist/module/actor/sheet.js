@@ -54,8 +54,6 @@ export class ActorSheetMWII extends ActorSheet {
             char.label = CONFIG.MWII.characteristics[c];
         }
 
-        console.log(data.actor.data.characteristics);
-
         // Skill labels
         for (let [s, skl] of Object.entries(data.actor.data.skills)) {
             skl.characteristic = data.actor.data.characteristics[skl.characteristic].label.substring(0, 3);
@@ -67,5 +65,20 @@ export class ActorSheetMWII extends ActorSheet {
 
             skl.label = skillLabel;
         }
+
+        return data;
+    }
+
+    activateListeners(html) {
+        super.activateListeners(html);
+
+        new Tabs(html.find('.tabs'), {
+            initial: this['_sheetTab'],
+            callback: clicked => {
+                this['_sheetTab'] = clicked.data('tab');
+            }
+        });
+
+        if (!this.options.editable) return;
     }
 }

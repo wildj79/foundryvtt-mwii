@@ -76,5 +76,12 @@
     "MWII.SkillsTrack": "Tracking",
     "MWII.SkillsTrain": "Training",
     "MWII.SkillsUnarm": "Unarmed Combat",
-    "MWII.SkillsZero": "Zero-G Operations"
+    "MWII.SkillsZero": "Zero-G Operations",
+
+    "MWII.Attributes": "Attributes",
+    "MWII.Biography": "Biography",
+    "MWII.Equipment": "Equipment",
+    "MWII.Skills": "Skills",
+
+    "MWII.Edge": "Edge"
 }
