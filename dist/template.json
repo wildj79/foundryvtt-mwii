@@ -603,7 +603,10 @@
         "height": "",
         "weight": "",
         "ap": 0,
-        "biography": ""
+        "biography": {
+          "value": "",
+          "public": ""
+        }
       },
       "edge": {
         "value": 0,

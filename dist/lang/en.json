@@ -83,5 +83,7 @@
     "MWII.Equipment": "Equipment",
     "MWII.Skills": "Skills",
 
-    "MWII.Edge": "Edge"
+    "MWII.Edge": "Edge",
+
+    "MWII.TargetModifiers": "Target Modifiers"
 }

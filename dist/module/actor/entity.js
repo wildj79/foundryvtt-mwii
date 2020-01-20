@@ -1,3 +1,5 @@
+import { DiceMWII } from "../dice.js";
+
 export class ActorMWII extends Actor {
 
     /**
@@ -54,5 +56,29 @@ export class ActorMWII extends Actor {
         rightLeg.damage_threshold = build.save * 3;
 
         data.condition.max = build.value * 2 * 5;
+    }
+
+    rollAttributeSave(attributeId, options = {}) {
+        const label = CONFIG.MWII.attributes[attributeId];
+        const attribute = this.data.data.attributes[attributeId];
+
+        const rollData = {
+            target: attribute.save
+        };
+
+        DiceMWII.d6Roll({
+            event: options.event,
+            data: rollData,
+            title: `${label} Attribute Save`,
+            speaker: ChatMessage.getSpeaker({actor: this}),
+            isSave: true
+        });
+    }
+
+    rollCharacteristicSave(characteristicId, options = {}) {
+        const label = CONFIG.MWII.characteristics[characteristicId];
+        const characteristic = this.data.data.characteristics[characteristicId];
+
+        console.log(label, characteristic, options);
     }
 }

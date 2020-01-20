@@ -97,7 +97,7 @@
             {{!-- Attribute Scores --}}
             <ul class="attributes flexrow">
                 {{#each data.attributes as |attribute id|}}
-                <li class="attribute" data-ability="{{id}}">
+                <li class="attribute" data-attribute="{{id}}">
                     <h4 class="attribute-name box-title rollable">{{attribute.label}}</h4>
                     <input class="attribute-score" name="data.attributes.{{id}}.value" type="text"
                         value="{{attribute.value}}" data-dtype="Number" placeholder="10" />
@@ -113,10 +113,10 @@
             <ul class="characteristics flexrow">
                 {{#each data.characteristics as |char id|}}
                 <li class="characteristic" data-characteristic="{{id}}">
-                    <h4 class="characteristic-name box-title">
+                    <h4 class="characteristic-name box-title rollable">
                         {{char.label}}
                     </h4>
-                    <div class="characteristic-save multiple">
+                    <div class="characteristic-save">
                         {{char.save}}+
                     </div>
                 </li>
@@ -178,7 +178,7 @@
 
         {{!-- Biography Tab --}}
         <div class="tab biography flexcol" data-group="primary" data-tab="biography">
-            {{editor content=data.details.biography target="data.details.biography" button=true owner=owner editable=editable}}
+            {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
         </div>
     </section>
 </form>

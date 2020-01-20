@@ -80,5 +80,32 @@ export class ActorSheetMWII extends ActorSheet {
         });
 
         if (!this.options.editable) return;
+
+        html.find('.attribute-name').click(this._onRollAttributeSave.bind(this));
+        html.find('.characteristic-name').click(this._onRollCharacteristicSave.bind(this));
+    }
+
+    /**
+     * Rolls an attribute save for the character.
+     * 
+     * @param {Event} event The originating click event
+     */
+    _onRollAttributeSave(event) {
+        event.preventDefault();
+        let attribute = event.currentTarget.parentElement.dataset.attribute;
+
+        this.actor.rollAttributeSave(attribute, {event: event});
+    }
+
+    /**
+     * Rolls a characteristic save for the character.
+     * 
+     * @param {Event} event The originating click event
+     */
+    _onRollCharacteristicSave(event) {
+        event.preventDefault();
+        let characteristic = event.currentTarget.parentElement.dataset.characteristic;
+
+        this.actor.rollCharacteristicSave(characteristic, {event: event});
     }
 }

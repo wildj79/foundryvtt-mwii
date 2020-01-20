@@ -14,6 +14,7 @@ import { ActorMWII } from './module/actor/entity.js';
 import { ItemMWII } from './module/item/entity.js';
 import { ActorSheetMWII } from './module/actor/sheet.js';
 import { ItemSheetMWII } from './module/item/sheet.js';
+import { DiceMWII } from './module/dice.js';
 
 /* ------------------------------------ */
 /* Initialize system					*/
@@ -22,7 +23,9 @@ Hooks.once('init', async function () {
 	console.log('Mechwarrior 2 | Initializing ');
 
 	// Assign custom classes and constants here
-	game.mwii = {};
+	game.mwii = {
+		DiceMWII
+	};
 
 	CONFIG.MWII = MWII;
 	CONFIG.Actor.entityClass = ActorMWII;
