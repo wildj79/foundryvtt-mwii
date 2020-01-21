@@ -14,7 +14,7 @@ import { ActorMWII } from './module/actor/entity.js';
 import { ItemMWII } from './module/item/entity.js';
 import { ActorSheetMWII } from './module/actor/sheet.js';
 import { ItemSheetMWII } from './module/item/sheet.js';
-import { DiceMWII, highlightSuccessOrFailure } from './module/dice.js';
+import { highlightSuccessOrFailure } from './module/dice.js';
 
 /* ------------------------------------ */
 /* Initialize system					*/
@@ -23,9 +23,7 @@ Hooks.once('init', async function () {
 	console.log('Mechwarrior 2 | Initializing ');
 
 	// Assign custom classes and constants here
-	game.mwii = {
-		DiceMWII
-	};
+	game.mwii = {};
 
 	CONFIG.MWII = MWII;
 	CONFIG.Actor.entityClass = ActorMWII;
@@ -36,6 +34,8 @@ Hooks.once('init', async function () {
 
 	// Preload Handlebars templates
 	await preloadTemplates();
+
+	console.log("after preloadTemplates()");
 
 	// Register custom sheets (if any)
 	Actors.unregisterSheet("core", ActorSheet);

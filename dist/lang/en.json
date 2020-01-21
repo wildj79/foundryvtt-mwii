@@ -78,12 +78,26 @@
     "MWII.SkillsUnarm": "Unarmed Combat",
     "MWII.SkillsZero": "Zero-G Operations",
 
-    "MWII.Attributes": "Attributes",
-    "MWII.Biography": "Biography",
+    "MWII.Attributes": "Statistics",
+    "MWII.Biography": "Details",
     "MWII.Equipment": "Equipment",
     "MWII.Skills": "Skills",
 
     "MWII.Edge": "Edge",
 
-    "MWII.TargetModifiers": "Target Modifiers"
+    "MWII.TargetModifiers": "Target Modifiers",
+
+    "MWII.Faction": "Faction",
+    "MWII.SubFaction": "Sub Faction",
+    "MWII.Planet": "Planet",
+    "MWII.Unit": "Unit",
+    "MWII.Age": "Age",
+    "MWII.Height": "Height",
+    "MWII.Weight": "Weight",
+    "MWII.Vehicle": "Vehicle",
+
+    "MWII.CharacterName": "Name",
+    "MWII.AdventurePoints": "AP",
+
+    "MWII.Weapons": "Weapons"
 }

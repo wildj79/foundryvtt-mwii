@@ -66,7 +66,17 @@ export class ActorSheetMWII extends ActorSheet {
             skl.label = skillLabel;
         }
 
+        this._prepareItems(data);
+
         return data;
+    }
+
+    _prepareItems(data) {
+        const equipment = {
+            weapon: { label: game.i18n.localize("MWII.Weapons"), items: [], dataset: { type: "weapon" }}
+        };
+
+        data.equipment = Object.values(equipment);
     }
 
     activateListeners(html) {

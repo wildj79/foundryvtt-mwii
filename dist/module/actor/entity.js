@@ -39,7 +39,7 @@ export class ActorMWII extends Actor {
         for (let skl of Object.values(data.skills)) {
             skl.target = data.characteristics[skl.characteristic].save - skl.level;
         }
-        
+
         const build = data.attributes.bld;
         const head = data.hit_location.head;
         const torso = data.hit_location.torso;
@@ -47,7 +47,7 @@ export class ActorMWII extends Actor {
         const rightArm = data.hit_location.right_arm;
         const leftLeg = data.hit_location.left_leg;
         const rightLeg = data.hit_location.right_leg;
-        
+
         head.damage_threshold = build.save * 2;
         torso.damage_threshold = build.save * 6;
         leftArm.damage_threshold = build.save * 3;
@@ -66,16 +66,16 @@ export class ActorMWII extends Actor {
             target: attribute.save
         };
 
-        await DiceMWII.d6Roll({
+        DiceMWII.d6Roll({
             event: options.event,
             data: rollData,
             title: `${label} Attribute Save`,
-            speaker: ChatMessage.getSpeaker({actor: this}),
+            speaker: ChatMessage.getSpeaker({ actor: this }),
             isSave: true
-        });
+        }).catch(() => {});
     }
 
-    async rollCharacteristicSave(characteristicId, options = {}) {
+    rollCharacteristicSave(characteristicId, options = {}) {
         const label = CONFIG.MWII.characteristics[characteristicId];
         const characteristic = this.data.data.characteristics[characteristicId];
 
@@ -83,30 +83,30 @@ export class ActorMWII extends Actor {
             target: characteristic.save
         };
 
-        await DiceMWII.d6Roll({
+        DiceMWII.d6Roll({
             event: options.event,
             data: rollData,
             title: `${label} Characteristic Save`,
-            speaker: ChatMessage.getSpeaker({actor: this}),
+            speaker: ChatMessage.getSpeaker({ actor: this }),
             isSave: true
-        });
+        }).catch(() => {});
     }
 
-    async rollSkillCheck(skillId, options = {}) {
+    rollSkillCheck(skillId, options = {}) {
         const label = CONFIG.MWII.skills[skillId];
         const skill = this.data.data.skills[skillId];
 
         const rollData = {
             target: skill.target
         };
-
-        await DiceMWII.d6Roll({
+            
+        DiceMWII.d6Roll({
             event: options.event,
             data: rollData,
             title: `${label} Skill Check`,
-            speaker: ChatMessage.getSpeaker({actor: this}),
+            speaker: ChatMessage.getSpeaker({ actor: this }),
             isUntrained: skill.level < 1,
             hasNaturalAptitude: skill.natural_aptitude
-        });
+        }).catch(() => {});
     }
 }

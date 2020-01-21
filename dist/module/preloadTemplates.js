@@ -1,6 +1,8 @@
 export const preloadTemplates = async function() {
 	const templatePaths = [
-		// Add paths to "systems/mwii/templates"
+		"systems/mwii/templates/actor/parts/actor-equipment.html",
+		"systems/mwii/templates/actor/parts/actor-condition-monitor.html",
+		"systems/mwii/templates/actor/parts/actor-advantages.html"
 	];
 
 	return loadTemplates(templatePaths);

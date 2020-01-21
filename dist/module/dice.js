@@ -1,4 +1,23 @@
+/**
+ * Helper class used to handle dice rolls for Mechwarrior's.
+ */
 export class DiceMWII {
+    /**
+     * Roll a check for this Mechwarrior. 
+     * 
+     * @param {Event} event The event that triggered the roll
+     * @param {Object} data Any extra data needed by the roll
+     * @param {String} template An optional path for an HTML template to use for rendering
+     * @param {String} title The title of the chat message
+     * @param {Object} speaker The ChatMessage speaker to pass when creating the chat
+     * @param {String} flavor Flavor text passed to the ChatMessage
+     * @param {Function} onClose Callback for actions to take when the dialog form is closed
+     * @param {Object} dialogOptions Modal dialog options
+     * @param {Boolean} isSave Is this roll an attribute or characteristic save
+     * @param {Boolean} isUntrained Is this an untrained skill check
+     * @param {Boolean} hasNaturalAptitude Is this a skill check for a skill that the character has a natural aptitude for
+     * @returns {Promise} 
+     */
     static d6Roll({event, data, template, title, speaker, flavor, onClose, dialogOptions, isSave = false, isUntrained = false, hasNaturalAptitude = false}) {
         flavor = flavor || title;
 
@@ -85,14 +104,16 @@ export const highlightSuccessOrFailure = function (message, html, data) {
             const div = $('<div class="margin-failure failure">');
             div.html("Automatic Failure");
             html.find('.dice-result').append(div);
-        }
+        };
+
+        let addRolls = () => d.rolls.map(el => el.roll).reduce((a, b) => a + b, 0);
 
         if (isSave || hasNaturalAptitude) {
             if (d.total === 12) {
                 autoSuccess();
 
                 return;
-            } else if (d.total === 3) {
+            } else if (d.rolls.length === 3 && addRolls() === 3) {
                 autoFailure();
 
                 return;
@@ -100,7 +121,7 @@ export const highlightSuccessOrFailure = function (message, html, data) {
         }
 
         if (isUntrained) {
-            if (d.total === 18) {
+            if (d.rolls.length === 3 && addRolls() === 18) {
                 autoSuccess();
 
                 return;
