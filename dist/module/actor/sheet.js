@@ -83,6 +83,7 @@ export class ActorSheetMWII extends ActorSheet {
 
         html.find('.attribute-name').click(this._onRollAttributeSave.bind(this));
         html.find('.characteristic-name').click(this._onRollCharacteristicSave.bind(this));
+        html.find('.skill-name').click(this._onRollSkillCheck.bind(this));
     }
 
     /**
@@ -107,5 +108,17 @@ export class ActorSheetMWII extends ActorSheet {
         let characteristic = event.currentTarget.parentElement.dataset.characteristic;
 
         this.actor.rollCharacteristicSave(characteristic, {event: event});
+    }
+
+    /**
+     * Rolls a skill check for the character.
+     * 
+     * @param {Event} event The originating click event
+     */
+    _onRollSkillCheck(event) {
+        event.preventDefault();
+        let skill = event.currentTarget.parentElement.parentElement.dataset.skill;
+
+        this.actor.rollSkillCheck(skill, { event: event });
     }
 }

@@ -143,6 +143,7 @@
                 <tr class="flexrow">
                     <th>Name</th>
                     <th>Characteristic</th>
+                    <th>Natural Aptitude</th>
                     <th>Level</th>
                     <th>Target Number</th>
                     <th>Skill Points</th>
@@ -155,6 +156,9 @@
                         </h4>
                     </td>
                     <td><span class="skill-characteristic">{{skill.characteristic}}</span></td>
+                    <td>
+                        <input type="checkbox" name="data.skills.{{s}}.natural_aptitude" {{checked skill.natural_aptitude}}/>
+                    </td>
                     <td>
                         <input type="text" class="skill-level" title="Skill Ranks" name="data.skills.{{s}}.level"
                             value="{{skill.level}}" data-dtype="Number" />

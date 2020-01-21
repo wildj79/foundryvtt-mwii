@@ -14,7 +14,7 @@ import { ActorMWII } from './module/actor/entity.js';
 import { ItemMWII } from './module/item/entity.js';
 import { ActorSheetMWII } from './module/actor/sheet.js';
 import { ItemSheetMWII } from './module/item/sheet.js';
-import { DiceMWII } from './module/dice.js';
+import { DiceMWII, highlightSuccessOrFailure } from './module/dice.js';
 
 /* ------------------------------------ */
 /* Initialize system					*/
@@ -72,3 +72,4 @@ Hooks.once('ready', function () {
 });
 
 // Add any additional hooks if necessary
+Hooks.on("renderChatMessage", highlightSuccessOrFailure);
