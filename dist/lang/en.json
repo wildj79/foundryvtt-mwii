@@ -78,10 +78,14 @@
     "MWII.SkillsUnarm": "Unarmed Combat",
     "MWII.SkillsZero": "Zero-G Operations",
 
-    "MWII.Attributes": "Statistics",
+    "MWII.Statistics": "Statistics",
     "MWII.Biography": "Details",
     "MWII.Equipment": "Equipment",
     "MWII.Skills": "Skills",
+    "MWII.Attributes": "Attributes",
+    "MWII.Characteristics": "Characteristics",
+    "MWII.Advantages": "Advantages",
+    "MWII.ConditionMonitor": "Condition Monitor",
 
     "MWII.Edge": "Edge",
 
@@ -97,7 +101,13 @@
     "MWII.Vehicle": "Vehicle",
 
     "MWII.CharacterName": "Name",
-    "MWII.AdventurePoints": "AP",
+    "MWII.AdventurePoints": "Adventure Points",
+    "MWII.AdventurePointsAbbr": "AP",
 
-    "MWII.Weapons": "Weapons"
+    "MWII.Weapons": "Weapons",
+    "MWII.Gear": "Gear",
+    "MWII.Armor": "Armor",
+    "MWII.PowerPacks": "Power Packs",
+
+    "MWII.CBills": "C-Bills"
 }

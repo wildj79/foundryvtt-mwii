@@ -8,9 +8,10 @@
                     <input name="name" type="text" value="{{actor.name}}" placeholder="Character Name" />
                     <label class="bt-old">{{localize "MWII.CharacterName"}}</label>
                 </h1>
-                <div>
-                    <label>{{localize "MWII.AdventurePoints"}}</label>
-                    <input type="text" name="data.details.ap" value="{{data.details.ap}}" data-dtype="Number" />
+                <div class="adventure-points">
+                    <input type="text" title="{{localize "MWII.AdventurePoints"}}" name="data.details.ap"
+                        value="{{data.details.ap}}" data-dtype="Number" />
+                    <label class="bt-old">{{localize "MWII.AdventurePointsAbbr"}}</label>
                 </div>
             </div>
         </div>
@@ -18,66 +19,69 @@
 
     {{!-- Sheet Navigation --}}
     <nav class="sheet-navigation tabs" data-group="primary">
-        <a class="item active" data-tab="attributes">{{ localize "MWII.Attributes" }}</a>
-        <a class="item" data-tab="skills">{{ localize "MWII.Skills" }}</a>
-        <a class="item" data-tab="equipment">{{ localize "MWII.Equipment" }}</a>
-        <a class="item" data-tab="biography">{{ localize "MWII.Biography" }}</a>
+        <a class="item active bt-old" data-tab="statistics">{{ localize "MWII.Statistics" }}</a>
+        <a class="item bt-old" data-tab="skills">{{ localize "MWII.Skills" }}</a>
+        <a class="item bt-old" data-tab="equipment">{{ localize "MWII.Equipment" }}</a>
+        <a class="item bt-old" data-tab="biography">{{ localize "MWII.Biography" }}</a>
     </nav>
 
     {{!-- Sheet Body --}}
     <section class="sheet-body">
 
-        <div class="tab attributes flexrow" data-group="primary" data-tab="attributes">
+        <div class="tab statistics flexrow" data-group="primary" data-tab="statistics">
+            <div class="left-side flexcol">
+                {{!-- Attribute Scores --}}
+                <div class="attributes">
+                    <h3 class="attributes-title bt-old">{{localize "MWII.Attributes"}}</h3>
+                    <ul>
+                        {{#each data.attributes as |attribute id|}}
+                        <li class="attribute flexrow" data-attribute="{{id}}">
+                            <h4 class="attribute-name box-title rollable">{{attribute.label}}</h4>
+                            <input class="attribute-score" name="data.attributes.{{id}}.value" type="text"
+                                value="{{attribute.value}}" data-dtype="Number" placeholder="10" />
+                            <div class="attribute-save flexrow">
+                                <span class="attribute-save" title="Save">{{attribute.save}}+</span>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
 
-            {{!-- Attribute Scores --}}
-            <ul class="attributes flexrow">
-                {{#each data.attributes as |attribute id|}}
-                <li class="attribute" data-attribute="{{id}}">
-                    <h4 class="attribute-name box-title rollable">{{attribute.label}}</h4>
-                    <input class="attribute-score" name="data.attributes.{{id}}.value" type="text"
-                        value="{{attribute.value}}" data-dtype="Number" placeholder="10" />
-                    <div class="attribute-save flexrow">
-                        <span class="attribute-save" title="Save">{{attribute.save}}+</span>
+                {{!-- Characteristics --}}
+                <div class="characteristics">
+                    <h3 class="characteristics-title bt-old">{{localize "MWII.Characteristics"}}</h3>
+                    <ul>
+                        {{#each data.characteristics as |char id|}}
+                        <li class="characteristic flexrow" data-characteristic="{{id}}">
+                            <h4 class="characteristic-name box-title rollable">
+                                {{char.label}}
+                            </h4>
+                            <div class="characteristic-save">
+                                {{char.save}}+
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+
+                {{!-- Edge --}}
+                <div class="edge flexrow">
+                    <h3 class="bt-old flexrow">{{localize "MWII.Edge"}}</h3>
+                    <div class="flexrow">
+                        <input type="text" name="data.edge.value" value="{{data.edge.value}}" data-dtype="Number" />
+                        <span class="sep"> | </span>
+                        <input type="text" name="data.edge.max" value="{{data.edge.max}}" data-dtype="Number" />
                     </div>
-                </li>
-                {{/each}}
-            </ul>
+                </div>
 
-
-            {{!-- Characteristics --}}
-            <ul class="characteristics flexrow">
-                {{#each data.characteristics as |char id|}}
-                <li class="characteristic" data-characteristic="{{id}}">
-                    <h4 class="characteristic-name box-title rollable">
-                        {{char.label}}
-                    </h4>
-                    <div class="characteristic-save">
-                        {{char.save}}+
-                    </div>
-                </li>
-                {{/each}}
-            </ul>
-
-            {{!-- Advantages --}}
-            {{> "systems/mwii/templates/actor/parts/actor-advantages.html"}}
-
-            {{!-- Edge --}}
-            <div class="edge flexrow">
-                <label>{{localize "MWII.Edge"}}</label>
-                <input type="text" name="data.edge.value" value="{{data.edge.value}}" data-dtype="Number" />
-                <span class="sep"> / </span>
-                <input type="text" name="data.edge.max" value="{{data.edge.max}}" data-dtype="Number" />
+                
             </div>
-
-            <div class="currency flexrow">
-                <label>{{localize "MWII.CBills"}}</label>
-                <input type="text" name="data.currency.cbill" value="{{data.currency.cbill}}" />
+            <div class="right-side flexcol">
+                {{!-- Advantages --}}
+                {{> "systems/mwii/templates/actor/parts/actor-advantages.html"}}
+                {{> "systems/mwii/templates/actor/parts/actor-condition-monitor.html"}}
             </div>
-
-            {{> "systems/mwii/templates/actor/parts/actor-condition-monitor.html"}}
         </div>
-
-
 
         {{!-- Skills Tab --}}
         <div class="tab skills flexcol" data-group="primary" data-tab="skills">
@@ -86,7 +90,7 @@
                 <tr class="flexrow">
                     <th>Natural Aptitude</th>
                     <th>Name</th>
-                    <th>Characteristic</th>                    
+                    <th>Characteristic</th>
                     <th>Level</th>
                     <th>Target Number</th>
                     <th>Skill Points</th>
@@ -102,7 +106,7 @@
                             {{skill.label}}
                         </h4>
                     </td>
-                    <td><span class="skill-characteristic">{{skill.characteristic}}</span></td>                    
+                    <td><span class="skill-characteristic">{{skill.characteristic}}</span></td>
                     <td>
                         <input type="text" class="skill-level" title="Skill Ranks" name="data.skills.{{s}}.level"
                             value="{{skill.level}}" data-dtype="Number" />

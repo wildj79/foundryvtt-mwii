@@ -1,5 +1,57 @@
+// All MWII Apps
 .window-app {
     .window-content {
         background: url('images/white-linen.jpg') repeat;
     }
+}
+
+.mwii.sheet {
+    .window-content {
+        overflow-y: hidden;
+
+        form {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .tab {
+            height: 100%;
+            overflow-y: auto;
+            align-content: flex-start;
+        }
+    }
+}
+
+.editable .rollable:hover {
+    color: #000;
+    text-shadow: 0 0 10px #333;
+    cursor: pointer;
+}
+
+.editor {
+    height: 100%;
+
+    .tox-toolbar-overlord,
+    .tox-toolbar__primary {
+        background: none;
+    }
+}
+
+.sheet-header,
+.sheet-navigation {
+    margin-bottom: 5px;
+    border-bottom: 4px double #333;
+}
+
+.sheet-header {
+    flex: 0 0 85px;
+}
+
+.sheet-body {
+    flex: 1;
+    overflow: hidden;
+}
+
+.sheet-navigation {
+    flex: 0 0 30px;
 }

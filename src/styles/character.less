@@ -1,0 +1,132 @@
+.mwii.sheet.actor.character {
+    input[type="text"], select {
+        border: none;
+        border-bottom: 1px solid #333;
+        border-radius: unset;
+        background: transparent;
+        margin: 0;
+        text-align: center;
+
+        &:focus {
+            box-shadow: 0 0 2px #333;
+            outline: none;
+        }
+    }
+
+    select {
+        text-align: left;
+    }
+
+    .left-side {
+        flex: 0;
+        margin-right: 15px;
+    }
+
+    .right-side {
+        flex: 1;
+    }
+
+    .charname {
+        input[type="text"] {
+            text-align: left;
+        }
+        label {
+            font-size: 15px;
+        }
+    }
+
+    .adventure-points {
+        flex: 0 0 15%;
+
+        input[type="text"] {
+            font-size: 2em;
+            height: 48px;
+            line-height: 40px;
+            margin-bottom: 12px;
+            text-align: right;
+        }
+    }
+
+    .attributes,
+    .characteristics,
+    .advantages,
+    .edge {
+        margin-bottom: 10px;
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        ol {
+            list-style-type: none;
+            margin: 0;
+            padding: 0
+        }
+    }
+    
+    .attribute {
+        h4 {
+            flex: 0 0 60px;
+            margin: 0 5px 0 0;
+        }
+
+        .attribute-score {
+            flex: 0 0 25px;
+            margin-right: 5px;
+        }
+
+        div.attribute-save {
+            flex: 0 0 25px;
+            text-align: center;
+        }
+    }
+
+    .advantages {
+        flex: 0 0 55px;
+
+        .advantage-list {
+            .item-controls {
+                flex: 0 0 44px;
+                justify-content: flex-end;
+
+                a {
+                    flex: 0 0 22px;
+                    font-size: 10px;
+                    text-align: center;
+                    color: #666;
+                }
+            }
+        }
+    }
+
+    .edge {
+        input[type="text"] {
+            flex: 0 0 25px;
+        }
+
+        span.sep {
+            flex: 0 0 25px;
+            text-align: center;
+        }
+    }
+
+    .equipment {
+        .currency {
+            font-size: 12px;
+            padding: 0;
+
+            label {
+                flex: 1;
+                text-align: right;
+                line-height: 20px;
+                font-size: 12px;
+            }
+
+            input[type="text"] {
+                flex: 0 0 60px;
+            }
+        }
+    }
+}

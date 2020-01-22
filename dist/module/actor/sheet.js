@@ -12,7 +12,7 @@ export class ActorSheetMWII extends ActorSheet {
         return mergeObject(super.defaultOptions, {
             classes: ['mwii', 'sheet', 'actor', 'character'],
             width: 600,
-            height: 600
+            height: 508
         });
     }
 
@@ -43,7 +43,7 @@ export class ActorSheetMWII extends ActorSheet {
         data.items.sort((a, b) => (a.sort || 0) - (b.sort || 0));
         data.data = data.actor.data;
         data.labels = this.actor.labels || {};
-        
+
         // Attributes
         for (let [a, att] of Object.entries(data.actor.data.attributes)) {
             att.label = CONFIG.MWII.attributes[a];
@@ -73,10 +73,40 @@ export class ActorSheetMWII extends ActorSheet {
 
     _prepareItems(data) {
         const equipment = {
-            weapon: { label: game.i18n.localize("MWII.Weapons"), items: [], dataset: { type: "weapon" }}
+            weapon: { label: game.i18n.localize("MWII.Weapons"), items: [], dataset: { type: "weapon" } },
+            gear: { label: game.i18n.localize("MWII.Gear"), items: [], dataset: { type: "gear" } },
+            armor: { label: game.i18n.localize("MWII.Armor"), items: [], dataset: { type: "armor" } },
+            power_pack: { label: game.i18n.localize("MWII.PowerPacks"), items: [], dataset: { type: "power_pack" } },
+            vechilce: { label: game.i18n.localize("MWII.Vehicle"), items: [], dataset: { type: "vehicle" } }
+        };
+
+        let [items, advantages] = data.items.reduce((arr, item) => {
+            item.img = item.img || DEFAULT_TOKEN;
+            item.isStack = item.data.quantity ? item.data.quantity > 1 : false;
+            if (item.type === "advantage") arr[1].push(item);
+            else if (Object.keys(equipment).includes(item.type)) arr[0].push(item);
+
+            return arr;
+        }, [[], []]);
+
+        for (let item of items) {
+            item.data.quantity = item.data.quantity || 0;
+            item.data.weight = item.data.weight || 0;
+
+            let weight = parseFloat(item.data.weight);
+
+            item.totalWeight = item.data.quantity * weight;
+            equipment[item.type].items.push(item);
+        }
+
+        const advantage = {
+            label: game.i18n.localize("MWII.Advantages"), 
+            items: advantages, 
+            dataset: { type: "advantage" }
         };
 
         data.equipment = Object.values(equipment);
+        data.advantage = advantage;
     }
 
     activateListeners(html) {
@@ -94,6 +124,37 @@ export class ActorSheetMWII extends ActorSheet {
         html.find('.attribute-name').click(this._onRollAttributeSave.bind(this));
         html.find('.characteristic-name').click(this._onRollCharacteristicSave.bind(this));
         html.find('.skill-name').click(this._onRollSkillCheck.bind(this));
+        html.find('.item-delete').click(this._onItemDelete.bind(this));
+        html.find('.item-edit').click(this._onItemEdit.bind(this));
+    }
+
+    /**
+     * Delete an item from the characters inventory.
+     * 
+     * @param {Event} event The triggering event
+     */
+    _onItemDelete(event) {
+        event.preventDefault();
+
+        let li = $(event.currentTarget).parents('.item'),
+            itemId = li.data('itemId');
+
+        this.actor.deleteEmbeddedEntity("OwnedItem", itemId);
+        li.slideUp(200, () => {});
+    }
+
+    /**
+     * Edit an item in the characters inventory.
+     * 
+     * @param {Event} event The triggering event
+     */
+    _onItemEdit(event) {
+        event.preventDefault();
+
+        let itemId = $(event.currentTarget).parents('.item').data('itemId');
+        const item = this.actor.getOwnedItem(itemId);
+
+        item.sheet.render(true);
     }
 
     /**
@@ -105,7 +166,7 @@ export class ActorSheetMWII extends ActorSheet {
         event.preventDefault();
         let attribute = event.currentTarget.parentElement.dataset.attribute;
 
-        this.actor.rollAttributeSave(attribute, {event: event});
+        this.actor.rollAttributeSave(attribute, { event: event });
     }
 
     /**
@@ -117,7 +178,7 @@ export class ActorSheetMWII extends ActorSheet {
         event.preventDefault();
         let characteristic = event.currentTarget.parentElement.dataset.characteristic;
 
-        this.actor.rollCharacteristicSave(characteristic, {event: event});
+        this.actor.rollCharacteristicSave(characteristic, { event: event });
     }
 
     /**
