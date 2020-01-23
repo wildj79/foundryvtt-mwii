@@ -11,7 +11,7 @@
 
             {{#if ../owner}}
             <div class="item-controls">
-                <a class="item-control item-create" title="{{localize "MWII.CreateItem"}}" {{#each selction.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
+                <a class="item-control item-create" title="{{localize "MWII.CreateItem"}}" {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
                     <i class="fas fa-plus"></i> {{localize "MWII.AddButton"}}
                 </a>
             </div>

@@ -77,7 +77,7 @@ export class ActorSheetMWII extends ActorSheet {
             gear: { label: game.i18n.localize("MWII.Gear"), items: [], dataset: { type: "gear" } },
             armor: { label: game.i18n.localize("MWII.Armor"), items: [], dataset: { type: "armor" } },
             power_pack: { label: game.i18n.localize("MWII.PowerPacks"), items: [], dataset: { type: "power_pack" } },
-            vechilce: { label: game.i18n.localize("MWII.Vehicle"), items: [], dataset: { type: "vehicle" } }
+            vehicle: { label: game.i18n.localize("MWII.Vehicle"), items: [], dataset: { type: "vehicle" } }
         };
 
         let [items, advantages] = data.items.reduce((arr, item) => {
@@ -126,6 +126,29 @@ export class ActorSheetMWII extends ActorSheet {
         html.find('.skill-name').click(this._onRollSkillCheck.bind(this));
         html.find('.item-delete').click(this._onItemDelete.bind(this));
         html.find('.item-edit').click(this._onItemEdit.bind(this));
+        html.find('.item-create').click(this._onItemCreate.bind(this));
+    }
+
+    /**
+     * Create a new item for the character.
+     * 
+     * @param {Event} event The triggering event
+     */
+    _onItemCreate(event) {
+        event.preventDefault();
+
+        const header = event.currentTarget;
+        console.log(header);
+        const type = header.dataset.type;
+        const itemData = {
+            name: `New ${type.capitalize()}`,
+            type: type,
+            data: duplicate(header.dataset)
+        };
+
+        delete itemData.data['type'];
+
+        return this.actor.createOwnedItem(itemData);
     }
 
     /**

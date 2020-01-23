@@ -655,7 +655,7 @@
     }
   },
   "Item": {
-    "types": ["advantage", "gear", "weapons", "armor", "power_pack", "vechilce"],
+    "types": ["advantage", "gear", "weapons", "armor", "power_pack", "vehicle"],
     "templates": {
       "itemDescription": {
         "description": "",
