@@ -68,9 +68,9 @@
                 <div class="edge flexrow">
                     <h3 class="bt-old flexrow">{{localize "MWII.Edge"}}</h3>
                     <div class="flexrow">
-                        <input type="text" name="data.edge.value" value="{{data.edge.value}}" data-dtype="Number" />
+                        <input type="text" title="{{localize "MWII.CurrentEdge"}}" name="data.edge.value" value="{{data.edge.value}}" data-dtype="Number" />
                         <span class="sep"> | </span>
-                        <input type="text" name="data.edge.max" value="{{data.edge.max}}" data-dtype="Number" />
+                        <input type="text" title="{{localize "MWII.MaxEdge"}}" name="data.edge.max" value="{{data.edge.max}}" data-dtype="Number" />
                     </div>
                 </div>
 
@@ -88,30 +88,28 @@
             {{!-- Skills --}}
             <table class="skills-list">
                 <tr class="flexrow">
-                    <th>Natural Aptitude</th>
-                    <th>Name</th>
-                    <th>Characteristic</th>
+                    <th class="col-natural-aptitude"></th>
+                    <th class="col-skill-name">Name</th>
                     <th>Level</th>
                     <th>Target Number</th>
-                    <th>Skill Points</th>
+                    <th>Skill Points</th
                 </tr>
                 {{#each data.skills as |skill s|}}
                 <tr class="skill flexrow" data-skill="{{s}}">
-                    <td>
-                        <input type="checkbox" name="data.skills.{{s}}.natural_aptitude"
+                    <td class="col-natural-aptitude">
+                        <input type="checkbox" title="{{localize "MWII.NaturalAptitude"}}" name="data.skills.{{s}}.natural_aptitude"
                             {{checked skill.natural_aptitude}} />
-                    </td>
-                    <td>
-                        <h4 class="skill-name rollable">
-                            {{skill.label}}
+                    </td>                  
+                    <td class="col-skill-name">
+                        <h4 class="skill-name rollable" title="{{skill.characteristic}}">
+                            {{~skill.label~}}
                         </h4>
                     </td>
-                    <td><span class="skill-characteristic">{{skill.characteristic}}</span></td>
                     <td>
-                        <input type="text" class="skill-level" title="Skill Ranks" name="data.skills.{{s}}.level"
+                        <input type="text" class="skill-level" title="{{localize "MWII.SkillLevels"}}" name="data.skills.{{s}}.level"
                             value="{{skill.level}}" data-dtype="Number" />
                     </td>
-                    <td>
+                    <td class="center">
                         <span class="skill-target">{{skill.target}}+</span>
                     </td>
                     <td>

@@ -56,7 +56,7 @@ export class ActorSheetMWII extends ActorSheet {
 
         // Skill labels
         for (let [s, skl] of Object.entries(data.actor.data.skills)) {
-            skl.characteristic = data.actor.data.characteristics[skl.characteristic].label.substring(0, 3);
+            skl.characteristic = data.actor.data.characteristics[skl.characteristic].label;
 
             let skillLabel = CONFIG.MWII.skills[s];
             if (skl.specialization) {
@@ -73,7 +73,7 @@ export class ActorSheetMWII extends ActorSheet {
 
     _prepareItems(data) {
         const equipment = {
-            weapon: { label: game.i18n.localize("MWII.Weapons"), items: [], dataset: { type: "weapon" } },
+            weapons: { label: game.i18n.localize("MWII.Weapons"), items: [], dataset: { type: "weapons" } },
             gear: { label: game.i18n.localize("MWII.Gear"), items: [], dataset: { type: "gear" } },
             armor: { label: game.i18n.localize("MWII.Armor"), items: [], dataset: { type: "armor" } },
             power_pack: { label: game.i18n.localize("MWII.PowerPacks"), items: [], dataset: { type: "power_pack" } },

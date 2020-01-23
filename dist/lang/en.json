@@ -20,7 +20,7 @@
     "MWII.SkillsCar": "Career Skills",
     "MWII.SkillsClimb": "Climbing",
     "MWII.SkillsCommConv": "Communications/Conventional",
-    "MWII.SkillsCommHPG": "Communications/Hyperpulse Generator",
+    "MWII.SkillsCommHPG": "Communications/HPG",
     "MWII.SkillsComp": "Computer",
     "MWII.SkillsCrypto": "Cryptography",
     "MWII.SkillsDemo": "Demolitions",
@@ -109,5 +109,15 @@
     "MWII.Armor": "Armor",
     "MWII.PowerPacks": "Power Packs",
 
-    "MWII.CBills": "C-Bills"
+    "MWII.CBills": "C-Bills",
+
+    "MWII.SkillLevels": "Skill Levels",
+
+    "MWII.NaturalAptitude": "Natural Aptitude",
+
+    "MWII.CreateItem": "Create Item",
+    "MWII.AddButton": "Add",
+
+    "MWII.CurrentEdge": "Current Edge",
+    "MWII.MaxEdge": "Max Edge"
 }

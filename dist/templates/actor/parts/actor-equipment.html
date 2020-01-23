@@ -2,5 +2,41 @@
     <label class="bt-old">{{localize "MWII.CBills"}}:</label>
     <input type="text" name="data.currency.cbill" value="{{data.currency.cbill}}" />
 </div>
-{{log sections}}
-This is where the equipment goes.
+
+<div class="equipment flexrow">
+    <ol class="equipment-list">
+    {{#each sections as |section sid|}}
+        <li class="equipment-header flexrow">
+            <h3 class="item-name flexrow bt-old">{{section.label}}</h3>
+
+            {{#if ../owner}}
+            <div class="item-controls">
+                <a class="item-control item-create" title="{{localize "MWII.CreateItem"}}" {{#each selction.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
+                    <i class="fas fa-plus"></i> {{localize "MWII.AddButton"}}
+                </a>
+            </div>
+            {{/if}}
+        </li>
+
+        <ol class="item-list">
+        {{#each section.items as |item iid|}}
+            <li class="item flexrow" data-item-id="{{item._id}}">
+                <div class="item-name flexrow rollable">
+                    <div class="item-image" style="background-image: url({{item.img}});"></div>
+                    <h4>
+                        {{#if item.isStack}}({{item.data.quantity}}) {{/if}}
+                        {{~item.name~}}
+                    </h4>
+                </div>
+                {{#if ../../owner}}
+                <div class="item-controls">
+                    <a class="item-control item-edit" title="{{localize "MWII.EditItem"}}"><i class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" title="{{localize "MWII.DeleteItem"}}"><i class="fas fa-trash"></i></a>
+                </div>
+                {{/if}}
+            </li>
+        {{/each}}
+        </ol>
+    {{/each}}
+    </ol>
+</div>

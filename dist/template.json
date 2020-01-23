@@ -724,7 +724,7 @@
         "right_leg": false
       }
     },
-    "weapon": {
+    "weapons": {
       "templates": ["itemDescription", "physicalItem"],
       "skill": "small_arms",
       "damage": "1d6",
