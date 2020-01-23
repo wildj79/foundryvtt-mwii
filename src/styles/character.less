@@ -144,6 +144,69 @@
                 flex: 0 0 60px;
             }
         }
+
+        .item-list { 
+            padding: 0;
+        }
+
+        .equipment-list {
+            padding: 0;
+            overflow-y: auto;
+
+            .item {
+                line-height: 30px;
+                border-bottom: 1px solid #bbb;
+                &:last-child { border-bottom: none; }
+
+                .item-name {
+                    cursor: pointer;
+
+                    .item-image {
+                        flex: 0 0 30px;
+                        background-size: 30px;
+                        margin-right: 5px;
+                    }
+
+                    h4 {
+                        margin: 0;
+                    }
+
+                    &:hover .item-image {
+                        background-image: url('/icons/svg/d20-grey.svg') !important;
+                    }
+
+                    .item-image:hover {
+                        background-image: url('/icons/svg/d20-black.svg') !important;
+                    }
+                }
+            }
+
+            .item-controls {
+                flex: 0 0 44px;
+                justify-content: flex-end;
+
+                a {
+                    flex: 0 0 22px;
+                    font-size: 10px;
+                    text-align: center;
+                    color: #333;
+                }
+            }
+        }
+
+        .equipment-header {
+            border-bottom: 1px solid #333;
+            line-height: 24px;
+            margin-bottom: 15px;
+
+            .item-controls a.item-create {
+                flex: 0 0 100%;
+            }
+
+            h3 {
+                font-size: 12px;
+            }
+        }
     }
 
     table.skills-list {
