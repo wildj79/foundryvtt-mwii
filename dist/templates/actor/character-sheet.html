@@ -138,42 +138,42 @@
 
         {{!-- Biography Tab --}}
         <div class="tab biography flexcol" data-group="primary" data-tab="biography">
-            <div class="details">
+            <div class="details flexrow">
                 <img class="profile flexrow" src="{{actor.img}}" title="{{actor.name}}" data-edit="img" height="100"
                     width="100" />
                 {{!-- Character Summary --}}
                 <ul class="summary flexrow">
-                    <li>
-                        <label>{{localize "MWII.Faction"}}</label>
+                    <li class="faction">
                         <input type="text" name="data.details.faction" value="{{data.details.faction}}" />
+                        <label class="bt-old">{{localize "MWII.Faction"}}</label>
                     </li>
-                    <li>
-                        <label>{{localize "MWII.SubFaction"}}</label>
+                    <li class="subfaction">
                         <input type="text" name="data.details.subfaction" value="{{data.details.subfaction}}" />
+                        <label class="bt-old">{{localize "MWII.SubFaction"}}</label>
                     </li>
-                    <li>
-                        <label>{{localize "MWII.Planet"}}</label>
+                    <li class="planet">
                         <input type="text" name="data.details.planet" value="{{data.details.planet}}" />
+                        <label class="bt-old">{{localize "MWII.Planet"}}</label>
                     </li>
-                    <li>
-                        <label>{{localize "MWII.Unit"}}</label>
+                    <li class="unit">
                         <input type="text" name="data.details.unit" value="{{data.details.unit}}" />
+                        <label class="bt-old">{{localize "MWII.Unit"}}</label>
                     </li>
-                    <li>
-                        <label>{{localize "MWII.Age"}}</label>
+                    <li class="age">
                         <input type="text" name="data.details.age" value="{{data.details.age}}" data-dtype="Number" />
+                        <label class="bt-old">{{localize "MWII.Age"}}</label>
                     </li>
-                    <li>
-                        <label>{{localize "MWII.Height"}}</label>
+                    <li class="height">
                         <input type="text" name="data.details.height" value="{{data.details.height}}" />
+                        <label class="bt-old">{{localize "MWII.Height"}}</label>
                     </li>
-                    <li>
-                        <label>{{localize "MWII.Weight"}}</label>
+                    <li class="weight">
                         <input type="text" name="data.details.weight" value="{{data.details.weight}}" />
+                        <label class="bt-old">{{localize "MWII.Weight"}}</label>
                     </li>
-                    <li>
-                        <label>{{localize "MWII.Vehicle"}}</label>
+                    <li class="battlemech">
                         <input type="text" name="data.details.battlemech" value="{{data.details.battlemech}}" />
+                        <label class="bt-old">{{localize "MWII.Vehicle"}}</label>
                     </li>
                 </ul>
             </div>
