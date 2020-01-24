@@ -704,10 +704,22 @@
     },
     "armor": {
       "templates": ["itemDescription", "physicalItem"],
-      "energy": 0.5,
-      "ballistic": 0.5,
-      "melee": 1,
-      "damage_capacity": 20,
+      "energy": {
+        "value": 0.5,
+        "type": "percentage"
+      },
+      "ballistic": {
+        "value": 0.5,
+        "type": "percentage"
+      },
+      "melee": {
+        "value": 1,
+        "type": "percentage"
+      },
+      "damage_capacity": {
+        "max": 20,
+        "value": 0
+      },
       "encumbrance": {
         "movement": 1,
         "physical": 0,
@@ -733,6 +745,8 @@
         "medium": 2,
         "long": 3
       },
+      "lethality": "lethal",
+      "damageType": "energy",
       "aoe": 0,
       "ammo": {
         "max": 10,

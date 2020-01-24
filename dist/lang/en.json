@@ -86,6 +86,8 @@
     "MWII.Characteristics": "Characteristics",
     "MWII.Advantages": "Advantages",
     "MWII.ConditionMonitor": "Condition Monitor",
+    "MWII.Description": "Description",
+    "MWII.Details": "Details",
 
     "MWII.Edge": "Edge",
 
@@ -131,5 +133,65 @@
     "MWII.SkillHeaderName": "Name",
     "MWII.SkillHeaderLevel": "Level",
     "MWII.SkillHeaderTargetNumber": "Target Number",
-    "MWII.SkillHeaderSkillPoints": "Skill Points"
+    "MWII.SkillHeaderSkillPoints": "Skill Points",
+
+    "MWII.DamageTypeEnergy": "Energy",
+    "MWII.DamageTypeBallistic": "Ballistic",
+    "MWII.DamageTypeMelee": "Melee",
+
+    "MWII.Quantity": "Quantity",
+    "MWII.UnitOfMeaure": "Unit Of Measure",
+    "MWII.ItemCost":"Cost",
+    "MWII.PointCost": "Points",
+    "MWII.TechLevel": "Tech Level",
+    "MWII.Availability": "Availability",
+    "MWII.Legality":"Legality",
+    "MWII.PowerUsage": "Power Usage",
+    "MWII.PowerCapacity":"Power Capacity",
+    "MWII.VechileChasis": "Chasis",
+    "MWII.VechicleWeightClass": "Weight Class",
+    "MWII.VechicleWeight": "Weight",
+    "MWII.VehicleType": "Vehicle Type",
+
+    "MWII.VechileTypesBattleMech": "BattleMech",
+    "MWII.VehcileTypesConventionVee": "Combat Vechilce",
+    "MWII.VehicleTypesBattleArmor": "Battle Armor",
+    "MWII.VehicleTypesAeroSpace": "Aerospace Fighter",
+    "MWII.VehicleTypesDropship": "Dropship",
+
+    "MWII.UnitOfMeasureMilliGram": "milligram",
+    "MWII.UnitOfMeasureCentiGram": "centigram",
+    "MWII.UnitOfMeasureDecigram": "decigram",
+    "MWII.UnitOfMeasureGram": "gram",
+    "MWII.UnitOfMeasuerKiloGram": "kilogram",
+    "MWII.UnitOfMeasureMetricTon": "metric ton",
+
+    "MWII.UnitOfMeasureMilliGramAbbr": "mg",
+    "MWII.UnitOfMeasureCentiGramAbbr": "cg",
+    "MWII.UnitOfMeasureDecigramAbbr": "dg",
+    "MWII.UnitOfMeasureGramAbbr": "g",
+    "MWII.UnitOfMeasuerKiloGramAbbr": "kg",
+    "MWII.UnitOfMeasureMetricTonAbbr": "t",
+
+    "MWII.UnitOfMeasureMilliMeter": "millimeter",
+    "MWII.UnitOfMeasureCentiMeter": "centimeter",
+    "MWII.UnitOfMeasureDeciMeter": "decimeter",
+    "MWII.UnitOfMeasureMeter": "meter",
+    "MWII.UnitOfMeasureKiloMeter": "kilometer",
+
+    "MWII.UnitOfMeasureMilliMeterAbbr": "mm",
+    "MWII.UnitOfMeasureCentiMeterAbbr": "cm",
+    "MWII.UnitOfMeasureDeciMeterAbbr": "dm",
+    "MWII.UnitOfMeasureMeterAbbr": "m",
+    "MWII.UnitOfMeasureKiloMeterAbbr": "km",
+
+    "MWII.TechLevel1": "1",
+    "MWII.TechLevel2": "2",
+    "MWII.TechLevel3": "3",
+    "MWII.TechLevel4": "4",
+
+    "MWII.AvailabilityA": "A",
+    "MWII.AvailabilityB": "B",
+    "MWII.AvailabilityC": "C",
+    "MWII.AvailabilityD": "D"
 }

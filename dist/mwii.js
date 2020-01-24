@@ -48,7 +48,9 @@ Hooks.once('init', async function () {
 /* ------------------------------------ */
 Hooks.once('setup', function () {
 	const toLocalize = [
-		"attributes", "characteristics", "skills", "movement"
+		"attributes", "characteristics", "skills", "movement", "damageTypes",
+		"unitsOfMeasureWeight", "unitsOfMeasureDistance", "itemTechLevel",
+		"itemAvailability", "vehicleTypes"
 	];
 
 	for (let o of toLocalize) {
