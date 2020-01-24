@@ -84,3 +84,10 @@ MWII.skills = {
       "unarmed_combat": "MWII.SkillsUnarm",
       "zerog_operations": "MWII.SkillsZero"
 };
+
+MWII.movement = {
+    "walking": "MWII.Walking",
+    "running": "MWII.Running",
+    "sprinting": "MWII.Sprinting",
+    "evade": "MWII.Evade"
+};

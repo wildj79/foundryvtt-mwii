@@ -119,5 +119,17 @@
     "MWII.AddButton": "Add",
 
     "MWII.CurrentEdge": "Current Edge",
-    "MWII.MaxEdge": "Max Edge"
+    "MWII.MaxEdge": "Max Edge",
+
+    "MWII.Movement": "Movement",
+
+    "MWII.Walking": "Walking",
+    "MWII.Running": "Running",
+    "MWII.Sprinting": "Sprinting",
+    "MWII.Evade": "Evade",
+
+    "MWII.SkillHeaderName": "Name",
+    "MWII.SkillHeaderLevel": "Level",
+    "MWII.SkillHeaderTargetNumber": "Target Number",
+    "MWII.SkillHeaderSkillPoints": "Skill Points"
 }

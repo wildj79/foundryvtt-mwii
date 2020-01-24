@@ -56,6 +56,21 @@ export class ActorMWII extends Actor {
         rightLeg.damage_threshold = build.save * 3;
 
         data.condition.max = build.value * 2 * 5;
+
+        if (!data.movement) data.movement = {
+            walking: {},
+            running: {},
+            sprinting: {},
+            evade: {}
+        };
+
+        const attributes = data.attributes;
+        const skills = data.skills;
+
+        data.movement.walking.value = attributes['bld'].value;
+        data.movement.running.value = attributes['bld'].value + attributes['ref'].value + skills['running'].level;
+        data.movement.sprinting.value = (attributes['bld'].value * 2) + attributes['ref'].value + skills['running'].level;
+        data.movement.evade.value = attributes['ref'].value;
     }
 
     async rollAttributeSave(attributeId, options = {}) {

@@ -68,6 +68,12 @@ export class ActorSheetMWII extends ActorSheet {
 
         this._prepareItems(data);
 
+        if (!data.actor.data.movement) return data;
+
+        for (let [m, movement] of Object.entries(data.actor.data.movement)) {
+            movement.label = CONFIG.MWII.movement[m];
+        }
+
         return data;
     }
 
@@ -127,6 +133,11 @@ export class ActorSheetMWII extends ActorSheet {
         html.find('.item-delete').click(this._onItemDelete.bind(this));
         html.find('.item-edit').click(this._onItemEdit.bind(this));
         html.find('.item-create').click(this._onItemCreate.bind(this));
+
+        html.find('li.item').each((i, li) => {
+            li.setAttribute("draggable", true);
+            li.addEventListener("dragstart", this._onDragItemStart.bind(this), false);
+        });
     }
 
     /**
@@ -138,7 +149,6 @@ export class ActorSheetMWII extends ActorSheet {
         event.preventDefault();
 
         const header = event.currentTarget;
-        console.log(header);
         const type = header.dataset.type;
         const itemData = {
             name: `New ${type.capitalize()}`,

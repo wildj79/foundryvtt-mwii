@@ -35,8 +35,6 @@ Hooks.once('init', async function () {
 	// Preload Handlebars templates
 	await preloadTemplates();
 
-	console.log("after preloadTemplates()");
-
 	// Register custom sheets (if any)
 	Actors.unregisterSheet("core", ActorSheet);
 	Actors.registerSheet("mwii", ActorSheetMWII, { types: ["character"], makeDefault: true });
@@ -50,7 +48,7 @@ Hooks.once('init', async function () {
 /* ------------------------------------ */
 Hooks.once('setup', function () {
 	const toLocalize = [
-		"attributes", "characteristics", "skills"
+		"attributes", "characteristics", "skills", "movement"
 	];
 
 	for (let o of toLocalize) {
