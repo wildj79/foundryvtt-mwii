@@ -86,14 +86,17 @@ export class ActorSheetMWII extends ActorSheet {
             vehicle: { label: game.i18n.localize("MWII.Vehicle"), items: [], dataset: { type: "vehicle" } }
         };
 
-        let [items, advantages] = data.items.reduce((arr, item) => {
+        let [items, advantages, vehicles] = data.items.reduce((arr, item) => {
             item.img = item.img || DEFAULT_TOKEN;
             item.isStack = item.data.quantity ? item.data.quantity > 1 : false;
             if (item.type === "advantage") arr[1].push(item);
+            else if (item.type === "vehicle") arr[2].push(item);
             else if (Object.keys(equipment).includes(item.type)) arr[0].push(item);
 
             return arr;
-        }, [[], []]);
+        }, [[], [], []]);
+
+        equipment['vehicle'].items = vehicles;
 
         for (let item of items) {
             item.data.quantity = item.data.quantity || 0;

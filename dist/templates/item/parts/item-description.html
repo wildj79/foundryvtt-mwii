@@ -2,12 +2,11 @@
     <div class="item-properties">
         {{#if isPhysical}}
         <div class="form-group">
-            <label>{{localize "MWII.Quantity"}}</label>
             <input type="text" name="data.quantity" value="{{data.quantity}}" data-dtype="Number" />
+            <label class="bt-old">{{localize "MWII.Quantity"}}</label>
         </div>
 
         <div class="form-group multiple">
-            <label>{{localize "MWII.Weight"}}</label>
             <input type="text" name="data.weight.value" value="{{data.weight.value}}" data-dtype="Number" />
             <select name="data.weight.uom">
                 {{#select data.weight.uom}}
@@ -16,15 +15,16 @@
                 {{/each}}
                 {{/select}}
             </select>
+            <label class="bt-old">{{localize "MWII.Weight"}}</label>
         </div>
 
         <div class="form-group">
-            <label>{{localize "MWII.ItemCost"}}</label>
+            <label class="bt-old">{{localize "MWII.ItemCost"}}</label>
             <input type="text" name="data.cost" value="{{data.cost}}" data-dtype="Number" />
         </div>
 
         <div class="form-group">
-            <label>{{localize "MWII.TechLevel"}}</label>
+            <label class="bt-old">{{localize "MWII.TechLevel"}}</label>
             <select name="data.tech_level">
                 {{#select data.tech_level}}
                 {{#each config.itemTechLevel as |v k|}}
@@ -35,7 +35,7 @@
         </div>
 
         <div class="form-group">
-            <label>{{localize "MWII.Availability"}}</label>
+            <label class="bt-old">{{localize "MWII.Availability"}}</label>
             <select name="data.availability">
                 {{#select data.availability}}
                 {{#each config.itemAvailability as |v k|}}
@@ -46,20 +46,26 @@
         </div>
 
         <div class="form-group">
-            <label>{{localize "MWII.Legality"}}</label>
-            <input type="text" name="data.legality" value="{{data.legality}}" />
+            <label class="bt-old">{{localize "MWII.Legality"}}</label>
+            <select name="data.legality">
+                {{#select data.legality}}
+                {{#each config.itemLegality as |v k|}}
+                <option value="{{k}}">{{~v~}}</option>
+                {{/each}}
+                {{/select}}
+            </select>
         </div>
 
         {{#if isPowerPack}}
         <div class="form-group multiple">
-            <label>{{localize "MWII.PowerCapacity"}}</label>
+            <label class="bt-old">{{localize "MWII.PowerCapacity"}}</label>
             <input type="text" name="data.capacity.min" value="{{data.capacity.min}}" data-dtype="Number" />
             <span class="sep"> / </span>
             <input type="text" name="data.capacity.max" value="{{data.capacity.max}}" data-dtype="Number" />
         </div>
         {{else}}
         <div class="form-group multiple">
-            <label>{{localize "MWII.PowerUsage"}}</label>
+            <label class="bt-old">{{localize "MWII.PowerUsage"}}</label>
             <input type="text" name="data.power_use.value" value="{{data.power_use.value}}" data-dtype="Number" />
             <span class="sep"> / </span>
             <input type="text" name="data.power_use.per" value="{{data.power_use.per}}" />
@@ -69,7 +75,7 @@
 
         {{#if isVehicle}}
         <div class="form-group">
-            <label>{{localize "MWII.VehicleType"}}</label>
+            <label class="bt-old">{{localize "MWII.VehicleType"}}</label>
             <select name="data.type">
                 {{#select data.type}}
                 {{#each config.vehicleTypes as |vee type|}}
@@ -79,25 +85,25 @@
             </select>
         </div>
         <div class="form-group">
-            <label>{{localize "MWII.VechileChasis"}}</label>
+            <label class="bt-old">{{localize "MWII.VechileChasis"}}</label>
             <input type="text" name="data.chasis" value="{{data.chasis}}" />
         </div>
         <div class="form-group">
-            <label>{{localize "MWII.VechicleWeightClass"}}</label>
+            <label class="bt-old">{{localize "MWII.VechicleWeightClass"}}</label>
             <input type="text" name="data.weight_class" value="{{data.weight_class}}" />
         </div>
         <div class="form-group">
-            <label>{{localize "MWII.VechicleWeight"}}</label>
+            <label class="bt-old">{{localize "MWII.VechicleWeight"}}</label>
             <input type="text" name="data.weight" value="{{data.weight}}" data-dtype="Number" />
         </div>
         {{/if}}
 
         {{#if isAdvantage}}
         <div class="form-group multiple">
-            <label>{{localize "MWII.PointCost"}}</label>
             <input type="text" name="data.cost.min" value="{{data.cost.min}}" data-dtype="Number" />
             <span class="sep"> / </span>
             <input type="text" name="data.cost.max" value="{{data.cost.max}}" data-dtype="Number" />
+            <label class="bt-old">{{localize "MWII.PointCost"}}</label>
         </div>
         {{/if}}
 

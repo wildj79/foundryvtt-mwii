@@ -50,7 +50,7 @@ Hooks.once('setup', function () {
 	const toLocalize = [
 		"attributes", "characteristics", "skills", "movement", "damageTypes",
 		"unitsOfMeasureWeight", "unitsOfMeasureDistance", "itemTechLevel",
-		"itemAvailability", "vehicleTypes"
+		"itemAvailability", "vehicleTypes", "itemLegality"
 	];
 
 	for (let o of toLocalize) {

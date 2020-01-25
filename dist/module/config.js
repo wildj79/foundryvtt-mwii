@@ -129,10 +129,17 @@ MWII.itemAvailability = {
     "D": "MWII.AvailabilityD"
 };
 
+MWII.itemLegality = {
+    "A": "MWII.LegalityA",
+    "B": "MWII.LegalityB",
+    "C": "MWII.LegalityC",
+    "D": "MWII.LegalityD"
+};
+
 MWII.vehicleTypes = {
     "bmech": "MWII.VechileTypesBattleMech",
     "vee": "MWII.VehcileTypesConventionVee",
     "ba": "MWII.VehicleTypesBattleArmor",
     "aero": "MWII.VehicleTypesAeroSpace",
     "drop": "MWII.VehicleTypesDropship"
-}
+};

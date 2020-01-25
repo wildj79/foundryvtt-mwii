@@ -193,5 +193,10 @@
     "MWII.AvailabilityA": "A",
     "MWII.AvailabilityB": "B",
     "MWII.AvailabilityC": "C",
-    "MWII.AvailabilityD": "D"
+    "MWII.AvailabilityD": "D",
+
+    "MWII.LegalityA": "A",
+    "MWII.LegalityB": "B",
+    "MWII.LegalityC": "C",
+    "MWII.LegalityD": "D"
 }

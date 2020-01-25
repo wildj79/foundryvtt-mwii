@@ -50,7 +50,7 @@ export class ItemSheetMWII extends ItemSheet {
 
     _getItemStatus(item) {
         if (["weapons", "armor"].includes(item.type)) return item.data.equipped ? "Equipped" : "Unequipped";
-        else if (item.type === "vehicle") return item.data.type;
+        else if (item.type === "vehicle") return CONFIG.MWII.vehicleTypes[item.data.type];
     }
 
     _getItemProperties(item) {
