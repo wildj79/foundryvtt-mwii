@@ -12,7 +12,7 @@
   "author": "wildj79",
   "license": "MIT",
   "devDependencies": {
-    "foundry-pc-scripts": "gitlab:foundry-projects/foundry-pc/foundry-pc-scripts#master",
+    "foundry-pc-scripts": "gitlab:foundry-projects/foundry-pc/foundry-pc-scripts",
     "foundry-pc-types": "gitlab:foundry-projects/foundry-pc/foundry-pc-types"
   },
   "foundry": {

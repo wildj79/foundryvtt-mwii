@@ -15,6 +15,7 @@ import { ItemMWII } from './module/item/entity.js';
 import { ActorSheetMWII } from './module/actor/sheet.js';
 import { ItemSheetMWII } from './module/item/sheet.js';
 import { highlightSuccessOrFailure } from './module/dice.js';
+import { _getInitiativeFormula } from './module/combat.js';
 
 /* ------------------------------------ */
 /* Initialize system					*/
@@ -34,6 +35,8 @@ Hooks.once('init', async function () {
 
 	// Preload Handlebars templates
 	await preloadTemplates();
+
+	Combat.prototype._getInitiativeFormula = _getInitiativeFormula;
 
 	// Register custom sheets (if any)
 	Actors.unregisterSheet("core", ActorSheet);

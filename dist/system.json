@@ -16,7 +16,7 @@
   }
   ],
   "socket": true,
-  "initiative": "2d6 + @attributes.rfl.value",
+  "initiative": "2d6 + @attributes.ref.value",
   "gridDistance": 5,
   "gridUnits": "m",
   "minimumCoreVersion": "0.4.4",
