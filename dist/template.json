@@ -748,6 +748,9 @@
       "lethality": "lethal",
       "damageType": "energy",
       "aoe": 0,
+      "reload_cost": 0,
+      "crew": 1,
+      "reload_time": 0,
       "ammo": {
         "max": 10,
         "value": 10

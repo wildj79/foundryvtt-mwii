@@ -143,3 +143,24 @@ MWII.vehicleTypes = {
     "aero": "MWII.VehicleTypesAeroSpace",
     "drop": "MWII.VehicleTypesDropship"
 };
+
+MWII.lethality = {
+    "lethal": "MWII.WeaponLethalityLethal",
+    "bruise": "MWII.WeaponLethalityBruise"
+};
+
+MWII.weaponTypes = {
+    "melee": "MWII.WeaponTypesMelee",
+    "explosive": "MWII.WeaponTypesExplosive",
+    "archery": "MWII.WeaponTypesArchery",
+    "stpistol": "MWII.WeaponTypesSlugTrhowingPistol",
+    "mpistol": "MWII.WeaponTypesMiscellaneousPistol",
+    "lpistol": "MWII.WeaponTypesLaserPistol",
+    "npistol": "MWII.WeaponTypesNeedlerPistol",
+    "rifle": "MWII.WeaponTypesRifle",
+    "shotgun": "MWII.WeaponTypesShotgun",
+    "lrifle": "MWII.WeaponTypesLaserRifle",
+    "smg": "MWII.WeaponTypesSubMachineGun",
+    "gyrojet": "MWII.WeaponTypesGyrojetWeapon",
+    "support": "MWII.WeaponTypesSupportWeapons"
+};

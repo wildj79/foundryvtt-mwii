@@ -3,17 +3,17 @@
         <img class="profile" src="{{item.img}}" title="{{item.name}}" data-edit="img" />
         <h1 class="charname">
             <input name="name" type="text" value="{{item.name}}" placeholder="Item Name" />
+            <label class="bt-old">{{localize "MWII.CharacterName"}}</label>
         </h1>
-
-        <div class="item-subtitle">
-            <h4 class="item-type">{{itemType}}</h4>
-            <span class="item-status">{{itemStatus}}</span>
+        
+        <div class="summary">
+            <input type="text" name="data.source" value="{{data.source}}" placeholder="{{localize "MWII.Source"}}" />
+            <label class="bt-old">{{localize "MWII.Source"}}</label>
         </div>
 
-        <ul class="summary">
-            <li>
-                <input type="text" name="data.source" value="{{data.source}}" placeholder="Source" />
-            </li>
-        </ul>
+        <div class="item-subtitle">
+            <h4 class="item-type bt-old">{{itemType}}</h4>
+            <span class="item-status bt-old">{{itemStatus}}</span>
+        </div>
     </div>
 </header>

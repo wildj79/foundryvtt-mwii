@@ -7,7 +7,7 @@ export class ItemSheetMWII extends ItemSheet {
         return mergeObject(super.defaultOptions, {
             classes: ['mwii', 'sheet', 'item'],
             width: 600,
-            height: 508
+            height: 570
         });
     }
 
@@ -30,6 +30,7 @@ export class ItemSheetMWII extends ItemSheet {
         data.isPowerPack = data.item.type === "power_pack";
         data.isAdvantage = data.item.type === "advantage";
         data.isVehicle = data.item.type === "vehicle";
+        data.isHeavyWeapon = data.item.type === "weapons" && data.item.data.type === "support";
 
         console.log(data);
 

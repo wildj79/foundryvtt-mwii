@@ -9,5 +9,82 @@
 
     <section class="sheet-body">
         {{> "systems/mwii/templates/item/parts/item-description.html"}}
+
+        <div class="tab details flexrow" data-group="primary" data-tab="details">
+            <div class="form-group">
+                <label class="bt-old">{{localize "MWII.WeaponType"}}</label>
+                <select name="data.type">
+                    {{#select data.type}}
+                    {{#each config.weaponTypes as |type id|}}
+                    <option value="{{id}}">{{type}}</option>
+                    {{/each}}
+                    {{/select}}
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="bt-old">{{localize "MWII.WeaponSkill"}}</label>
+                <select name="data.skill">
+                    {{#select data.skill}}
+                    {{#each config.skills as |skill s|}}
+                    <option value="{{s}}">{{skill}}</option>
+                    {{/each}}
+                    {{/select}}
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="bt-old">{{localize "MWII.WeaponDamage"}}</label>
+                <input type="text" name="data.damage" value="{{data.damage}}" />
+            </div>
+            <div class="form-group multiple">
+                <label class="bt-old">{{localize "MWII.WeaponRange"}}</label>
+                <input type="text" name="data.range.short" value="{{data.range.short}}" />
+                <input type="text" name="data.range.medium" value="{{data.range.medium}}" />
+                <input type="text" name="data.range.long" value="{{data.range.long}}" />
+            </div>
+            <div class="form-group">
+                <label class="bt-old">{{localize "MWII.WeaponLethality"}}</label>
+                <select name="data.lethality">
+                    {{#select data.lethality}}
+                    {{#each config.lethality as |v k|}}
+                    <option value="{{k}}">{{v}}</option>
+                    {{/each}}
+                    {{/select}}
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="bt-old">{{localize "MWII.WeaponDamageType"}}</label>
+                <select name="data.damageType">
+                    {{#select data.damageType}}
+                    {{#each config.damageTypes as |type id|}}
+                    <option value="{{id}}">{{type}}</option>
+                    {{/each}}
+                    {{/select}}
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="bt-old">{{localize "MWII.WeaponAreaOfEffect"}}</label>
+                <input type="text" name="data.aoe" value="{{data.aoe}}" data-dtype="Number" />
+            </div>
+            <div class="form-group multiple">
+                <label class="bt-old">{{localize "MWII.WeaponAmmo"}}</label>
+                <input type="text" name="data.ammo.value" value="{{data.ammo.value}}" data-dtype="Number" />
+                <input type="text" name="data.ammo.max" value="{{data.ammo.max}}" data-dtype="Number" />
+            </div>
+            <div class="form-group">
+                <label class="bt-old">{{localize "MWII.WeaponReloadCost"}}</label>
+                <input type="text" name="data.reload_cost" value="{{data.reload_cost}}" data-dtype="Number" />
+            </div>
+
+            {{#if isHeavyWeapon}}
+            <div class="form-group">
+                <label class="bt-old">{{localize "MWII.WeaponCrew"}}</label>
+                <input type="text" name="data.crew" value="{{data.crew}}" data-dtype="Number" />
+            </div>
+            <div class="form-group">
+                <label class="bt-old">{{localize "MWII.WeaponReloadTime"}}</label>
+                <input type="text" name="data.reload_time" value="{{data.reload_time}}" data-dtype="Number" />
+            </div> 
+            {{/if}}
+        </div>
     </section>
 </form>

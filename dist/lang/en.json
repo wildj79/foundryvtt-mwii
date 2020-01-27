@@ -134,6 +134,7 @@
     "MWII.SkillHeaderLevel": "Level",
     "MWII.SkillHeaderTargetNumber": "Target Number",
     "MWII.SkillHeaderSkillPoints": "Skill Points",
+    "MWII.Source": "Source",
 
     "MWII.DamageTypeEnergy": "Energy",
     "MWII.DamageTypeBallistic": "Ballistic",
@@ -198,5 +199,35 @@
     "MWII.LegalityA": "A",
     "MWII.LegalityB": "B",
     "MWII.LegalityC": "C",
-    "MWII.LegalityD": "D"
+    "MWII.LegalityD": "D",
+
+    "MWII.WeaponLethalityLethal": "Lethal",
+    "MWII.WeaponLethalityBruise": "Bruise",
+
+    "MWII.WeaponSkill": "Skill Used",
+    "MWII.WeaponDamage": "Damage",
+    "MWII.WeaponRange": "Range",
+    "MWII.WeaponLethality": "Lethality",
+    "MWII.WeaponDamageType": "Damage Type",
+    "MWII.WeaponAreaOfEffect": "Area of Effect",
+    "MWII.WeaponAmmo": "Ammo",
+    "MWII.WeaponType": "Weapon Type",
+
+    "MWII.WeaponTypesMelee": "Melee",
+    "MWII.WeaponTypesExplosive": "Explosive",
+    "MWII.WeaponTypesArchery": "Archery",
+    "MWII.WeaponTypesSlugTrhowingPistol": "Slug-Throwing Pistol",
+    "MWII.WeaponTypesMiscellaneousPistol": "Miscellaneous Pistol",
+    "MWII.WeaponTypesLaserPistol": "Laser Pistol",
+    "MWII.WeaponTypesNeedlerPistol": "Needler Pistol",
+    "MWII.WeaponTypesRifle": "Rifle",
+    "MWII.WeaponTypesShotgun": "Shotgun",
+    "MWII.WeaponTypesLaserRifle": "Laser Rifle",
+    "MWII.WeaponTypesSubMachineGun": "Submachine Gun",
+    "MWII.WeaponTypesGyrojetWeapon": "Gyroject Weapon",
+    "MWII.WeaponTypesSupportWeapons": "Support Weapon",
+
+    "MWII.WeaponReloadCost": "Reload Cost",
+    "MWII.WeaponCrew": "Crew",
+    "MWII.WeaponReloadTime": "Reload Time"
 }
