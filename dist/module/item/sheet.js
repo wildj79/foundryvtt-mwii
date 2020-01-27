@@ -31,6 +31,7 @@ export class ItemSheetMWII extends ItemSheet {
         data.isAdvantage = data.item.type === "advantage";
         data.isVehicle = data.item.type === "vehicle";
         data.isHeavyWeapon = data.item.type === "weapons" && data.item.data.type === "support";
+        data.isMelee = data.item.type === "weapons" && data.item.data.type === "melee";
 
         console.log(data);
 

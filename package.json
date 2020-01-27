@@ -16,7 +16,7 @@
     "foundry-pc-types": "gitlab:foundry-projects/foundry-pc/foundry-pc-types"
   },
   "foundry": {
-    "dataPath": "/Users/wildj79/Library/Application Support/FoundryVTT",
+    "dataPath": "C:\\Users\\jallred\\Documents\\foundry\\public",
     "manifest": "dist",
     "repository": "",
     "rawURL": ""

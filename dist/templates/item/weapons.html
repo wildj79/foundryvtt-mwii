@@ -35,12 +35,14 @@
                 <label class="bt-old">{{localize "MWII.WeaponDamage"}}</label>
                 <input type="text" name="data.damage" value="{{data.damage}}" />
             </div>
+            {{#unless isMelee}}
             <div class="form-group multiple">
                 <label class="bt-old">{{localize "MWII.WeaponRange"}}</label>
                 <input type="text" name="data.range.short" value="{{data.range.short}}" />
                 <input type="text" name="data.range.medium" value="{{data.range.medium}}" />
                 <input type="text" name="data.range.long" value="{{data.range.long}}" />
             </div>
+            {{/unless}}
             <div class="form-group">
                 <label class="bt-old">{{localize "MWII.WeaponLethality"}}</label>
                 <select name="data.lethality">

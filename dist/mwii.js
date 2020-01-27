@@ -15,7 +15,7 @@ import { ItemMWII } from './module/item/entity.js';
 import { ActorSheetMWII } from './module/actor/sheet.js';
 import { ItemSheetMWII } from './module/item/sheet.js';
 import { highlightSuccessOrFailure } from './module/dice.js';
-import { _getInitiativeFormula } from './module/combat.js';
+import { _getInitiativeFormula, setupTurns } from './module/combat.js';
 
 /* ------------------------------------ */
 /* Initialize system					*/
@@ -37,6 +37,7 @@ Hooks.once('init', async function () {
 	await preloadTemplates();
 
 	Combat.prototype._getInitiativeFormula = _getInitiativeFormula;
+	Combat.prototype.setupTurns = setupTurns;
 
 	// Register custom sheets (if any)
 	Actors.unregisterSheet("core", ActorSheet);
@@ -77,3 +78,8 @@ Hooks.once('ready', function () {
 
 // Add any additional hooks if necessary
 Hooks.on("renderChatMessage", highlightSuccessOrFailure);
+Hooks.on("updateCombat", (combat, diff, options, id) => {
+	if (combat.started && combat.turn === 0) {
+		
+	}
+});

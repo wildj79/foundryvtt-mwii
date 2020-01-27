@@ -27,7 +27,7 @@ export class DiceMWII {
 
             let d6 = roll.parts[0];
             d6.options.target = data.target;
-            d6.options.mod = data.mod && !isNaN(data.mod) ? data.mod : 0;
+            d6.options.mod = data.mod || 0;
             d6.options.isSave = isSave;
             d6.options.isUntrained = isUntrained;
             d6.options.hasNaturalAptitude = hasNaturalAptitude;
@@ -65,7 +65,7 @@ export class DiceMWII {
                             callback: html => {
                                 if (onClose) onClose(html);
                                 rollMode = html.find('[name="rollMode"]').val();
-                                data['mod'] = parseInt(html.find('[name="mod"]').val());
+                                data['mod'] = html.find('[name="mod"]').val();
                                 resolve(roll(formula));
                             }
                         }
@@ -78,6 +78,20 @@ export class DiceMWII {
             }).catch(() => {});
         });        
     }
+    
+    /**
+     * Safely evaluate a formulaic expression using a Proxy environment which is allowed access to Math commands
+     * 
+     * Stolen, I mean, borrowed from Roll._safeEval() in foundry.js: line 6158
+     * @param {String} expression     The formula expression to evaluate
+     * @return {Number}               The returned numeric result
+     */
+    static safeEval(expression) {
+        const src = `with (sandbox) { return ${expression}; }`;
+        const evl = new Function('sandbox', src);
+
+        return evl(CONFIG.Roll.mathProxy);
+    }
 }
 
 export const highlightSuccessOrFailure = function (message, html, data) {
@@ -88,13 +102,15 @@ export const highlightSuccessOrFailure = function (message, html, data) {
         let isSave = d.options.isSave || false;
         let isUntrained = d.options.isUntrained || false;
         let hasNaturalAptitude = d.options.hasNaturalAptitude || false;
-        let mod = d.options.mod || 0;
+        let mod = DiceMWII.safeEval(d.options.mod) || 0;
+        let title = `Target = Base(${d.options.target}) + Mod(${mod}) = ${(d.options.target + mod)}`;
 
         let autoSuccess = () => {
             html.find('.dice-total').addClass('success');
 
             const div = $('<div class="margin-success critical">');
             div.html("Automatic Success");
+            div.attr('title', title);
             html.find('.dice-result').append(div);
         };
 
@@ -103,6 +119,7 @@ export const highlightSuccessOrFailure = function (message, html, data) {
 
             const div = $('<div class="margin-failure failure">');
             div.html("Automatic Failure");
+            div.attr('title', title);
             html.find('.dice-result').append(div);
         };
 
@@ -148,6 +165,7 @@ export const highlightSuccessOrFailure = function (message, html, data) {
 
             const div = $('<div class="margin-success">');
             div.html(`Margin of Success <span class="mos">${marginOfSuccess}</span>`);
+            div.attr('title', title);
             html.find('.dice-result').append(div);
         } else {
             html.find('.dice-total').addClass('failure');
@@ -155,6 +173,7 @@ export const highlightSuccessOrFailure = function (message, html, data) {
 
             const div = $('<div class="margin-failure">');
             div.html(`Margin of Failure <span class="mof">${marginOfFailure}</span>`);
+            div.attr('title', title);
             html.find('.dice-result').append(div);
         }
     }
