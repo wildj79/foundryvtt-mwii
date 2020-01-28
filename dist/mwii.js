@@ -78,9 +78,61 @@ Hooks.once('ready', function () {
 
 // Add any additional hooks if necessary
 Hooks.on("renderChatMessage", highlightSuccessOrFailure);
-Hooks.on("updateCombat", async (combat, diff, options, id) => {
-	if (combat.started && combat.round !== 1 && combat.turn === 0) {
-		await game.combat.rollInitiative(game.combat.combatants.map(x => x._id));
+Hooks.on("preUpdateCombat", async (combat, diff, options = {}) => {
+	const roundUpdate = !!getProperty(diff, "round");
+
+	if (!roundUpdate) return;
+	if (diff.round < 1 || diff.round < combat.previous.round) return;
+	
+	const ids = combat.turns.map(c => c._id);
+
+	// Taken from foundry.js Combat.rollInitiative() -->
+
+	// Iterate over Combatants, performing an initiative roll for each
+	const [updates, messages] = ids.reduce((results, id, i) => {
+		let [updates, messages] = results;
+
+		const messageOptions = options.messageOptions || {};
+
+		// Get Combatant data
+		const c = combat.getCombatant(id);
+		if ( !c ) return results;
+		const actorData = c.actor ? c.actor.data.data : {};
+		const formula = combat.formula || combat._getInitiativeFormula(c);
+
+		// Roll initiative
+		const roll = new Roll(formula, actorData).roll();
+		updates.push({_id: id, initiative: roll.total});
+
+		// Construct chat message data
+		const rollMode = messageOptions.rollMode || (c.token.hidden || c.hidden) ? "gmroll" : "roll";
+		let messageData = mergeObject({
+		speaker: {
+			scene: canvas.scene._id,
+			actor: c.actor ? c.actor._id : null,
+			token: c.token._id,
+			alias: c.token.name
+		},
+		flavor: `${c.token.name} rolls for Initiative!`
+		}, messageOptions);
+		const chatData = roll.toMessage(messageData, {rollMode, create:false});
+		if ( i > 0 ) chatData.sound = null;   // Only play 1 sound for the whole set
+		messages.push(chatData);
+
+		// Return the Roll and the chat data
+		return results;
+	}, [[], []]);
+
+	if ( !updates.length ) {
+		return;
 	}
-	console.log(combat, diff, options, id);
+
+	// Update multiple combatants
+	await combat.updateManyEmbeddedEntities("Combatant", updates);
+	
+	combat.turn = 0;
+
+	// Create multiple chat messages
+	await ChatMessage.createMany(messages);
+	// <-- End of borrowed code
 });

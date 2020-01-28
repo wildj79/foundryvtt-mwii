@@ -38,8 +38,13 @@
             {{#unless isMelee}}
             <div class="form-group multiple">
                 <label class="bt-old">{{localize "MWII.WeaponRange"}}</label>
+                <label class="bt-old range-label" for="data.range.short">{{localize "MWII.ShortRange"}}</label>
                 <input type="text" name="data.range.short" value="{{data.range.short}}" />
+                <span class="sep"> / </span>
+                <label class="bt-old range-label" for="data.range.medium">{{localize "MWII.MediumRange"}}</label>
                 <input type="text" name="data.range.medium" value="{{data.range.medium}}" />
+                <span class="sep"> / </span>
+                <label class="bt-old range-label" for="data.range.long">{{localize "MWII.LongRange"}}</label>
                 <input type="text" name="data.range.long" value="{{data.range.long}}" />
             </div>
             {{/unless}}
@@ -63,19 +68,25 @@
                     {{/select}}
                 </select>
             </div>
+            {{#if hasAreaOfEffect}}
             <div class="form-group">
                 <label class="bt-old">{{localize "MWII.WeaponAreaOfEffect"}}</label>
                 <input type="text" name="data.aoe" value="{{data.aoe}}" data-dtype="Number" />
             </div>
+            {{/if}}
+
+            {{#if hasAmmo}}
             <div class="form-group multiple">
                 <label class="bt-old">{{localize "MWII.WeaponAmmo"}}</label>
                 <input type="text" name="data.ammo.value" value="{{data.ammo.value}}" data-dtype="Number" />
+                <span class="sep"> / </span>
                 <input type="text" name="data.ammo.max" value="{{data.ammo.max}}" data-dtype="Number" />
             </div>
             <div class="form-group">
                 <label class="bt-old">{{localize "MWII.WeaponReloadCost"}}</label>
                 <input type="text" name="data.reload_cost" value="{{data.reload_cost}}" data-dtype="Number" />
             </div>
+            {{/if}}
 
             {{#if isHeavyWeapon}}
             <div class="form-group">

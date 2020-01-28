@@ -32,6 +32,8 @@ export class ItemSheetMWII extends ItemSheet {
         data.isVehicle = data.item.type === "vehicle";
         data.isHeavyWeapon = data.item.type === "weapons" && data.item.data.type === "support";
         data.isMelee = data.item.type === "weapons" && data.item.data.type === "melee";
+        data.hasAreaOfEffect = data.item.type === "weapons" && ["support", "explosive"].includes(data.item.data.type);
+        data.hasAmmo = data.item.type === "weapons" && ["support", "archery", "stpistol", "mpistol", "npistol", "rifle", "shotgun", "smg", "gyrojet"].includes(data.item.data.type);
 
         console.log(data);
 

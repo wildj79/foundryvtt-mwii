@@ -229,5 +229,9 @@
 
     "MWII.WeaponReloadCost": "Reload Cost",
     "MWII.WeaponCrew": "Crew",
-    "MWII.WeaponReloadTime": "Reload Time"
+    "MWII.WeaponReloadTime": "Reload Time",
+
+    "MWII.ShortRange": "short",
+    "MWII.MediumRange": "medium",
+    "MWII.LongRange": "long"
 }
