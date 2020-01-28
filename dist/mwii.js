@@ -78,8 +78,9 @@ Hooks.once('ready', function () {
 
 // Add any additional hooks if necessary
 Hooks.on("renderChatMessage", highlightSuccessOrFailure);
-Hooks.on("updateCombat", (combat, diff, options, id) => {
-	if (combat.started && combat.turn === 0) {
-		
+Hooks.on("updateCombat", async (combat, diff, options, id) => {
+	if (combat.started && combat.round !== 1 && combat.turn === 0) {
+		await game.combat.rollInitiative(game.combat.combatants.map(x => x._id));
 	}
+	console.log(combat, diff, options, id);
 });
