@@ -233,5 +233,17 @@
 
     "MWII.ShortRange": "short",
     "MWII.MediumRange": "medium",
-    "MWII.LongRange": "long"
+    "MWII.LongRange": "long",
+
+    "MWII.Equipped": "Equipped",
+
+    "MWII.ArmorEnergy": "Energy",
+    "MWII.ArmorBallistic": "Ballistic",
+    "MWII.ArmorMelee": "Melee",
+    "MWII.ArmorDamageCapacity": "Damage Capacity",
+
+    "MWII.ArmorDamageAbsortionValueTypePercent": "percentage",
+    "MWII.ArmorDamageAbsortionValueTypePoint": "point(s)",
+
+    "MWII.ArmorDamageTitle": "Damage and Resistance"
 }

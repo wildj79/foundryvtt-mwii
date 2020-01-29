@@ -675,7 +675,8 @@
         "power_use": {
           "value": 1,
           "per": "hour"
-        }
+        },
+        "equipped": false
       }
     },
     "advantage": {

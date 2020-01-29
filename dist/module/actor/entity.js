@@ -20,6 +20,10 @@ export class ActorMWII extends Actor {
         return 18;
     }
 
+    get hasArmor() {
+        return this.items.filter(i => i.data.type === "armor" && i.data.data.equipped).length > 0;
+    }
+
     prepareData() {
         super.prepareData();
         const actorData = this.data;

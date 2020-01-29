@@ -164,3 +164,8 @@ MWII.weaponTypes = {
     "gyrojet": "MWII.WeaponTypesGyrojetWeapon",
     "support": "MWII.WeaponTypesSupportWeapons"
 };
+
+MWII.armorDamageAbsortionValueTypes = {
+    "percentage": "MWII.ArmorDamageAbsortionValueTypePercent",
+    "point": "MWII.ArmorDamageAbsortionValueTypePoint"
+};

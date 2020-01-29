@@ -9,5 +9,53 @@
 
     <section class="sheet-body">
         {{> "systems/mwii/templates/item/parts/item-description.html"}}
+
+        <div class="tab details flexrow" data-group="primary" data-tab="details">
+            <div class="flexcol left">
+                <h4 class="bt-old">{{localize "MWII.ArmorDamageTitle"}}</h4>
+                <div class="form-group multiple">
+                    <label class="bt-old">{{localize "MWII.ArmorEnergy"}}</label>
+                    <input type="text" name="data.energy.value" value="{{data.energy.value}}" />
+                    <select name="data.energy.type">
+                        {{#select data.energy.type}}
+                        {{#each config.armorDamageAbsortionValueTypes as |v k|}}
+                        <option value="{{k}}">{{v}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                </div>
+                <div class="form-group multiple">
+                    <label class="bt-old">{{localize "MWII.ArmorBallistic"}}</label>
+                    <input type="text" name="data.ballistic.value" value="{{data.ballistic.value}}" />
+                    <select name="data.ballistic.type">
+                        {{#select data.ballistic.type}}
+                        {{#each config.armorDamageAbsortionValueTypes as |v k|}}
+                        <option value="{{k}}">{{v}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                </div>
+                <div class="form-group multiple">
+                    <label class="bt-old">{{localize "MWII.ArmorMelee"}}</label>
+                    <input type="text" name="data.melee.value" value="{{data.melee.value}}" />
+                    <select name="data.melee.type">
+                        {{#select data.melee.type}}
+                        {{#each config.armorDamageAbsortionValueTypes as |v k|}}
+                        <option value="{{k}}">{{v}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                </div>
+                <div class="form-group multiple">
+                    <label class="bt-old">{{localize "MWII.ArmorDamageCapacity"}}</label>
+                    <input type="text" name="data.damage_capacity.value" value="{{data.damage_capacity.value}}" data-dtype="Number" />
+                    <span class="sep"> / </span>
+                    <input type="text" name="data.damage_capacity.max" value="{{data.damage_capacity.max}}" data-dtype="Number" />
+                </div>
+            </div>
+            <div class="flexcol right">
+                test
+            </div>
+        </div>
     </section>
 </form>
