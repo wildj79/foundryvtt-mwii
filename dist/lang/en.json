@@ -245,5 +245,32 @@
     "MWII.ArmorDamageAbsortionValueTypePercent": "percentage",
     "MWII.ArmorDamageAbsortionValueTypePoint": "point(s)",
 
-    "MWII.ArmorDamageTitle": "Damage and Resistance"
+    "MWII.ArmorDamageTitle": "Damage and Resistance",
+
+    "MWII.ArmorType": "Armor Type",
+    "MWII.ArmorTypeNormal": "Normal",
+    "MWII.ArmorTypeBattleArmor": "Battle Armor",
+
+    "MWII.ArmorCoverage": "Coverage",
+    "MWII.ArmorCoverageHead": "Head",
+    "MWII.ArmorCoverageTorso": "Torso",
+    "MWII.ArmorCoverageArms": "Arms",
+    "MWII.ArmorCoverageLegs": "Legs",
+    "MWII.ArmorCoverageFull": "Full",
+
+    "MWII.ArmorBuildMod": "Build Modifier",
+
+    "MWII.ArmorEncumbrance": "Encumbrance",
+    "MWII.ArmorEncumbranceMovement": "Movement Modifier",
+    "MWII.ArmorEncumbrancePhysical": "Physical Modifier",
+    "MWII.ArmorEncumbranceAthletic": "Athletic Modifier",
+
+    "MWII.ArmorCriticalDamage": "Armor Critical Damage",
+
+    "MWII.ArmorCriticalHead": "Head",
+    "MWII.ArmorCriticalTorso": "Torso",
+    "MWII.ArmorCriticalLeftArm": "Left Arm",
+    "MWII.ArmorCriticalRightArm": "Right Arm",
+    "MWII.ArmorCriticalLeftLeg": "Left Leg",
+    "MWII.ArmorCriticalRightLeg": "Right Leg"
 }

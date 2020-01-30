@@ -113,11 +113,33 @@
                 label {
                     flex: 0 0 33%;
                     font-size: 12px;
+                    margin-right: 5px;
+                }
+
+                &.multiple {
+                    input {
+                        flex: 0 0 61px;
+                    }
+                    
+                    select {
+                        height: 24px;
+                        flex: 0 0 120px;
+                    }
                 }
 
                 .range-label {
                     flex: 0 0 10%;
                     font-size: 8px;
+                }
+
+                &.stacked {
+                    label {
+                        margin: 0;
+                    }
+
+                    label.bt-old {
+                        flex: 0 0 100%;
+                    }
                 }
             }
         }

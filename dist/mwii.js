@@ -55,7 +55,8 @@ Hooks.once('setup', function () {
 		"attributes", "characteristics", "skills", "movement", "damageTypes",
 		"unitsOfMeasureWeight", "unitsOfMeasureDistance", "itemTechLevel",
 		"itemAvailability", "vehicleTypes", "itemLegality", "lethality",
-		"weaponTypes", "armorDamageAbsortionValueTypes"
+		"weaponTypes", "armorDamageAbsortionValueTypes", "armorTypes",
+		"armorCoverage", "armorCriticals"
 	];
 
 	for (let o of toLocalize) {

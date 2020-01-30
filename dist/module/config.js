@@ -169,3 +169,25 @@ MWII.armorDamageAbsortionValueTypes = {
     "percentage": "MWII.ArmorDamageAbsortionValueTypePercent",
     "point": "MWII.ArmorDamageAbsortionValueTypePoint"
 };
+
+MWII.armorTypes = {
+    "normal": "MWII.ArmorTypeNormal",
+    "barmor": "MWII.ArmorTypeBattleArmor"
+};
+
+MWII.armorCoverage = {
+    "full": "MWII.ArmorCoverageFull",
+    "head": "MWII.ArmorCoverageHead",
+    "torso": "MWII.ArmorCoverageTorso",
+    "arms": "MWII.ArmorCoverageArms",
+    "legs": "MWII.ArmorCoverageLegs"
+};
+
+MWII.armorCriticals = {
+    "head": "MWII.ArmorCriticalHead",
+    "torso": "MWII.ArmorCriticalTorso",
+    "left_arm": "MWII.ArmorCriticalLeftArm",
+    "right_arm": "MWII.ArmorCriticalRightArm",
+    "left_leg": "MWII.ArmorCriticalLeftLeg",
+    "right_leg": "MWII.ArmorCriticalRightLeg"
+};

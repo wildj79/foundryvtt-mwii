@@ -726,7 +726,7 @@
         "physical": 0,
         "athletic": 0
       },
-      "coverage": "",
+      "coverage": {},
       "build": 0,
       "critical": {
         "head": false,
