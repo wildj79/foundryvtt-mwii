@@ -90,12 +90,12 @@ export class DiceMWII {
         const src = `with (sandbox) { return ${expression}; }`;
         const evl = new Function('sandbox', src);
 
-        return evl(CONFIG.Roll.mathProxy);
+        return evl(CONFIG.Dice.mathProxy);
     }
 }
 
 export const highlightSuccessOrFailure = function (message, html, data) {
-    if (!message.isRoll || !message.isRollVisible || !message.roll.parts.length) return;
+    if (!message.isRoll || !message.isContentVisible || !message.roll.parts.length) return;
 
     let d = message.roll.parts[0];
     if (d instanceof Die && d.options && d.options.target) {

@@ -104,11 +104,11 @@ export const rollInitiative = async function (combat, update, options = {}, id) 
 	}
 
 	// Update multiple combatants
-	await combat.updateManyEmbeddedEntities("Combatant", updates);
+	await combat.updateEmbeddedEntity("Combatant", updates);
 	
 	// combat.turn = 0;
 
 	// Create multiple chat messages
-	await ChatMessage.createMany(messages);
+	await ChatMessage.create(messages);
 	// <-- End of borrowed code
 };
