@@ -27,8 +27,8 @@ Hooks.once('init', async function () {
 	game.mwii = {};
 
 	CONFIG.MWII = MWII;
-	CONFIG.Actor.entityClass = ActorMWII;
-	CONFIG.Item.entityClass = ItemMWII;
+	CONFIG.Actor.documentClass = ActorMWII;
+	CONFIG.Item.documentClass = ItemMWII;
 
 	// Register custom system settings
 	registerSettings();

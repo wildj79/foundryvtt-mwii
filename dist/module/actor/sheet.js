@@ -12,7 +12,10 @@ export class ActorSheetMWII extends ActorSheet {
         return mergeObject(super.defaultOptions, {
             classes: ['mwii', 'sheet', 'actor', 'character'],
             width: 600,
-            height: 508
+            height: 508,
+            tabs: [
+                {navSelector: ".tabs", contentSelector: ".sheet-body", initial: "statistics" }
+            ]
         });
     }
 
@@ -23,14 +26,14 @@ export class ActorSheetMWII extends ActorSheet {
     }
 
     getData() {
-        let isOwner = this.entity.owner;
+        let isOwner = this.isOwner;
         const data = {
             owner: isOwner,
-            limited: this.entity.limited,
+            limited: this.document.limited,
             options: this.options,
             editable: this.isEditable,
             cssClass: isOwner ? "editable" : "locked",
-            isCharacter: this.entity.data.type === "character",
+            isCharacter: this.document.data.type === "character",
             config: CONFIG.MWII
         };
 
@@ -121,13 +124,6 @@ export class ActorSheetMWII extends ActorSheet {
     activateListeners(html) {
         super.activateListeners(html);
 
-        new Tabs(html.find('.tabs'), {
-            initial: this['_sheetTab'],
-            callback: clicked => {
-                this['_sheetTab'] = clicked.data('tab');
-            }
-        });
-
         if (!this.options.editable) return;
 
         html.find('.attribute-name').click(this._onRollAttributeSave.bind(this));
@@ -137,10 +133,10 @@ export class ActorSheetMWII extends ActorSheet {
         html.find('.item-edit').click(this._onItemEdit.bind(this));
         html.find('.item-create').click(this._onItemCreate.bind(this));
 
-        html.find('li.item').each((i, li) => {
-            li.setAttribute("draggable", true);
-            li.addEventListener("dragstart", this._onDragItemStart.bind(this), false);
-        });
+        // html.find('li.item').each((i, li) => {
+        //     li.setAttribute("draggable", true);
+        //     li.addEventListener("dragstart", this._onDragItemStart.bind(this), false);
+        // });
     }
 
     /**

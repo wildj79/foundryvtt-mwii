@@ -7,8 +7,19 @@ export class ItemSheetMWII extends ItemSheet {
         return mergeObject(super.defaultOptions, {
             classes: ['mwii', 'sheet', 'item'],
             width: 600,
-            height: 570
+            height: 570,
+            tabs: [
+                {navSelector: ".tabs", contentSelector: ".sheet-body" }
+            ]
         });
+
+        // new Tabs(html.find('.tabs'), {
+        //     initial: this['_sheetTab'],
+        //     callback: clicked => {
+        //         this['_sheetTab'] = clicked.data('tab');
+        //         this.setPosition();
+        //     }
+        // });
     }
 
     get template() {
@@ -43,14 +54,6 @@ export class ItemSheetMWII extends ItemSheet {
 
     activateListeners(html) {
         super.activateListeners(html);
-
-        new Tabs(html.find('.tabs'), {
-            initial: this['_sheetTab'],
-            callback: clicked => {
-                this['_sheetTab'] = clicked.data('tab');
-                this.setPosition();
-            }
-        });
     }
 
     _getItemStatus(item) {

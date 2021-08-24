@@ -18,14 +18,15 @@ export class DiceMWII {
      * @param {Boolean} hasNaturalAptitude Is this a skill check for a skill that the character has a natural aptitude for
      * @returns {Promise} 
      */
-    static d6Roll({event, data, template, title, speaker, flavor, onClose, dialogOptions, isSave = false, isUntrained = false, hasNaturalAptitude = false}) {
+    static async d6Roll({event, data, template, title, speaker, flavor, onClose, dialogOptions, isSave = false, isUntrained = false, hasNaturalAptitude = false}) {
         flavor = flavor || title;
 
         let rollMode = game.settings.get("core", "rollMode");
-        let roll = (formula) => {
-            let roll = new Roll(formula).roll();
+        let roll = async (formula) => {
+            let roll = Roll.create(formula);
+            await roll.evaluate({async: true});
 
-            let d6 = roll.parts[0];
+            let d6 = roll.terms[0];
             d6.options.target = data.target;
             d6.options.mod = data.mod || 0;
             d6.options.isSave = isSave;
@@ -78,31 +79,17 @@ export class DiceMWII {
             }).catch(() => {});
         });        
     }
-    
-    /**
-     * Safely evaluate a formulaic expression using a Proxy environment which is allowed access to Math commands
-     * 
-     * Stolen, I mean, borrowed from Roll._safeEval() in foundry.js: line 6158
-     * @param {String} expression     The formula expression to evaluate
-     * @return {Number}               The returned numeric result
-     */
-    static safeEval(expression) {
-        const src = `with (sandbox) { return ${expression}; }`;
-        const evl = new Function('sandbox', src);
-
-        return evl(CONFIG.Roll.mathProxy);
-    }
 }
 
 export const highlightSuccessOrFailure = function (message, html, data) {
-    if (!message.isRoll || !message.isRollVisible || !message.roll.parts.length) return;
+    if (!message.isRoll || !message.isContentVisible) return;
 
-    let d = message.roll.parts[0];
+    let d = message.roll.terms[0];
     if (d instanceof Die && d.options && d.options.target) {
         let isSave = d.options.isSave || false;
         let isUntrained = d.options.isUntrained || false;
         let hasNaturalAptitude = d.options.hasNaturalAptitude || false;
-        let mod = DiceMWII.safeEval(d.options.mod) || 0;
+        let mod = Roll.safeEval(d.options.mod) || 0;
         let title = `Target = Base(${d.options.target}) + Mod(${mod}) = ${(d.options.target + mod)}`;
 
         let autoSuccess = () => {
@@ -123,14 +110,14 @@ export const highlightSuccessOrFailure = function (message, html, data) {
             html.find('.dice-result').append(div);
         };
 
-        let addRolls = () => d.rolls.map(el => el.roll).reduce((a, b) => a + b, 0);
+        let addRolls = () => d.results.map(el => el.result).reduce((a, b) => a + b, 0);
 
         if (isSave || hasNaturalAptitude) {
             if (d.total === 12) {
                 autoSuccess();
 
                 return;
-            } else if (d.rolls.length === 3 && addRolls() === 3) {
+            } else if (d.results.length === 3 && addRolls() === 3) {
                 autoFailure();
 
                 return;
@@ -138,7 +125,7 @@ export const highlightSuccessOrFailure = function (message, html, data) {
         }
 
         if (isUntrained) {
-            if (d.rolls.length === 3 && addRolls() === 18) {
+            if (d.results.length === 3 && addRolls() === 18) {
                 autoSuccess();
 
                 return;

@@ -104,8 +104,10 @@
                     <th class="col-skill-name">{{localize "MWII.SkillHeaderName"}}</th>
                     <th>{{localize "MWII.SkillHeaderLevel"}}</th>
                     <th>{{localize "MWII.SkillHeaderTargetNumber"}}</th>
-                    <th>{{localize "MWII.SkillHeaderSkillPoints"}}</th </tr> {{#each data.skills as |skill s|}} <tr
-                        class="skill flexrow" data-skill="{{s}}">
+                    <th>{{localize "MWII.SkillHeaderSkillPoints"}}</th>
+                </tr>
+                {{#each data.skills as |skill s|}} 
+                <tr class="skill flexrow" data-skill="{{s}}">
                     <td class="col-natural-aptitude">
                         <input type="checkbox" title="{{localize "MWII.NaturalAptitude"}}"
                             name="data.skills.{{s}}.natural_aptitude" {{checked skill.natural_aptitude}} />
