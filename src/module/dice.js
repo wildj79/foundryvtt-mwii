@@ -1,24 +1,33 @@
 /**
+ * Function called when the roll dialog is closed.
+ * 
+ * @callback onRollDialogClosed
+ * @param {JQuery} html The html of the dialog
+ * @returns {void}
+ */
+
+/**
  * Helper class used to handle dice rolls for Mechwarrior's.
  */
 export class DiceMWII {
     /**
      * Roll a check for this Mechwarrior. 
      * 
-     * @param {Event} event The event that triggered the roll
-     * @param {Object} data Any extra data needed by the roll
-     * @param {String} template An optional path for an HTML template to use for rendering
-     * @param {String} title The title of the chat message
-     * @param {Object} speaker The ChatMessage speaker to pass when creating the chat
-     * @param {String} flavor Flavor text passed to the ChatMessage
-     * @param {Function} onClose Callback for actions to take when the dialog form is closed
-     * @param {Object} dialogOptions Modal dialog options
-     * @param {Boolean} isSave Is this roll an attribute or characteristic save
-     * @param {Boolean} isUntrained Is this an untrained skill check
-     * @param {Boolean} hasNaturalAptitude Is this a skill check for a skill that the character has a natural aptitude for
-     * @returns {Promise} 
+     * @param {object}             params                      The parameters passed to the function.
+     * @param {JQuery.Event}       [params.event]              The event that triggered the roll
+     * @param {Object}             [params.data]               Any extra data needed by the roll
+     * @param {String}             params.template             An optional path for an HTML template to use for rendering
+     * @param {String}             params.title                The title of the chat message
+     * @param {Object}             [params.speaker]            The ChatMessage speaker to pass when creating the chat
+     * @param {String}             params.flavor               Flavor text passed to the ChatMessage
+     * @param {onRollDialogClosed} [params.onClose]            Callback for actions to take when the dialog form is closed
+     * @param {Object}             params.dialogOptions        Modal dialog options
+     * @param {Boolean}            [params.isSave]             Is this roll an attribute or characteristic save
+     * @param {Boolean}            [params.isUntrained]        Is this an untrained skill check
+     * @param {Boolean}            [params.hasNaturalAptitude] Is this a skill check for a skill that the character has a natural aptitude for
+     * @returns {Promise<Roll>} 
      */
-    static async d6Roll({event, data, template, title, speaker, flavor, onClose, dialogOptions, isSave = false, isUntrained = false, hasNaturalAptitude = false}) {
+    static async d6Roll({event = jQuery.Event('click'), data = {}, template, title, speaker = ChatMessage.getSpeaker(), flavor, onClose, dialogOptions, isSave = false, isUntrained = false, hasNaturalAptitude = false} = {}) {
         flavor = flavor || title;
 
         let rollMode = game.settings.get("core", "rollMode");
@@ -52,7 +61,7 @@ export class DiceMWII {
             formula: formula,
             data: data,
             rollMode: rollMode,
-            rollModes: CONFIG.rollModes
+            rollModes: CONFIG.Dice.rollModes
         };
 
         return new Promise((resolve, reject) => {

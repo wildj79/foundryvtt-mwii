@@ -1,0 +1,7 @@
+{
+    "typeAcquisition": {
+        "include": ["jquery", "handlbars"]
+    },
+    "exclude": ["node_modules", "dist"],
+    "include": ["src/**/*"]
+}

@@ -26,7 +26,7 @@ export class ActorSheetMWII extends ActorSheet {
     }
 
     getData() {
-        let isOwner = this.isOwner;
+        let isOwner = this.document.isOwner;
         const data = {
             owner: isOwner,
             limited: this.document.limited,
@@ -37,28 +37,28 @@ export class ActorSheetMWII extends ActorSheet {
             config: CONFIG.MWII
         };
 
-        data.actor = duplicate(this.actor.data);
+        data.actor = foundry.utils.duplicate(this.actor.data);
         data.items = this.actor.items.map(i => {
             i.data.labels = i.labels;
             return i.data;
         });
 
         data.items.sort((a, b) => (a.sort || 0) - (b.sort || 0));
-        data.data = data.actor.data;
+        data.data = foundry.utils.duplicate(this.actor.data.data);
         data.labels = this.actor.labels || {};
 
         // Attributes
-        for (let [a, att] of Object.entries(data.actor.data.attributes)) {
+        for (let [a, att] of Object.entries(data.data.attributes)) {
             att.label = CONFIG.MWII.attributes[a];
         }
 
         // Characteristics
-        for (let [c, char] of Object.entries(data.actor.data.characteristics)) {
+        for (let [c, char] of Object.entries(data.data.characteristics)) {
             char.label = CONFIG.MWII.characteristics[c];
         }
 
         // Skill labels
-        for (let [s, skl] of Object.entries(data.actor.data.skills)) {
+        for (let [s, skl] of Object.entries(data.data.skills)) {
             skl.characteristic = data.actor.data.characteristics[skl.characteristic].label;
 
             let skillLabel = CONFIG.MWII.skills[s];
@@ -69,11 +69,13 @@ export class ActorSheetMWII extends ActorSheet {
             skl.label = skillLabel;
         }
 
+        console.log(data);
+
         this._prepareItems(data);
 
-        if (!data.actor.data.movement) return data;
+        if (!data.data.movement) return data;
 
-        for (let [m, movement] of Object.entries(data.actor.data.movement)) {
+        for (let [m, movement] of Object.entries(data.data.movement)) {
             movement.label = CONFIG.MWII.movement[m];
         }
 

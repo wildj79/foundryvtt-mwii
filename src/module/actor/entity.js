@@ -26,8 +26,15 @@ export class ActorMWII extends Actor {
 
     prepareData() {
         super.prepareData();
-        const actorData = this.data;
-        const data = actorData.data;
+    }
+
+    prepareBaseData() { super.prepareBaseData(); }
+    prepareEmbeddedEntities() { super.prepareEmbeddedEntities(); }
+    prepareDerivedData() { 
+        super.prepareDerivedData();
+
+        const data = foundry.utils.duplicate(this.data.data);
+        console.log(data);
 
         // Attribute Saves
         for (let attr of Object.values(data.attributes)) {
