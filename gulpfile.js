@@ -63,9 +63,10 @@ async function copyFiles() {
 	const statics = [
 		'lang',
 		'fonts',
-		'assets',
+		'images',
 		'templates',
-		'module.json',
+		'module',
+		'mwii.js',
 		'system.json',
 		'template.json',
 	];
@@ -82,15 +83,84 @@ async function copyFiles() {
 }
 
 /**
+ * Does the same as copyFiles, except it only moves the 
+ * README and LICENSE files. These aren't needed for
+ * development, but they should be in the package.
+ */
+async function copyReadmeAndLicenses() {
+	const statics = ["README.md", "LICENSE"];
+
+	try {
+		for (const file of statics) {
+			if (fs.existsSync(file)) {
+				await fs.copy(file, path.join('dist', file));
+			}
+		}
+
+		return Promise.resolve();
+	} catch (err) {
+		Promise.reject(err);
+	}
+}
+
+/**
  * Watch for changes for each build step
  */
 function buildWatch() {
 	gulp.watch('src/**/*.less', { ignoreInitial: false }, buildLess);
 	gulp.watch(
-		['src/fonts', 'src/lang', 'src/templates', 'src/*.json'],
+		['src/fonts', 'src/lang', 'src/templates', 'src/*.json', 'src/**/*.js'],
 		{ ignoreInitial: false },
 		copyFiles
 	);
+}
+
+async function copyLocalization() {
+	console.log("Opening localization files");
+	const englishFilePath = "./src/lang/en.json";
+	const englishRaw = await fs.readFile(englishFilePath);
+	const englishJson = JSON.parse(englishRaw);
+
+	const itemSourceDir = "./src/lang";
+	const files = await fs.readdir(itemSourceDir);
+	for (const filePath of files) {
+		if (filePath.includes("en.json")) {
+			continue;
+		}
+
+		console.log(`Processing ${filePath}`);
+		const fileRaw = await fs.readFile(path.join([itemSourceDir, filePath]));
+		const fileJson = JSON.parse(fileRaw);
+
+		let copiedJson = JSON.parse(JSON.stringify(englishJson));
+		mergeDeep(copiedJson, fileJson);
+
+		const outRaw = JSON.stringify(copiedJson, null, 4);
+		await fs.writeFile(path.join([itemSourceDir, filePath]), outRaw);
+		
+	}
+}
+
+function isObject(item) {
+	return (item && typeof item === 'object' && !Array.isArray(item));
+}
+
+function mergeDeep(target, ...sources) {
+	if (!sources.length) return target;
+	const source = sources.shift();
+
+	if (isObject(target) && isObject(source)) {
+		for (const key in source) {
+			if (isObject(source[key])) {
+				if (!target[key]) Object.assign(target, { [key]: {} });
+				mergeDeep(target[key], source[key]);
+			} else {
+				Object.assign(target, { [key]: source[key] });
+			}
+		}
+	}
+
+	return mergeDeep(target, ...sources);
 }
 
 /********************/
@@ -102,30 +172,24 @@ function buildWatch() {
  * while ignoring source files
  */
 async function clean() {
-	const name = path.basename(path.resolve('.'));
+	const name = 'mwii';
 	const files = [];
-
-	// If the project uses TypeScript
-	if (fs.existsSync(path.join('src', `${name}.ts`))) {
-		files.push(
-			'lang',
-			'templates',
-			'assets',
-			'module',
-			`${name}.js`,
-			'module.json',
-			'system.json',
-			'template.json'
-		);
-	}
-
-	// If the project uses Less or SASS
-	if (
-		fs.existsSync(path.join('src', `${name}.less`)) ||
-		fs.existsSync(path.join('src', `${name}.scss`))
-	) {
-		files.push('fonts', `${name}.css`);
-	}
+	
+	files.push(
+		'lang',
+		'templates',
+		'module',
+		'fonts',
+		'images',
+		'packs',
+		'styles',
+		`${name}.js`,
+		`${name}.css`,
+		'system.json',
+		'template.json',
+		'README.md',
+		'LICENSE'
+	);
 
 	console.log(' ', chalk.yellow('Files to clean:'));
 	console.log('   ', chalk.blueBright(files.join('\n    ')));
@@ -365,5 +429,7 @@ exports.build = gulp.series(clean, execBuild);
 exports.watch = buildWatch;
 exports.clean = clean;
 exports.link = linkUserData;
-exports.package = packageBuild;
+exports.package = gulp.series(copyReadmeAndLicenses, packageBuild);
 exports.update = updateManifest;
+exports.copyLocalization = copyLocalization;
+exports.default = gulp.series(clean, execBuild);
