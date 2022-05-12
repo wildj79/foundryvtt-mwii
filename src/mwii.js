@@ -14,7 +14,8 @@ import { ItemMWII } from './module/item/entity.js';
 import { ActorSheetMWII } from './module/actor/sheet.js';
 import { ItemSheetMWII } from './module/item/sheet.js';
 import { highlightSuccessOrFailure } from './module/dice.js';
-import { _getInitiativeFormula, setupTurns, rollInitiative } from './module/combat.js';
+import MWIICombat from './module/combat.js';
+import MWIICombatant from './module/combatant.js';
 
 /* ------------------------------------ */
 /* Initialize system					*/
@@ -28,6 +29,8 @@ Hooks.once('init', async function () {
 	CONFIG.MWII = MWII;
 	CONFIG.Actor.documentClass = ActorMWII;
 	CONFIG.Item.documentClass = ItemMWII;
+	CONFIG.Combat.documentClass = MWIICombat;
+	CONFIG.Combatant.documentClass = MWIICombatant;
 
 	// Register custom system settings
 	registerSettings();
@@ -35,8 +38,7 @@ Hooks.once('init', async function () {
 	// Preload Handlebars templates
 	await preloadTemplates();
 
-	Combat.prototype._getInitiativeFormula = _getInitiativeFormula;
-	Combat.prototype.setupTurns = setupTurns;
+	//Combat.prototype.setupTurns = setupTurns;
 
 	// Register custom sheets (if any)
 	Actors.unregisterSheet("core", ActorSheet);
@@ -78,4 +80,4 @@ Hooks.once('ready', function () {
 
 // Add any additional hooks if necessary
 Hooks.on("renderChatMessage", highlightSuccessOrFailure);
-Hooks.on("updateCombat", rollInitiative);
+//Hooks.on("updateCombat", rollInitiative);

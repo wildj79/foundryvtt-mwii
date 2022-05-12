@@ -20,7 +20,7 @@
   "gridDistance": 5,
   "gridUnits": "m",
   "minimumCoreVersion": "0.8.3",
-    "compatibleCoreVersion": "0.8.9",
+  "compatibleCoreVersion": "9",
   "url": "https://github.com/wildj79/foundryvtt-mwii",
   "manifest": "https://raw.githubusercontent.com/wildj79/foundryvtt-mwii/master/dist/system.json",
   "download": "http://your.packaged.module/directory.zip"

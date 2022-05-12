@@ -12,14 +12,6 @@ export class ItemSheetMWII extends ItemSheet {
                 {navSelector: ".tabs", contentSelector: ".sheet-body" }
             ]
         });
-
-        // new Tabs(html.find('.tabs'), {
-        //     initial: this['_sheetTab'],
-        //     callback: clicked => {
-        //         this['_sheetTab'] = clicked.data('tab');
-        //         this.setPosition();
-        //     }
-        // });
     }
 
     get template() {
@@ -46,6 +38,8 @@ export class ItemSheetMWII extends ItemSheet {
         data.hasAreaOfEffect = data.item.type === "weapons" && ["support", "explosive"].includes(data.item.data.type);
         data.hasAmmo = data.item.type === "weapons" && ["support", "archery", "stpistol", "mpistol", "npistol", "rifle", "shotgun", "smg", "gyrojet"].includes(data.item.data.type);
         data.isBA = data.item.type === "armor" && data.item.data.type === "barmor";
+
+        data.data = foundry.utils.duplicate(this.item.data.data);
 
         console.log(data);
 

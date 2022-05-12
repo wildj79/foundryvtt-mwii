@@ -26,14 +26,8 @@ export class ActorMWII extends Actor {
 
     prepareData() {
         super.prepareData();
-    }
 
-    prepareBaseData() { super.prepareBaseData(); }
-    prepareEmbeddedEntities() { super.prepareEmbeddedEntities(); }
-    prepareDerivedData() { 
-        super.prepareDerivedData();
-
-        const data = foundry.utils.duplicate(this.data.data);
+        const data = this.data.data;
         console.log(data);
 
         // Attribute Saves
@@ -83,6 +77,10 @@ export class ActorMWII extends Actor {
         data.movement.sprinting.value = (attributes['bld'].value * 2) + attributes['ref'].value + skills['running'].level;
         data.movement.evade.value = attributes['ref'].value;
     }
+
+    prepareBaseData() { super.prepareBaseData(); }
+    prepareEmbeddedDocuments() { super.prepareEmbeddedDocuments(); }
+    prepareDerivedData() { super.prepareDerivedData(); }
 
     async rollAttributeSave(attributeId, options = {}) {
         const label = CONFIG.MWII.attributes[attributeId];

@@ -11,8 +11,8 @@ export class ActorSheetMWII extends ActorSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             classes: ['mwii', 'sheet', 'actor', 'character'],
-            width: 600,
-            height: 508,
+            width: 700,
+            height: 550,
             tabs: [
                 {navSelector: ".tabs", contentSelector: ".sheet-body", initial: "statistics" }
             ]
@@ -159,7 +159,7 @@ export class ActorSheetMWII extends ActorSheet {
 
         delete itemData.data['type'];
 
-        return this.actor.createOwnedItem(itemData);
+        return this.actor.createEmbeddedDocuments("Item", [itemData]);
     }
 
     /**
@@ -173,7 +173,7 @@ export class ActorSheetMWII extends ActorSheet {
         let li = $(event.currentTarget).parents('.item'),
             itemId = li.data('itemId');
 
-        this.actor.deleteEmbeddedEntity("OwnedItem", itemId);
+        this.actor.deleteEmbeddedDocuments("Item", [itemId]);
         li.slideUp(200, () => {});
     }
 
@@ -186,7 +186,7 @@ export class ActorSheetMWII extends ActorSheet {
         event.preventDefault();
 
         let itemId = $(event.currentTarget).parents('.item').data('itemId');
-        const item = this.actor.getOwnedItem(itemId);
+        const item = this.actor.items.get(itemId);
 
         item.sheet.render(true);
     }
