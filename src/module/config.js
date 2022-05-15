@@ -1,193 +1,193 @@
 export const MWII = {};
 
 MWII.attributes = {
-    "bld": "MWII.AttributeBld",
-    "ref": "MWII.AttributeRef",
-    "int": "MWII.AttributeItn",
-    "lrn": "MWII.AttributeLrn",
-    "cha": "MWII.AttributeCha"
+    "bld": "MWII.Attributes.Build",
+    "ref": "MWII.Attributes.Reflexes",
+    "int": "MWII.Attributes.Intuition",
+    "lrn": "MWII.Attributes.Learn",
+    "cha": "MWII.Attributes.Charisma"
 };
 
 MWII.characteristics = {
-    "athletic": "MWII.CharacteristicsAth",
-    "physical": "MWII.CharacteristicsPhy",
-    "mental": "MWII.CharacteristicsMen",
-    "social": "MWII.CharacteristicsSoc"
+    "athletic": "MWII.Characteristics.Athletic",
+    "physical": "MWII.Characteristics.Physical",
+    "mental": "MWII.Characteristics.Mental",
+    "social": "MWII.Characteristics.Social"
 };
 
 MWII.skills = {
-    "acrobatics": "MWII.SkillsAcro",
-    "administration": "MWII.SkillsAdmin",
-    "alternate_identity": "MWII.SkillsAltIden",
-    "appraisal": "MWII.SkillsAppr",
-    "archery": "MWII.SkillsArch",
-    "blade": "MWII.SkillsBlade",
-    "bureaucracy": "MWII.SkillsBure",
-    "career_skills": "MWII.SkillsCar",
-    "climbing": "MWII.SkillsClimb",
-    "communications-conventional": "MWII.SkillsCommConv",
-    "communications-hyperpulse_generator": "MWII.SkillsCommHPG",
-    "computer": "MWII.SkillsComp",
-    "cyrptography": "MWII.SkillsCrypto",
-    "demolitions": "MWII.SkillsDemo",
-    "disguise": "MWII.SkillsDisguise",
-    "drive-ground": "MWII.SkillsDriveG",
-    "drive-naval": "MWII.SkillsDriveN",
-    "engineering": "MWII.SkillsEngi",
-    "escape_artist": "MWII.SkillsEsc",
-    "forgery": "MWII.SkillsForg",
-    "gambling": "MWII.SkillsGamb",
-    "gunnery-aerospace": "MWII.SkillsGunnAero",
-    "gunnery-battlemech": "MWII.SkillsGunnBM",
-    "gunnery-battlesuit": "MWII.SkillsGunnBS",
-    "gunnery-conventional": "MWII.SkillsGunnConv",
-    "gunnery-spacecraft": "MWII.SkillsGunnSpace",
-    "impersonation": "MWII.SkillsImper",
-    "interrogation": "MWII.SkillsInter",
-    "jump_pack": "MWII.SkillsJump",
-    "leadership": "MWII.SkillsLead",
-    "medtech": "MWII.SkillsMed",
-    "navigation": "MWII.SkillsNav",
-    "negotiation": "MWII.SkillsNeg",
-    "perception": "MWII.SkillsPer",
-    "piloting-aerospace": "MWII.SkillsPilotAero",
-    "piloting-battlemech": "MWII.SkillsPilotBM",
-    "piloting-battlesuit": "MWII.SkillsPilotBS",
-    "piloting-spacecraft": "MWII.SkillsPilotSpace",
-    "protocol": "MWII.SkillsProto",
-    "quickdraw": "MWII.SkillsQuick",
-    "riding": "MWII.SkillsRiding",
-    "running": "MWII.SkillsRun",
-    "scrounge": "MWII.SkillsScrounge",
-    "security_systems": "MWII.SkillsSecSys",
-    "seduction": "MWII.SkillsSeduction",
-    "small_arms": "MWII.SkillsSmallArms",
-    "special_interests": "MWII.SkillsSpecial",
-    "stealth": "MWII.SkillsStealth",
-    "strategy": "MWII.SkillsStrat",
-    "streetwise": "MWII.SkillsStreet",
-    "support_weapons": "MWII.SkillsSupport",
-    "survival": "MWII.SkillsSurv",
-    "swimming": "MWII.SkillsSwim",
-    "tactics": "MWII.SkillsTact",
-    "technician-aerospace": "MWII.SkillsTechAero",
-    "technician-battlemech": "MWII.SkillsTechBM",
-    "technician-battlesuit": "MWII.SkillsTechBS",
-    "technician-electronics": "MWII.SkillsTechElec",
-    "technician-mechanic": "MWII.SkillsTechMechanic",
-    "technician-spacecraft": "MWII.SkillsTechSpace",
-    "technician-weapons": "MWII.SkillsTechWeapon",
-    "throwing_weapons": "MWII.SkillsThrow",
-    "tinker": "MWII.SkillsTinker",
-    "tracking": "MWII.SkillsTrack",
-    "training": "MWII.SkillsTrain",
-    "unarmed_combat": "MWII.SkillsUnarm",
-    "zerog_operations": "MWII.SkillsZero"
+    "acrobatics": "MWII.Skills.Acrobatics",
+    "administration": "MWII.Skills.Administration",
+    "alternate_identity": "MWII.Skills.AlternateIdentity",
+    "appraisal": "MWII.Skills.Appraisal",
+    "archery": "MWII.Skills.Archery",
+    "blade": "MWII.Skills.Blade",
+    "bureaucracy": "MWII.Skills.Bureaucracy",
+    "career_skills": "MWII.Skills.CareerSkills",
+    "climbing": "MWII.Skills.Climbing",
+    "communications-conventional": "MWII.Skills.Communications.Conventional",
+    "communications-hyperpulse_generator": "MWII.Skills.Communications.HPG",
+    "computer": "MWII.Skills.Computer",
+    "cyrptography": "MWII.Skills.Cryptography",
+    "demolitions": "MWII.Skills.Demolitions",
+    "disguise": "MWII.Skills.Disguise",
+    "drive-ground": "MWII.Skills.Drive.Ground",
+    "drive-naval": "MWII.Skills.Drive.Naval",
+    "engineering": "MWII.Skills.Engineering",
+    "escape_artist": "MWII.Skills.EscapeArtist",
+    "forgery": "MWII.Skills.Forgery",
+    "gambling": "MWII.Skills.Gambling",
+    "gunnery-aerospace": "MWII.Skills.Gunnery.Aerospace",
+    "gunnery-battlemech": "MWII.Skills.Gunnery.BattleMech",
+    "gunnery-battlesuit": "MWII.Skills.Gunnery.Battlesuit",
+    "gunnery-conventional": "MWII.Skills.Gunnery.Conventional",
+    "gunnery-spacecraft": "MWII.Skills.Gunnery.Spacecraft",
+    "impersonation": "MWII.Skills.Impersonation",
+    "interrogation": "MWII.Skills.Interrogation",
+    "jump_pack": "MWII.Skills.JumpPack",
+    "leadership": "MWII.Skills.Leadership",
+    "medtech": "MWII.Skills.Medtech",
+    "navigation": "MWII.Skills.Navigation",
+    "negotiation": "MWII.Skills.Negotiation",
+    "perception": "MWII.Skills.Perception",
+    "piloting-aerospace": "MWII.Skills.Piloting.Aerospace",
+    "piloting-battlemech": "MWII.Skills.Piloting.BattleMech",
+    "piloting-battlesuit": "MWII.Skills.Piloting.Battlesuit",
+    "piloting-spacecraft": "MWII.Skills.Piloting.Spacecraft",
+    "protocol": "MWII.Skills.Protocol",
+    "quickdraw": "MWII.Skills.Quickdraw",
+    "riding": "MWII.Skills.Riding",
+    "running": "MWII.Skills.Running",
+    "scrounge": "MWII.Skills.Scrounge",
+    "security_systems": "MWII.Skills.SecuritySystems",
+    "seduction": "MWII.Skills.Seduction",
+    "small_arms": "MWII.Skills.SmallArms",
+    "special_interests": "MWII.Skills.SpecialInterests",
+    "stealth": "MWII.Skills.Stealth",
+    "strategy": "MWII.Skills.Strategy",
+    "streetwise": "MWII.Skills.Streetwise",
+    "support_weapons": "MWII.Skills.SupportWeapons",
+    "survival": "MWII.Skills.Survival",
+    "swimming": "MWII.Skills.Swimming",
+    "tactics": "MWII.Skills.Tactics",
+    "technician-aerospace": "MWII.Skills.Technician.Aerospace",
+    "technician-battlemech": "MWII.Skills.Technician.BattleMech",
+    "technician-battlesuit": "MWII.Skills.Technician.Battlesuit",
+    "technician-electronics": "MWII.Skills.Technician.Electronics",
+    "technician-mechanic": "MWII.Skills.Technician.Mechanic",
+    "technician-spacecraft": "MWII.Skills.Technician.Spacecraft",
+    "technician-weapons": "MWII.Skills.Technician.Weapons",
+    "throwing_weapons": "MWII.Skills.ThrowingWeapons",
+    "tinker": "MWII.Skills.Tinker",
+    "tracking": "MWII.Skills.Tracking",
+    "training": "MWII.Skills.Training",
+    "unarmed_combat": "MWII.Skills.UnarmedCombat",
+    "zerog_operations": "MWII.Skills.ZeroGOperations"
 };
 
 MWII.movement = {
-    "walking": "MWII.Walking",
-    "running": "MWII.Running",
-    "sprinting": "MWII.Sprinting",
-    "evade": "MWII.Evade"
+    "walking": "MWII.Movement.Walking",
+    "running": "MWII.Movement.Running",
+    "sprinting": "MWII.Movement.Sprinting",
+    "evade": "MWII.Movement.Evade"
 };
 
 MWII.damageTypes = {
-    "energy": "MWII.DamageTypeEnergy",
-    "ballistic": "MWII.DamageTypeBallistic",
-    "melee": "MWII.DamageTypeMelee"
+    "energy": "MWII.Weapons.Damage.Types.Energy",
+    "ballistic": "MWII.Weapons.Damage.Types.Ballistic",
+    "melee": "MWII.Weapons.Damage.Types.Melee"
 };
 
 MWII.unitsOfMeasureWeight = {
-    "mg": "MWII.UnitOfMeasureMilliGram",
-    "cg": "MWII.UnitOfMeasureCentiGram",
-    "dg": "MWII.UnitOfMeasureDecigram",
-    "g": "MWII.UnitOfMeasureGram",
-    "kg": "MWII.UnitOfMeasuerKiloGram",
-    "t": "MWII.UnitOfMeasureMetricTon"
+    "mg": "MWII.UnitOfMeasure.Milligram",
+    "cg": "MWII.UnitOfMeasure.Centigram",
+    "dg": "MWII.UnitOfMeasure.Decigram",
+    "g": "MWII.UnitOfMeasure.Gram",
+    "kg": "MWII.UnitOfMeasuer.Kilogram",
+    "t": "MWII.UnitOfMeasure.MetricTon"
 }
 
 MWII.unitsOfMeasureDistance = {
-    "mm": "MWII.UnitOfMeasureMilliMeter",
-    "cm": "MWII.UnitOfMeasureCentiMeter",
-    "dm": "MWII.UnitOfMeasureDeciMeter",
-    "m": "MWII.UnitOfMeasureMeter",
-    "km": "MWII.UnitOfMeasureKiloMeter"
+    "mm": "MWII.UnitOfMeasure.Millimeter",
+    "cm": "MWII.UnitOfMeasure.Centimeter",
+    "dm": "MWII.UnitOfMeasure.Decimeter",
+    "m": "MWII.UnitOfMeasure.Meter",
+    "km": "MWII.UnitOfMeasure.Kilometer"
 };
 
 MWII.itemTechLevel = {
-    "1": "MWII.TechLevel1",
-    "2": "MWII.TechLevel2",
-    "3": "MWII.TechLevel3",
-    "4": "MWII.TechLevel4"
+    "1": "MWII.TechLevel.One",
+    "2": "MWII.TechLevel.Two",
+    "3": "MWII.TechLevel.Three",
+    "4": "MWII.TechLevel.Four"
 };
 
 MWII.itemAvailability = {
-    "A": "MWII.AvailabilityA",
-    "B": "MWII.AvailabilityB",
-    "C": "MWII.AvailabilityC",
-    "D": "MWII.AvailabilityD"
+    "A": "MWII.Availability.A",
+    "B": "MWII.Availability.B",
+    "C": "MWII.Availability.C",
+    "D": "MWII.Availability.D"
 };
 
 MWII.itemLegality = {
-    "A": "MWII.LegalityA",
-    "B": "MWII.LegalityB",
-    "C": "MWII.LegalityC",
-    "D": "MWII.LegalityD"
+    "A": "MWII.Legality.A",
+    "B": "MWII.Legality.B",
+    "C": "MWII.Legality.C",
+    "D": "MWII.Legality.D"
 };
 
 MWII.vehicleTypes = {
-    "bmech": "MWII.VechileTypesBattleMech",
-    "vee": "MWII.VehcileTypesConventionVee",
-    "ba": "MWII.VehicleTypesBattleArmor",
-    "aero": "MWII.VehicleTypesAeroSpace",
-    "drop": "MWII.VehicleTypesDropship"
+    "bmech": "MWII.Vehicle.Types.BattleMech",
+    "vee": "MWII.Vehicle.Types.CombatVehicle",
+    "ba": "MWII.Vehicle.Types.BattleArmor",
+    "aero": "MWII.Vehicle.Types.Aerospace",
+    "drop": "MWII.Vehicle.Types.Dropship"
 };
 
 MWII.lethality = {
-    "lethal": "MWII.WeaponLethalityLethal",
-    "bruise": "MWII.WeaponLethalityBruise"
+    "lethal": "MWII.Weapons.Lethality.Lethal",
+    "bruise": "MWII.Weapons.Lethality.Bruise"
 };
 
 MWII.weaponTypes = {
-    "melee": "MWII.WeaponTypesMelee",
-    "explosive": "MWII.WeaponTypesExplosive",
-    "archery": "MWII.WeaponTypesArchery",
-    "stpistol": "MWII.WeaponTypesSlugTrhowingPistol",
-    "mpistol": "MWII.WeaponTypesMiscellaneousPistol",
-    "lpistol": "MWII.WeaponTypesLaserPistol",
-    "npistol": "MWII.WeaponTypesNeedlerPistol",
-    "rifle": "MWII.WeaponTypesRifle",
-    "shotgun": "MWII.WeaponTypesShotgun",
-    "lrifle": "MWII.WeaponTypesLaserRifle",
-    "smg": "MWII.WeaponTypesSubMachineGun",
-    "gyrojet": "MWII.WeaponTypesGyrojetWeapon",
-    "support": "MWII.WeaponTypesSupportWeapons"
+    "melee": "MWII.Weapons.Types.Melee",
+    "explosive": "MWII.Weapons.Types.Explosive",
+    "archery": "MWII.Weapons.Types.Archery",
+    "stpistol": "MWII.Weapons.Types.SlugTrhowingPistol",
+    "mpistol": "MWII.Weapons.Types.MiscellaneousPistol",
+    "lpistol": "MWII.Weapons.Types.LaserPistol",
+    "npistol": "MWII.Weapons.Types.NeedlerPistol",
+    "rifle": "MWII.Weapons.Types.Rifle",
+    "shotgun": "MWII.Weapons.Types.Shotgun",
+    "lrifle": "MWII.Weapons.Types.LaserRifle",
+    "smg": "MWII.Weapons.Types.SubMachineGun",
+    "gyrojet": "MWII.Weapons.Types.GyrojetWeapon",
+    "support": "MWII.Weapons.Types.SupportWeapons"
 };
 
 MWII.armorDamageAbsortionValueTypes = {
-    "percentage": "MWII.ArmorDamageAbsortionValueTypePercent",
-    "point": "MWII.ArmorDamageAbsortionValueTypePoint"
+    "percentage": "MWII.Armor.Damage.AbsortionValueType.Percent",
+    "point": "MWII.Armor.Damage.AbsortionValueType.Point"
 };
 
 MWII.armorTypes = {
-    "normal": "MWII.ArmorTypeNormal",
-    "barmor": "MWII.ArmorTypeBattleArmor"
+    "normal": "MWII.Armor.Type.Normal",
+    "barmor": "MWII.Armor.Type.BattleArmor"
 };
 
 MWII.armorCoverage = {
-    "full": "MWII.ArmorCoverageFull",
-    "head": "MWII.ArmorCoverageHead",
-    "torso": "MWII.ArmorCoverageTorso",
-    "arms": "MWII.ArmorCoverageArms",
-    "legs": "MWII.ArmorCoverageLegs"
+    "full": "MWII.Armor.Coverage.Full",
+    "head": "MWII.Armor.Coverage.Head",
+    "torso": "MWII.Armor.Coverage.Torso",
+    "arms": "MWII.Armor.Coverage.Arms",
+    "legs": "MWII.Armor.Coverage.Legs"
 };
 
 MWII.armorCriticals = {
-    "head": "MWII.ArmorCriticalHead",
-    "torso": "MWII.ArmorCriticalTorso",
-    "left_arm": "MWII.ArmorCriticalLeftArm",
-    "right_arm": "MWII.ArmorCriticalRightArm",
-    "left_leg": "MWII.ArmorCriticalLeftLeg",
-    "right_leg": "MWII.ArmorCriticalRightLeg"
+    "head": "MWII.Armor.Critical.Head",
+    "torso": "MWII.Armor.Critical.Torso",
+    "left_arm": "MWII.Armor.Critical.LeftArm",
+    "right_arm": "MWII.Armor.Critical.RightArm",
+    "left_leg": "MWII.Armor.Critical.LeftLeg",
+    "right_leg": "MWII.Armor.Critical.RightLeg"
 };

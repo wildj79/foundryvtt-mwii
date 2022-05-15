@@ -84,11 +84,11 @@ export class ActorSheetMWII extends ActorSheet {
 
     _prepareItems(data) {
         const equipment = {
-            weapons: { label: game.i18n.localize("MWII.Weapons"), items: [], dataset: { type: "weapons" } },
+            weapons: { label: game.i18n.localize("MWII.Weapons.Title"), items: [], dataset: { type: "weapons" } },
             gear: { label: game.i18n.localize("MWII.Gear"), items: [], dataset: { type: "gear" } },
-            armor: { label: game.i18n.localize("MWII.Armor"), items: [], dataset: { type: "armor" } },
+            armor: { label: game.i18n.localize("MWII.Armor.Title"), items: [], dataset: { type: "armor" } },
             power_pack: { label: game.i18n.localize("MWII.PowerPacks"), items: [], dataset: { type: "power_pack" } },
-            vehicle: { label: game.i18n.localize("MWII.Vehicle"), items: [], dataset: { type: "vehicle" } }
+            vehicle: { label: game.i18n.localize("MWII.Vehicle.Title"), items: [], dataset: { type: "vehicle" } }
         };
 
         let [items, advantages, vehicles] = data.items.reduce((arr, item) => {

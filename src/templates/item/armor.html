@@ -12,7 +12,7 @@
 
         <div class="tab details flexrow" data-group="primary" data-tab="details">
             <div class="form-group">
-                <label class="bt-old">{{localize "MWII.ArmorType"}}</label>
+                <label class="bt-old">{{localize "MWII.Armor.Type.Title"}}</label>
                 <select name="data.type">
                     {{#select data.type}}
                     {{#each config.armorTypes as |type t|}}
@@ -22,7 +22,7 @@
                 </select>
             </div>
             <div class="form-group stacked">
-                <label class="bt-old">{{localize "MWII.ArmorCoverage"}}</label>
+                <label class="bt-old">{{localize "MWII.Armor.Coverage.Title"}}</label>
                 {{#each config.armorCoverage as |name prop|}}
                 <label class="checkbox">
                     <input type="checkbox" name="data.coverage.{{prop}}" {{checked (lookup ../data.coverage prop)}} /> {{name}}
@@ -31,13 +31,13 @@
             </div>
             {{#if isBA}}
             <div class="form-group">
-                <label class="bt-old">{{localize "MWII.ArmorBuildMod"}}</label>
+                <label class="bt-old">{{localize "MWII.Armor.BuildMod"}}</label>
                 <input type="text" name="data.build" value="{{data.build}}" data-dtype="Number" />
             </div>
             {{/if}}
-            <h4 class="bt-old">{{localize "MWII.ArmorDamageTitle"}}</h4>
+            <h4 class="bt-old">{{localize "MWII.Armor.Damage.Title"}}</h4>
             <div class="form-group multiple">
-                <label class="bt-old">{{localize "MWII.ArmorEnergy"}}</label>
+                <label class="bt-old">{{localize "MWII.Armor.Energy"}}</label>
                 <input type="text" name="data.energy.value" value="{{data.energy.value}}" />
                 <select name="data.energy.type">
                     {{#select data.energy.type}}
@@ -48,7 +48,7 @@
                 </select>
             </div>
             <div class="form-group multiple">
-                <label class="bt-old">{{localize "MWII.ArmorBallistic"}}</label>
+                <label class="bt-old">{{localize "MWII.Armor.Ballistic"}}</label>
                 <input type="text" name="data.ballistic.value" value="{{data.ballistic.value}}" />
                 <select name="data.ballistic.type">
                     {{#select data.ballistic.type}}
@@ -59,7 +59,7 @@
                 </select>
             </div>
             <div class="form-group multiple">
-                <label class="bt-old">{{localize "MWII.ArmorMelee"}}</label>
+                <label class="bt-old">{{localize "MWII.Armor.Melee"}}</label>
                 <input type="text" name="data.melee.value" value="{{data.melee.value}}" />
                 <select name="data.melee.type">
                     {{#select data.melee.type}}
@@ -70,26 +70,26 @@
                 </select>
             </div>
             <div class="form-group multiple">
-                <label class="bt-old">{{localize "MWII.ArmorDamageCapacity"}}</label>
+                <label class="bt-old">{{localize "MWII.Armor.Damage.Capacity"}}</label>
                 <input type="text" name="data.damage_capacity.value" value="{{data.damage_capacity.value}}" data-dtype="Number" />
                 <span class="sep"> / </span>
                 <input type="text" name="data.damage_capacity.max" value="{{data.damage_capacity.max}}" data-dtype="Number" />
             </div>
-            <h4 class="bt-old">{{localize "MWII.ArmorEncumbrance"}}</h4>
+            <h4 class="bt-old">{{localize "MWII.Armor.Encumbrance.Title"}}</h4>
             <div class="form-group">
-                <label class="bt-old">{{localize "MWII.ArmorEncumbranceMovement"}}</label>
+                <label class="bt-old">{{localize "MWII.Armor.Encumbrance.Movement"}}</label>
                 <input type="text" name="data.encumbrance.movement" value="{{data.encumbrance.movement}}" />
             </div>
             <div class="form-group">
-                <label class="bt-old">{{localize "MWII.ArmorEncumbrancePhysical"}}</label>
+                <label class="bt-old">{{localize "MWII.Armor.Encumbrance.Physical"}}</label>
                 <input type="text" name="data.encumbrance.physical" value="{{data.encumbrance.physical}}" />
             </div>
             <div class="form-group">
-                <label class="bt-old">{{localize "MWII.ArmorEncumbranceAthletic"}}</label>
+                <label class="bt-old">{{localize "MWII.Armor.Encumbrance.Athletic"}}</label>
                 <input type="text" name="data.encumbrance.athletic" value="{{data.encumbrance.athletic}}" />
             </div>
             {{#if isBA}}
-            <h4 class="bt-old">{{localize "MWII.ArmorCriticalDamage"}}</h4>
+            <h4 class="bt-old">{{localize "MWII.Armor.Critical.Damage"}}</h4>
             <div class="form-group stacked">
                 {{#each config.armorCriticals as |name prop|}}
                 <label class="checkbox">

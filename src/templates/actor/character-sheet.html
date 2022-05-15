@@ -9,9 +9,9 @@
                     <label class="bt-old">{{localize "MWII.CharacterName"}}</label>
                 </h1>
                 <div class="adventure-points">
-                    <input type="text" title="{{localize "MWII.AdventurePoints"}}" name="data.details.ap"
+                    <input type="text" title="{{localize "MWII.AdventurePoints.Title"}}" name="data.details.ap"
                         value="{{data.details.ap}}" data-dtype="Number" />
-                    <label class="bt-old">{{localize "MWII.AdventurePointsAbbr"}}</label>
+                    <label class="bt-old">{{localize "MWII.AdventurePoints.Abbreviation"}}</label>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
     {{!-- Sheet Navigation --}}
     <nav class="sheet-navigation tabs" data-group="primary">
         <a class="item active bt-old" data-tab="statistics">{{ localize "MWII.Statistics" }}</a>
-        <a class="item bt-old" data-tab="skills">{{ localize "MWII.Skills" }}</a>
+        <a class="item bt-old" data-tab="skills">{{ localize "MWII.Skills.Title" }}</a>
         <a class="item bt-old" data-tab="equipment">{{ localize "MWII.Equipment" }}</a>
         <a class="item bt-old" data-tab="biography">{{ localize "MWII.Biography" }}</a>
     </nav>
@@ -32,7 +32,7 @@
             <div class="left-side flexcol">
                 {{!-- Attribute Scores --}}
                 <div class="attributes">
-                    <h3 class="attributes-title bt-old">{{localize "MWII.Attributes"}}</h3>
+                    <h3 class="attributes-title bt-old">{{localize "MWII.Attributes.Title"}}</h3>
                     <ul>
                         {{#each data.attributes as |attribute id|}}
                         <li class="attribute flexrow" data-attribute="{{id}}">
@@ -50,7 +50,7 @@
 
                 {{!-- Characteristics --}}
                 <div class="characteristics">
-                    <h3 class="characteristics-title bt-old">{{localize "MWII.Characteristics"}}</h3>
+                    <h3 class="characteristics-title bt-old">{{localize "MWII.Characteristics.Title"}}</h3>
                     <ul>
                         {{#each data.characteristics as |char id|}}
                         <li class="characteristic flexrow" data-characteristic="{{id}}">
@@ -67,12 +67,12 @@
 
                 {{!-- Edge --}}
                 <div class="edge flexrow">
-                    <h3 class="bt-old flexrow">{{localize "MWII.Edge"}}</h3>
+                    <h3 class="bt-old flexrow">{{localize "MWII.Edge.Title"}}</h3>
                     <div class="flexrow">
-                        <input type="text" title="{{localize "MWII.CurrentEdge"}}" name="data.edge.value"
+                        <input type="text" title="{{localize "MWII.Edge.Current"}}" name="data.edge.value"
                             value="{{data.edge.value}}" data-dtype="Number" />
                         <span class="sep"> | </span>
-                        <input type="text" title="{{localize "MWII.MaxEdge"}}" name="data.edge.max"
+                        <input type="text" title="{{localize "MWII.Edge.Max"}}" name="data.edge.max"
                             value="{{data.edge.max}}" data-dtype="Number" />
                     </div>
                 </div>
@@ -82,7 +82,7 @@
             <div class="right-side flexcol">
                 {{!-- Movement --}}
                 <div class="movement">
-                    <h3 class="bt-old">{{localize "MWII.Movement"}}</h3>
+                    <h3 class="bt-old">{{localize "MWII.Movement.Title"}}</h3>
                     <ol class="movement-list flexrow">
                         {{#each data.movement as |movement m|}}
                         <li class="flexrow" title="In hexes">{{movement.label}}: {{movement.value}}</li>
@@ -102,10 +102,10 @@
             <table class="skills-list">
                 <tr class="flexrow">
                     <th class="col-natural-aptitude"></th>
-                    <th class="col-skill-name">{{localize "MWII.SkillHeaderName"}}</th>
-                    <th>{{localize "MWII.SkillHeaderLevel"}}</th>
-                    <th>{{localize "MWII.SkillHeaderTargetNumber"}}</th>
-                    <th>{{localize "MWII.SkillHeaderSkillPoints"}}</th>
+                    <th class="col-skill-name">{{localize "MWII.Skills.Header.Name"}}</th>
+                    <th>{{localize "MWII.Skills.Header.Level"}}</th>
+                    <th>{{localize "MWII.Skills.Header.TargetNumber"}}</th>
+                    <th>{{localize "MWII.Skills.Header.SkillPoints"}}</th>
                 </tr>
                 {{#each data.skills as |skill s|}} 
                 <tr class="skill flexrow" data-skill="{{s}}">
@@ -119,7 +119,7 @@
                         </h4>
                     </td>
                     <td>
-                        <input type="text" class="skill-level" title="{{localize "MWII.SkillLevels"}}"
+                        <input type="text" class="skill-level" title="{{localize "MWII.Skills.Levels"}}"
                             name="data.skills.{{s}}.level" value="{{skill.level}}" data-dtype="Number" />
                     </td>
                     <td class="center">
@@ -176,7 +176,7 @@
                     </li>
                     <li class="battlemech">
                         <input type="text" name="data.details.battlemech" value="{{data.details.battlemech}}" />
-                        <label class="bt-old">{{localize "MWII.Vehicle"}}</label>
+                        <label class="bt-old">{{localize "MWII.Vehicle.Title"}}</label>
                     </li>
                 </ul>
             </div>

@@ -30,7 +30,7 @@
         </div>
 
         <div class="form-group">
-            <label class="bt-old">{{localize "MWII.TechLevel"}}</label>
+            <label class="bt-old">{{localize "MWII.TechLevel.Title"}}</label>
             <select name="data.tech_level">
                 {{#select data.tech_level}}
                 {{#each config.itemTechLevel as |v k|}}
@@ -41,7 +41,7 @@
         </div>
 
         <div class="form-group">
-            <label class="bt-old">{{localize "MWII.Availability"}}</label>
+            <label class="bt-old">{{localize "MWII.Availability.Title"}}</label>
             <select name="data.availability">
                 {{#select data.availability}}
                 {{#each config.itemAvailability as |v k|}}
@@ -52,7 +52,7 @@
         </div>
 
         <div class="form-group">
-            <label class="bt-old">{{localize "MWII.Legality"}}</label>
+            <label class="bt-old">{{localize "MWII.Legality.Title"}}</label>
             <select name="data.legality">
                 {{#select data.legality}}
                 {{#each config.itemLegality as |v k|}}
@@ -64,14 +64,14 @@
 
         {{#if isPowerPack}}
         <div class="form-group">
-            <label class="bt-old">{{localize "MWII.PowerCapacity"}}</label>
+            <label class="bt-old">{{localize "MWII.Power.Capacity"}}</label>
             <input type="text" name="data.capacity.min" value="{{data.capacity.min}}" data-dtype="Number" />
             <span class="sep"> / </span>
             <input type="text" name="data.capacity.max" value="{{data.capacity.max}}" data-dtype="Number" />            
         </div>
         {{else}}
         <div class="form-group">
-            <label class="bt-old">{{localize "MWII.PowerUsage"}}</label>
+            <label class="bt-old">{{localize "MWII.Power.Usage"}}</label>
             <input type="text" name="data.power_use.value" value="{{data.power_use.value}}" data-dtype="Number" />
             <span class="sep"> / </span>
             <input type="text" name="data.power_use.per" value="{{data.power_use.per}}" />            
@@ -81,7 +81,7 @@
 
         {{#if isVehicle}}
         <div class="form-group">
-            <label class="bt-old">{{localize "MWII.VehicleType"}}</label>
+            <label class="bt-old">{{localize "MWII.Vehicle.Types.Title"}}</label>
             <select name="data.type">
                 {{#select data.type}}
                 {{#each config.vehicleTypes as |vee type|}}
@@ -91,15 +91,15 @@
             </select>            
         </div>
         <div class="form-group">
-            <label class="bt-old">{{localize "MWII.VechileChasis"}}</label>
+            <label class="bt-old">{{localize "MWII.Vehicle.Chasis"}}</label>
             <input type="text" name="data.chasis" value="{{data.chasis}}" />            
         </div>
         <div class="form-group">
-            <label class="bt-old">{{localize "MWII.VechicleWeightClass"}}</label>
+            <label class="bt-old">{{localize "MWII.Vehicle.Weight.Class"}}</label>
             <input type="text" name="data.weight_class" value="{{data.weight_class}}" />            
         </div>
         <div class="form-group">
-            <label class="bt-old">{{localize "MWII.VechicleWeight"}}</label>
+            <label class="bt-old">{{localize "MWII.Vehicle.Weight.Title"}}</label>
             <input type="text" name="data.weight" value="{{data.weight}}" data-dtype="Number" />            
         </div>
         {{/if}}

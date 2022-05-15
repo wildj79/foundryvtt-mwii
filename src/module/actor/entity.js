@@ -1,4 +1,4 @@
-import { DiceMWII } from "../dice.js";
+import DiceMWII from "../dice.js";
 
 export class ActorMWII extends Actor {
 

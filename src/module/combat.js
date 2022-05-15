@@ -4,6 +4,17 @@ export default class MWIICombat extends Combat {
 		const ib = Number.isNumeric(b.initiative) ? b.initiative : -9999;
 		const ci = ia - ib;
 		if (ci !== 0) return ci;
+
+		const aInt = a.actor.data.data.attributes.int.value;
+		const bInt = a.actor.data.data.attributes.int.value;
+		const deltaInt = aInt - bInt;
+		if (deltaInt !== 0) return deltaInt;
+
+		const aRoll = new Roll("1d6").evaluate({async: false}).total;
+		const bRoll = new Roll("1d6").evaluate({async: false}).total;
+		const deltaRoll = aRoll - bRoll;
+		if (deltaRoll !== 0) return deltaRoll;
+
 		return a.id > b.id ? 1 : -1;
 	}
 

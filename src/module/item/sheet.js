@@ -1,3 +1,5 @@
+import { MWII } from "../config.js";
+
 export class ItemSheetMWII extends ItemSheet {
     constructor(...args) {
         super(...args);
@@ -24,7 +26,7 @@ export class ItemSheetMWII extends ItemSheet {
         const data = super.getData();
         data.labels = this.item.labels;
 
-        data.config = CONFIG.MWII;
+        data.config = MWII;
 
         data.itemType = data.item.type.replace('_', ' ').titleCase();
         data.itemStatus = this._getItemStatus(data.item);
@@ -52,7 +54,7 @@ export class ItemSheetMWII extends ItemSheet {
 
     _getItemStatus(item) {
         if (["weapons", "armor"].includes(item.type)) return item.data.equipped ? "Equipped" : "Unequipped";
-        else if (item.type === "vehicle") return CONFIG.MWII.vehicleTypes[item.data.type];
+        else if (item.type === "vehicle") return MWII.vehicleTypes[item.data.type];
     }
 
     _getItemProperties(item) {
@@ -60,7 +62,7 @@ export class ItemSheetMWII extends ItemSheet {
         const labels = this.item.labels;
 
         if (item.data.damageType) {
-            props.push(CONFIG.MWII.damageTypes[item.data.damageType]);
+            props.push(MWII.damageTypes[item.data.damageType]);
         }
 
         return props.filter(p => !!p);

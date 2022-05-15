@@ -9,7 +9,7 @@
 /**
  * Helper class used to handle dice rolls for Mechwarrior's.
  */
-export class DiceMWII {
+export default class DiceMWII {
     /**
      * Roll a check for this Mechwarrior. 
      * 

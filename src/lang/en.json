@@ -1,276 +1,316 @@
 {
-    "MWII.AttributeBld": "Build",
-    "MWII.AttributeRef": "Reflexes",
-    "MWII.AttributeItn": "Intuition",
-    "MWII.AttributeLrn": "Learn",
-    "MWII.AttributeCha": "Charisma",
-
-    "MWII.CharacteristicsAth": "Athletic",
-    "MWII.CharacteristicsPhy": "Physical",
-    "MWII.CharacteristicsMen": "Mental",
-    "MWII.CharacteristicsSoc": "Social",
-
-    "MWII.SkillsAcro": "Acrobatics",
-    "MWII.SkillsAdmin": "Administration",
-    "MWII.SkillsAltIden": "Alternate Identity",
-    "MWII.SkillsAppr": "Appraisal",
-    "MWII.SkillsArch": "Archery",
-    "MWII.SkillsBlade": "Blade",
-    "MWII.SkillsBure": "Bureaucracy",
-    "MWII.SkillsCar": "Career Skills",
-    "MWII.SkillsClimb": "Climbing",
-    "MWII.SkillsCommConv": "Communications/Conventional",
-    "MWII.SkillsCommHPG": "Communications/HPG",
-    "MWII.SkillsComp": "Computer",
-    "MWII.SkillsCrypto": "Cryptography",
-    "MWII.SkillsDemo": "Demolitions",
-    "MWII.SkillsDisguise": "Disguise",
-    "MWII.SkillsDriveG": "Drive/Ground",
-    "MWII.SkillsDriveN": "Drive/Naval",
-    "MWII.SkillsEngi": "Engineering",
-    "MWII.SkillsEsc": "Escape Artist",
-    "MWII.SkillsForg": "Forgery",
-    "MWII.SkillsGamb": "Gambling",
-    "MWII.SkillsGunnAero": "Gunnery/Aerospace",
-    "MWII.SkillsGunnBM": "Gunnery/BattleMech",
-    "MWII.SkillsGunnBS": "Gunnery/Battlesuit",
-    "MWII.SkillsGunnConv": "Gunnery/Conventional",
-    "MWII.SkillsGunnSpace": "Gunnery/Spacecraft",
-    "MWII.SkillsImper": "Impersonation",
-    "MWII.SkillsInter": "Interrogation",
-    "MWII.SkillsJump": "Jump Pack",
-    "MWII.SkillsLead": "Leadership",
-    "MWII.SkillsMed": "Medtech",
-    "MWII.SkillsNav": "Navigation",
-    "MWII.SkillsNeg": "Negotiation",
-    "MWII.SkillsPer": "Perception",
-    "MWII.SkillsPilotAero": "Piloting/Aerospace",
-    "MWII.SkillsPilotBM": "Piloting/BattleMech",
-    "MWII.SkillsPilotBS": "Piloting/Battlesuit",
-    "MWII.SkillsPilotSpace": "Piloting/Spacecraft",
-    "MWII.SkillsProto": "Protocal",
-    "MWII.SkillsQuick": "Quickdraw",
-    "MWII.SkillsRiding": "Riding",
-    "MWII.SkillsRun": "Running",
-    "MWII.SkillsScrounge": "Scrounge",
-    "MWII.SkillsSecSys": "Security Systems",
-    "MWII.SkillsSeduction": "Seduction",
-    "MWII.SkillsSmallArms": "Small Arms",
-    "MWII.SkillsSpecial": "Special Interests",
-    "MWII.SkillsStealth": "Stealth",
-    "MWII.SkillsStrat": "Strategy",
-    "MWII.SkillsStreet": "Streetwise",
-    "MWII.SkillsSupport": "Support Weapons",
-    "MWII.SkillsSurv": "Survival",
-    "MWII.SkillsSwim": "Swimming",
-    "MWII.SkillsTact": "Tactics",
-    "MWII.SkillsTechAero": "Technician/Aerospace",
-    "MWII.SkillsTechBM": "Technician/BattleMech",
-    "MWII.SkillsTechBS": "Technician/Battlesuit",
-    "MWII.SkillsTechElec": "Technician/Electronics",
-    "MWII.SkillsTechMechanic": "Technician/Mechanic",
-    "MWII.SkillsTechSpace": "Technician/Spacecraft",
-    "MWII.SkillsTechWeapon": "Technician/Weapons",
-    "MWII.SkillsThrow": "Throwing Weapons",
-    "MWII.SkillsTinker": "Tinker",
-    "MWII.SkillsTrack": "Tracking",
-    "MWII.SkillsTrain": "Training",
-    "MWII.SkillsUnarm": "Unarmed Combat",
-    "MWII.SkillsZero": "Zero-G Operations",
-
-    "MWII.Statistics": "Statistics",
-    "MWII.Biography": "Details",
-    "MWII.Equipment": "Equipment",
-    "MWII.Skills": "Skills",
-    "MWII.Attributes": "Attributes",
-    "MWII.Characteristics": "Characteristics",
-    "MWII.Advantages": "Advantages",
-    "MWII.ConditionMonitor": "Condition Monitor",
-    "MWII.Description": "Description",
-    "MWII.Details": "Details",
-
-    "MWII.Edge": "Edge",
-
-    "MWII.TargetModifiers": "Target Modifiers",
-
-    "MWII.Faction": "Faction",
-    "MWII.SubFaction": "Sub Faction",
-    "MWII.Planet": "Planet",
-    "MWII.Unit": "Unit",
-    "MWII.Age": "Age",
-    "MWII.Height": "Height",
-    "MWII.Weight": "Weight",
-    "MWII.Vehicle": "Vehicle",
-
-    "MWII.CharacterName": "Name",
-    "MWII.AdventurePoints": "Adventure Points",
-    "MWII.AdventurePointsAbbr": "AP",
-
-    "MWII.Weapons": "Weapons",
-    "MWII.Gear": "Gear",
-    "MWII.Armor": "Armor",
-    "MWII.PowerPacks": "Power Packs",
-
-    "MWII.CBills": "C-Bills",
-
-    "MWII.SkillLevels": "Skill Levels",
-
-    "MWII.NaturalAptitude": "Natural Aptitude",
-
-    "MWII.CreateItem": "Create Item",
-    "MWII.AddButton": "Add",
-
-    "MWII.CurrentEdge": "Current Edge",
-    "MWII.MaxEdge": "Max Edge",
-
-    "MWII.Movement": "Movement",
-
-    "MWII.Walking": "Walking",
-    "MWII.Running": "Running",
-    "MWII.Sprinting": "Sprinting",
-    "MWII.Evade": "Evade",
-
-    "MWII.SkillHeaderName": "Name",
-    "MWII.SkillHeaderLevel": "Level",
-    "MWII.SkillHeaderTargetNumber": "Target Number",
-    "MWII.SkillHeaderSkillPoints": "Skill Points",
-    "MWII.Source": "Source",
-
-    "MWII.DamageTypeEnergy": "Energy",
-    "MWII.DamageTypeBallistic": "Ballistic",
-    "MWII.DamageTypeMelee": "Melee",
-
-    "MWII.Quantity": "Quantity",
-    "MWII.UnitOfMeaure": "Unit Of Measure",
-    "MWII.ItemCost":"Cost",
-    "MWII.PointCost": "Points",
-    "MWII.TechLevel": "Tech Level",
-    "MWII.Availability": "Availability",
-    "MWII.Legality":"Legality",
-    "MWII.PowerUsage": "Power Usage",
-    "MWII.PowerCapacity":"Power Capacity",
-    "MWII.VechileChasis": "Chasis",
-    "MWII.VechicleWeightClass": "Weight Class",
-    "MWII.VechicleWeight": "Weight",
-    "MWII.VehicleType": "Vehicle Type",
-
-    "MWII.VechileTypesBattleMech": "BattleMech",
-    "MWII.VehcileTypesConventionVee": "Combat Vechilce",
-    "MWII.VehicleTypesBattleArmor": "Battle Armor",
-    "MWII.VehicleTypesAeroSpace": "Aerospace Fighter",
-    "MWII.VehicleTypesDropship": "Dropship",
-
-    "MWII.UnitOfMeasureMilliGram": "milligram",
-    "MWII.UnitOfMeasureCentiGram": "centigram",
-    "MWII.UnitOfMeasureDecigram": "decigram",
-    "MWII.UnitOfMeasureGram": "gram",
-    "MWII.UnitOfMeasuerKiloGram": "kilogram",
-    "MWII.UnitOfMeasureMetricTon": "metric ton",
-
-    "MWII.UnitOfMeasureMilliGramAbbr": "mg",
-    "MWII.UnitOfMeasureCentiGramAbbr": "cg",
-    "MWII.UnitOfMeasureDecigramAbbr": "dg",
-    "MWII.UnitOfMeasureGramAbbr": "g",
-    "MWII.UnitOfMeasuerKiloGramAbbr": "kg",
-    "MWII.UnitOfMeasureMetricTonAbbr": "t",
-
-    "MWII.UnitOfMeasureMilliMeter": "millimeter",
-    "MWII.UnitOfMeasureCentiMeter": "centimeter",
-    "MWII.UnitOfMeasureDeciMeter": "decimeter",
-    "MWII.UnitOfMeasureMeter": "meter",
-    "MWII.UnitOfMeasureKiloMeter": "kilometer",
-
-    "MWII.UnitOfMeasureMilliMeterAbbr": "mm",
-    "MWII.UnitOfMeasureCentiMeterAbbr": "cm",
-    "MWII.UnitOfMeasureDeciMeterAbbr": "dm",
-    "MWII.UnitOfMeasureMeterAbbr": "m",
-    "MWII.UnitOfMeasureKiloMeterAbbr": "km",
-
-    "MWII.TechLevel1": "1",
-    "MWII.TechLevel2": "2",
-    "MWII.TechLevel3": "3",
-    "MWII.TechLevel4": "4",
-
-    "MWII.AvailabilityA": "A",
-    "MWII.AvailabilityB": "B",
-    "MWII.AvailabilityC": "C",
-    "MWII.AvailabilityD": "D",
-
-    "MWII.LegalityA": "A",
-    "MWII.LegalityB": "B",
-    "MWII.LegalityC": "C",
-    "MWII.LegalityD": "D",
-
-    "MWII.WeaponLethalityLethal": "Lethal",
-    "MWII.WeaponLethalityBruise": "Bruise",
-
-    "MWII.WeaponSkill": "Skill Used",
-    "MWII.WeaponDamage": "Damage",
-    "MWII.WeaponRange": "Range",
-    "MWII.WeaponLethality": "Lethality",
-    "MWII.WeaponDamageType": "Damage Type",
-    "MWII.WeaponAreaOfEffect": "Area of Effect",
-    "MWII.WeaponAmmo": "Ammo",
-    "MWII.WeaponType": "Weapon Type",
-
-    "MWII.WeaponTypesMelee": "Melee",
-    "MWII.WeaponTypesExplosive": "Explosive",
-    "MWII.WeaponTypesArchery": "Archery",
-    "MWII.WeaponTypesSlugTrhowingPistol": "Slug-Throwing Pistol",
-    "MWII.WeaponTypesMiscellaneousPistol": "Miscellaneous Pistol",
-    "MWII.WeaponTypesLaserPistol": "Laser Pistol",
-    "MWII.WeaponTypesNeedlerPistol": "Needler Pistol",
-    "MWII.WeaponTypesRifle": "Rifle",
-    "MWII.WeaponTypesShotgun": "Shotgun",
-    "MWII.WeaponTypesLaserRifle": "Laser Rifle",
-    "MWII.WeaponTypesSubMachineGun": "Submachine Gun",
-    "MWII.WeaponTypesGyrojetWeapon": "Gyroject Weapon",
-    "MWII.WeaponTypesSupportWeapons": "Support Weapon",
-
-    "MWII.WeaponReloadCost": "Reload Cost",
-    "MWII.WeaponCrew": "Crew",
-    "MWII.WeaponReloadTime": "Reload Time",
-
-    "MWII.ShortRange": "short",
-    "MWII.MediumRange": "medium",
-    "MWII.LongRange": "long",
-
-    "MWII.Equipped": "Equipped",
-
-    "MWII.ArmorEnergy": "Energy",
-    "MWII.ArmorBallistic": "Ballistic",
-    "MWII.ArmorMelee": "Melee",
-    "MWII.ArmorDamageCapacity": "Damage Capacity",
-
-    "MWII.ArmorDamageAbsortionValueTypePercent": "percentage",
-    "MWII.ArmorDamageAbsortionValueTypePoint": "point(s)",
-
-    "MWII.ArmorDamageTitle": "Damage and Resistance",
-
-    "MWII.ArmorType": "Armor Type",
-    "MWII.ArmorTypeNormal": "Normal",
-    "MWII.ArmorTypeBattleArmor": "Battle Armor",
-
-    "MWII.ArmorCoverage": "Coverage",
-    "MWII.ArmorCoverageHead": "Head",
-    "MWII.ArmorCoverageTorso": "Torso",
-    "MWII.ArmorCoverageArms": "Arms",
-    "MWII.ArmorCoverageLegs": "Legs",
-    "MWII.ArmorCoverageFull": "Full",
-
-    "MWII.ArmorBuildMod": "Build Modifier",
-
-    "MWII.ArmorEncumbrance": "Encumbrance",
-    "MWII.ArmorEncumbranceMovement": "Movement Modifier",
-    "MWII.ArmorEncumbrancePhysical": "Physical Modifier",
-    "MWII.ArmorEncumbranceAthletic": "Athletic Modifier",
-
-    "MWII.ArmorCriticalDamage": "Armor Critical Damage",
-
-    "MWII.ArmorCriticalHead": "Head",
-    "MWII.ArmorCriticalTorso": "Torso",
-    "MWII.ArmorCriticalLeftArm": "Left Arm",
-    "MWII.ArmorCriticalRightArm": "Right Arm",
-    "MWII.ArmorCriticalLeftLeg": "Left Leg",
-    "MWII.ArmorCriticalRightLeg": "Right Leg"
+    "ACTOR": {
+        "TypeCharacter": "Character"
+    },
+    "ITEM": {
+        "TypeAdvantage": "Advantage",
+        "TypeArmor": "Armor",
+        "TypeGear": "Gear",
+        "TypePower_pack": "Power Pack",
+        "TypeVehicle": "Vehicle",
+        "TypeWeapons": "Weapon"
+    },
+    "MWII": {
+        "AddButton": "Add",
+        "Advantages": "Advantages",
+        "AdventurePoints": {
+            "Abbreviation": "AP",
+            "Title": "Adventure Points"            
+        },
+        "Age": "Age",
+        "Armor": {
+            "Ballistic": "Ballistic",
+            "BuildModifier": "Build Modifier",
+            "Coverage": {
+                "Title": "Coverage",
+                "Head": "Head",
+                "Torso": "Torso",
+                "Arms": "Arms",
+                "Legs": "Legs",
+                "Full": "Full"
+            },
+            "Critical": {
+                "Damage": "Armor Critical Damage",
+                "Head": "Head",
+                "Torso": "Torso",
+                "LeftArm": "Left Arm",
+                "RightArm": "Right Arm",
+                "LeftLeg": "Left Leg",
+                "RightLeg": "Right Leg"
+            },
+            "Damage": {
+                "Title": "Damage and Resistance",
+                "Capacity": "Damage Capacity",
+                "AbsortionValueType": {
+                    "Percent": "percentage",
+                    "Point": "point(s)"
+                }
+            },
+            "Encumbrance": {
+                "Title": "Encumbrance",
+                "Movement": "Movement Modifier",
+                "Physical": "Physical Modifier",
+                "Athletic": "Athletic Modifier"
+            },
+            "Energy": "Energy",
+            "Melee": "Melee",
+            "Title": "Armor",
+            "Type": {
+                "Title": "Armor Type",
+                "Normal": "Normal",
+                "BattleArmor": "Battle Armor"
+            }
+        },
+        "Attributes": {
+            "Build": "Build",
+            "Charisma": "Charisma",
+            "Intuition": "Intuition",
+            "Learn": "Learn",
+            "Reflexes": "Reflexes",
+            "Title": "Attributes"
+        },
+        "Availability": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D",
+            "Title": "Availability"
+        },
+        "Biography": "Biography",
+        "CBills": "C-Bills",
+        "Characteristics": {
+            "Athletic": "Athletic",
+            "Mental": "Mental",
+            "Physical": "Physical",
+            "Social": "Social",
+            "Title": "Characteristics"
+        },
+        "CharacterName": "Name",
+        "ConditionMonitor": "Condition Monitor",
+        "CreateItem": "Create Item",
+        "Description": "Description",
+        "Details": "Details",
+        "Edge": {
+            "Current": "Current Edge",
+            "Max": "Max Edge",
+            "Title": "Edge"
+        },
+        "Equipped": "Equipped",
+        "Equipment": "Equipment",
+        "Faction": "Faction",
+        "Gear": "Gear",
+        "Height": "Height",
+        "ItemCost":"Cost",
+        "Legality": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D",
+            "Title": "Legality"
+        },
+        "Movement": {
+            "Evade": "Evade",
+            "Running": "Running",
+            "Sprinting": "Sprinting",
+            "Title": "Movement",
+            "Walking": "Walking"
+        },
+        "NaturalAptitude": "Natural Aptitude",
+        "Planet": "Planet",
+        "PointCost": "Points",
+        "Power": {
+            "Capacity": "Power Capacity",
+            "Usage": "Power Usage"            
+        },
+        "PowerPacks": "Power Packs",
+        "Quantity": "Quantity",
+        "Skills": {            
+            "Acrobatics": "Acrobatics",
+            "Administration": "Administration",
+            "AlternateIdentity": "Alternate Identity",
+            "Appraisal": "Appraisal",
+            "Archery": "Archery",
+            "Blade": "Blade",
+            "Bureaucracy": "Bureaucracy",
+            "CareerSkills": "Career Skills",
+            "Climbing": "Climbing",
+            "Communications": {
+                "Conventional": "Comms/Conventional",
+                "HPG": "Comms/HPG"
+            },
+            "Computer": "Computer",
+            "Cryptography": "Cryptography",
+            "Demolitions": "Demolitions",
+            "Disguise": "Disguise",
+            "Drive": {
+                "Ground": "Drive/Ground",
+                "Naval": "Drive/Naval"
+            },
+            "Engineering": "Engineering",
+            "EscapeArtist": "Escape Artist",
+            "Forgery": "Forgery",
+            "Gambling": "Gambling",
+            "Gunnery": {
+                "Aerospace": "Gunnery/Aerospace",
+                "BattleMech": "Gunnery/BattleMech",
+                "Battlesuit": "Gunnery/Battlesuit",
+                "Conventional": "Gunnery/Conventional",
+                "Spacecraft": "Gunnery/Spacecraft"
+            },
+            "Header": {
+                "Level": "Level",
+                "Name": "Name",
+                "SkillPoints": "Skill Points",
+                "TargetNumber": "Target Number"
+            },
+            "Impersonation": "Impersonation",
+            "Interrogation": "Interrogation",
+            "JumpPack": "Jump Pack",
+            "Leadership": "Leadership",
+            "Levels": "Skill Levels",
+            "Medtech": "Medtech",
+            "Navigation": "Navigation",
+            "Negotiation": "Negotiation",
+            "Perception": "Perception",
+            "Piloting": {
+                "Aerospace": "Piloting/Aerospace",
+                "BattleMech": "Piloting/BattleMech",
+                "Battlesuit": "Piloting/Battlesuit",
+                "Spacecraft": "Piloting/Spacecraft"
+            },
+            "Protocol": "Protocol",
+            "Quickdraw": "Quickdraw",
+            "Riding": "Riding",
+            "Running": "Running",
+            "Scrounge": "Scrounge",
+            "SecuritySystems": "Security Systems",
+            "Seduction": "Seduction",
+            "SmallArms": "Small Arms",
+            "SpecialInterests": "Special Interests",
+            "Stealth": "Stealth",
+            "Strategy": "Strategy",
+            "Streetwise": "Streetwise",
+            "SupportWeapons": "Support Weapons",
+            "Survival": "Survival",
+            "Swimming": "Swimming",
+            "Tactics": "Tactics",
+            "Technician": {
+                "Aerospace": "Technician/Aerospace",
+                "BattleMech": "Technician/BattleMech",
+                "Battlesuit": "Technician/Battlesuit",
+                "Electronics": "Technician/Electronics",
+                "Mechanic": "Technician/Mechanic",
+                "Spacecraft": "Technician/Spacecraft",
+                "Weapons": "Technician/Weapons"
+            },
+            "ThrowingWeapons": "Throwing Weapons",
+            "Tinker": "Tinker",
+            "Title": "Skills",
+            "Tracking": "Tracking",
+            "Training": "Training",
+            "UnarmedCombat": "Unarmed Combat",
+            "ZeroGOperations": "Zero-G Operations"
+        },
+        "Source": "Source",
+        "Statistics": "Statistics",
+        "SubFaction": "Sub Faction",
+        "TargetModifiers": "Target Modifiers",
+        "TechLevel": {
+            "One": "1",
+            "Two": "2",
+            "Three": "3",
+            "Four": "4",
+            "Title": "Tech Level"
+        },
+        "Unit": "Unit",
+        "UnitOfMeasure": {
+            "Abbreviations": {
+                "Milligram": "mg",
+                "Centigram": "cg",
+                "Decigram": "dg",
+                "Gram": "g",
+                "Kilogram": "kg",
+                "MetricTon": "t",
+                "Millimeter": "mm",
+                "Centimeter": "cm",
+                "Decimeter": "dm",
+                "Meter": "m",
+                "Kilometer": "km"
+            },
+            "Centigram": "centigram",
+            "Centimeter": "centimeter",
+            "Decigram": "decigram",
+            "Decimeter": "decimeter",
+            "Gram": "gram",
+            "Kilogram": "kilogram",
+            "Kilometer": "kilometer",
+            "MetricTon": "metric ton",
+            "Meter": "meter",
+            "Milligram": "milligram",
+            "Millimeter": "millimeter",
+            "Title": "Unit of Measure"
+        },
+        "Vehicle": {
+            "Chasis": "Chasis",          
+            "Title": "Vehicle",
+            "Types": {
+                "Title": "Vehicle Type",
+                "BattleMech": "BattleMech",
+                "CombatVehicle": "Combat Vehicle",
+                "BattleArmor": "Battle Armor",
+                "Aerospace": "Aerospace Fighter",
+                "Dropship": "Dropship"
+            },
+            "Weight": {
+                "Title": "Weight",
+                "Class": "Weight Class"
+            }
+        },
+        "Weapons": {
+            "Ammo": "Ammo",
+            "AreaOfEffect": "Area of Effect",
+            "Crew": "Crew",
+            "Damage": {
+                "Title": "Damage",
+                "Types": {
+                    "Title": "Damage Type",
+                    "Energy": "Energy",
+                    "Ballistic": "Ballistic",
+                    "Melee": "Melee"
+                }
+            },
+            "Lethality": {
+                "Title": "Lethality",
+                "Lethal": "Lethal",
+                "Bruise": "Bruise"
+            },
+            "Range": {
+                "Title": "Range",
+                "Short": "short",
+                "Medium": "medium",
+                "Long": "long"
+            },
+            "ReloadCost": "Reload Cost",
+            "ReloadTime": "Reload Time",
+            "SkillUsed": "Skill Used",
+            "Title": "Weapons",
+            "Types": {
+                "Melee": "Melee",
+                "Explosive": "Explosive",
+                "Archery": "Archery",
+                "SlugTrhowingPistol": "Slug-Throwing Pistol",
+                "MiscellaneousPistol": "Miscellaneous Pistol",
+                "LaserPistol": "Laser Pistol",
+                "NeedlerPistol": "Needler Pistol",
+                "Rifle": "Rifle",
+                "Shotgun": "Shotgun",
+                "LaserRifle": "Laser Rifle",
+                "SubMachineGun": "Submachine Gun",
+                "GyrojetWeapon": "Gyroject Weapon",
+                "SupportWeapons": "Support Weapon",
+                "Title": "Weapon Type"
+            }            
+        },
+        "Weight": "Weight"
+    }
 }
