@@ -113,11 +113,14 @@
         </div>
         {{/if}}
 
+        {{#if itemProperties}}
+        <h6 class="bt-old item-properties-title">{{localize "MWII.Properties.Title"}}</h6>
         <ol class="properties-list">
         {{#each itemProperties}}
             <li>{{this}}</li>
         {{/each}}
         </ol>
+        {{/if}}
     </div>
 
     {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}

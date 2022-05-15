@@ -8,7 +8,7 @@ export class ItemSheetMWII extends ItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             classes: ['mwii', 'sheet', 'item'],
-            width: 600,
+            width: 830,
             height: 570,
             tabs: [
                 {navSelector: ".tabs", contentSelector: ".sheet-body" }
@@ -27,6 +27,7 @@ export class ItemSheetMWII extends ItemSheet {
         data.labels = this.item.labels;
 
         data.config = MWII;
+        data.item = data.item.data;
 
         data.itemType = data.item.type.replace('_', ' ').titleCase();
         data.itemStatus = this._getItemStatus(data.item);

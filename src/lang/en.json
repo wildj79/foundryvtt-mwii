@@ -123,6 +123,9 @@
             "Usage": "Power Usage"            
         },
         "PowerPacks": "Power Packs",
+        "Properties": {
+            "Title": "Item Properties"
+        },
         "Quantity": "Quantity",
         "Skills": {            
             "Acrobatics": "Acrobatics",
