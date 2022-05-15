@@ -47,8 +47,17 @@ export class ItemSheetMWII extends ItemSheet {
         return data;
     }
 
+    /**
+     * Activate listeners for interactive item sheet events.
+     * 
+     * @param {JQuery} html The sheet's DOM object
+     */
     activateListeners(html) {
         super.activateListeners(html);
+
+        // Save scroll position
+        html.find(".tab.active")[0].scrollTop = this._scrollTab;
+        html.find(".tab").on("scroll", ev => this._scrollTab = ev.currentTarget.scrollTop);
     }
 
     _getItemStatus(item) {

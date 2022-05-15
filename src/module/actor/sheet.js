@@ -121,22 +121,25 @@ export class ActorSheetMWII extends ActorSheet {
         data.advantage = advantage;
     }
 
+    /**
+     * @inheritdoc
+     * @param {JQuery} html The prepared HTML object ready to be rendered into the DOM
+     */
     activateListeners(html) {
         super.activateListeners(html);
 
+        // Save scroll position
+        html.find(".tab.active")[0].scrollTop = this._scrollTab;
+        html.find(".tab").on("scroll", ev => this._scrollTab = ev.currentTarget.scrollTop);
+
         if (!this.options.editable) return;
 
-        html.find('.attribute-name').click(this._onRollAttributeSave.bind(this));
-        html.find('.characteristic-name').click(this._onRollCharacteristicSave.bind(this));
-        html.find('.skill-name').click(this._onRollSkillCheck.bind(this));
-        html.find('.item-delete').click(this._onItemDelete.bind(this));
-        html.find('.item-edit').click(this._onItemEdit.bind(this));
-        html.find('.item-create').click(this._onItemCreate.bind(this));
-
-        // html.find('li.item').each((i, li) => {
-        //     li.setAttribute("draggable", true);
-        //     li.addEventListener("dragstart", this._onDragItemStart.bind(this), false);
-        // });
+        html.find('.attribute-name').on("click", this._onRollAttributeSave.bind(this));
+        html.find('.characteristic-name').on("click", this._onRollCharacteristicSave.bind(this));
+        html.find('.skill-name').on("click", this._onRollSkillCheck.bind(this));
+        html.find('.item-delete').on("click", this._onItemDelete.bind(this));
+        html.find('.item-edit').on("click", this._onItemEdit.bind(this));
+        html.find('.item-create').on("click", this._onItemCreate.bind(this));
     }
 
     /**
