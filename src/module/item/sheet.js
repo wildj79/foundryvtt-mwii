@@ -44,8 +44,6 @@ export class ItemSheetMWII extends ItemSheet {
 
         data.data = foundry.utils.duplicate(this.item.data.data);
 
-        console.log(data);
-
         return data;
     }
 

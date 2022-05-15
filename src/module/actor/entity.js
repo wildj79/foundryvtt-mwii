@@ -1,4 +1,5 @@
 import DiceMWII from "../dice.js";
+import { MWII } from "../config.js";
 
 export class ActorMWII extends Actor {
 
@@ -28,7 +29,6 @@ export class ActorMWII extends Actor {
         super.prepareData();
 
         const data = this.data.data;
-        console.log(data);
 
         // Attribute Saves
         for (let attr of Object.values(data.attributes)) {
@@ -83,7 +83,7 @@ export class ActorMWII extends Actor {
     prepareDerivedData() { super.prepareDerivedData(); }
 
     async rollAttributeSave(attributeId, options = {}) {
-        const label = CONFIG.MWII.attributes[attributeId];
+        const label = MWII.attributes[attributeId];
         const attribute = this.data.data.attributes[attributeId];
 
         const rollData = {
@@ -100,7 +100,7 @@ export class ActorMWII extends Actor {
     }
 
     rollCharacteristicSave(characteristicId, options = {}) {
-        const label = CONFIG.MWII.characteristics[characteristicId];
+        const label = MWII.characteristics[characteristicId];
         const characteristic = this.data.data.characteristics[characteristicId];
 
         const rollData = {
@@ -117,7 +117,7 @@ export class ActorMWII extends Actor {
     }
 
     rollSkillCheck(skillId, options = {}) {
-        const label = CONFIG.MWII.skills[skillId];
+        const label = MWII.skills[skillId];
         const skill = this.data.data.skills[skillId];
 
         const rollData = {

@@ -69,8 +69,6 @@ export class ActorSheetMWII extends ActorSheet {
             skl.label = skillLabel;
         }
 
-        console.log(data);
-
         this._prepareItems(data);
 
         if (!data.data.movement) return data;
