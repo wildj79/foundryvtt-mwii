@@ -29,7 +29,9 @@ export class ItemSheetMWII extends ItemSheet {
         data.config = MWII;
         data.item = data.item.data;
 
+        data.hasSubType = data.item.type === 'gear';
         data.itemType = data.item.type.replace('_', ' ').titleCase();
+        data.itemSubType = this._getItemSubType(data.item);
         data.itemStatus = this._getItemStatus(data.item);
         data.itemProperties = this._getItemProperties(data.item);
         data.isPhysical = data.item.data.hasOwnProperty("quantity");
@@ -39,8 +41,9 @@ export class ItemSheetMWII extends ItemSheet {
         data.isHeavyWeapon = data.item.type === "weapons" && data.item.data.type === "support";
         data.isMelee = data.item.type === "weapons" && data.item.data.type === "melee";
         data.hasAreaOfEffect = data.item.type === "weapons" && ["support", "explosive"].includes(data.item.data.type);
-        data.hasAmmo = data.item.type === "weapons" && ["support", "archery", "stpistol", "mpistol", "npistol", "rifle", "shotgun", "smg", "gyrojet"].includes(data.item.data.type);
+        data.hasAmmo = data.item.type === "weapons" && ["support", "primitive_missle", "slug_throwers"].includes(data.item.data.type);
         data.isBA = data.item.type === "armor" && data.item.data.type === "barmor";
+        data.hasPatchCost = data.item.type === "armor";
 
         data.data = foundry.utils.duplicate(this.item.data.data);
 
@@ -62,7 +65,26 @@ export class ItemSheetMWII extends ItemSheet {
 
     _getItemStatus(item) {
         if (["weapons", "armor"].includes(item.type)) return item.data.equipped ? "Equipped" : "Unequipped";
-        else if (item.type === "vehicle") return MWII.vehicleTypes[item.data.type];
+        
+        return null;
+    }
+
+    _getItemSubType(item) {
+        if (item.type === "vehicle") return MWII.vehicleTypes[item.data.type];
+        else if (item.type === "gear") return MWII.gearSubTypes[item.data.type];
+        else if (item.type === "armor") return MWII.armorTypes[item.data.type];
+        else if (item.type === "weapons") {
+            const subtype = item.data.subtype;
+            const type = item.data.type;
+            
+            if (!!subtype) {
+                return `${MWII.weaponTypes[type]} (${MWII.weaponSubTypes[subtype]})`;
+            }
+
+            return MWII.weaponTypes[type];
+        }
+
+        return null;
     }
 
     _getItemProperties(item) {

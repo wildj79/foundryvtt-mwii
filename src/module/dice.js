@@ -36,11 +36,11 @@ export default class DiceMWII {
             await roll.evaluate({async: true});
 
             let d6 = roll.terms[0];
-            d6.options.target = data.target;
-            d6.options.mod = data.mod || 0;
-            d6.options.isSave = isSave;
-            d6.options.isUntrained = isUntrained;
-            d6.options.hasNaturalAptitude = hasNaturalAptitude;
+            roll.options.target = d6.options.target = data.target;
+            roll.options.mod = d6.options.mod = data.mod || 0;
+            roll.options.isSave = d6.options.isSave = isSave;
+            roll.options.isUntrained = d6.options.isUntrained = isUntrained;
+            roll.options.hasNaturalAptitude = d6.options.hasNaturalAptitude = hasNaturalAptitude;
 
             roll.toMessage({
                 speaker: speaker,
@@ -64,7 +64,7 @@ export default class DiceMWII {
             rollModes: CONFIG.Dice.rollModes
         };
 
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             renderTemplate(template, dialogData).then(dlg => {
                 new Dialog({
                     title: title,
@@ -82,24 +82,26 @@ export default class DiceMWII {
                     },
                     default: "normal",
                     close: html => {
-                        reject("Form closed");   
+                        resolve(null);   
                     }
                 }, dialogOptions).render(true);
-            }).catch(() => {});
+            });
         });        
     }
 }
 
 export const highlightSuccessOrFailure = function (message, html, data) {
     if (!message.isRoll || !message.isContentVisible) return;
+    console.log(data);
 
-    let d = message.roll.terms[0];
-    if (d instanceof Die && d.options && d.options.target) {
-        let isSave = d.options.isSave || false;
-        let isUntrained = d.options.isUntrained || false;
-        let hasNaturalAptitude = d.options.hasNaturalAptitude || false;
-        let mod = Roll.safeEval(d.options.mod) || 0;
-        let title = `Target = Base(${d.options.target}) + Mod(${mod}) = ${(d.options.target + mod)}`;
+    const d = message.roll.terms[0];
+    const roll = message.roll;
+    if (roll.options && roll.options.target) {
+        let isSave = roll.options.isSave || false;
+        let isUntrained = roll.options.isUntrained || false;
+        let hasNaturalAptitude = roll.options.hasNaturalAptitude || false;
+        let mod = Roll.safeEval(roll.options.mod) || 0;
+        let title = `Target = Base(${roll.options.target}) + Mod(${mod}) = ${(roll.options.target + mod)}`;
 
         let autoSuccess = () => {
             html.find('.dice-total').addClass('success');
@@ -155,7 +157,7 @@ export const highlightSuccessOrFailure = function (message, html, data) {
             return;
         }
         
-        if (d.total >= (d.options.target + mod)) {
+        if (d.total >= (roll.options.target + mod)) {
             html.find('.dice-total').addClass('success');
             const marginOfSuccess = d.total - (d.options.target + mod);
 

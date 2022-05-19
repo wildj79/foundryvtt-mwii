@@ -103,7 +103,7 @@ MWII.unitsOfMeasureWeight = {
     "cg": "MWII.UnitOfMeasure.Centigram",
     "dg": "MWII.UnitOfMeasure.Decigram",
     "g": "MWII.UnitOfMeasure.Gram",
-    "kg": "MWII.UnitOfMeasuer.Kilogram",
+    "kg": "MWII.UnitOfMeasure.Kilogram",
     "t": "MWII.UnitOfMeasure.MetricTon"
 }
 
@@ -150,19 +150,30 @@ MWII.lethality = {
 };
 
 MWII.weaponTypes = {
-    "melee": "MWII.Weapons.Types.Melee",
     "explosive": "MWII.Weapons.Types.Explosive",
-    "archery": "MWII.Weapons.Types.Archery",
-    "stpistol": "MWII.Weapons.Types.SlugTrhowingPistol",
-    "mpistol": "MWII.Weapons.Types.MiscellaneousPistol",
-    "lpistol": "MWII.Weapons.Types.LaserPistol",
-    "npistol": "MWII.Weapons.Types.NeedlerPistol",
-    "rifle": "MWII.Weapons.Types.Rifle",
-    "shotgun": "MWII.Weapons.Types.Shotgun",
-    "lrifle": "MWII.Weapons.Types.LaserRifle",
-    "smg": "MWII.Weapons.Types.SubMachineGun",
-    "gyrojet": "MWII.Weapons.Types.GyrojetWeapon",
-    "support": "MWII.Weapons.Types.SupportWeapons"
+    "laser": "MWII.Weapons.Types.Laser",
+    "melee": "MWII.Weapons.Types.Melee",
+    "misc": "MWII.Weapons.Types.Miscellaneous",
+    "primitive_missle": "MWII.Weapons.Types.PrimitiveMissle",
+    "slug_throwers": "MWII.Weapons.Types.SlugThrowers",
+    "support": "MWII.Weapons.Types.SupportWeapons",
+    
+};
+
+MWII.weaponSubTypes = {
+    "blazer": "MWII.Weapons.SubTypes.Blazer",
+    "flamer": "MWII.Weapons.SubTypes.Flamer",
+    "grenade": "MWII.Weapons.SubTypes.Grenade",
+    "gyrojet": "MWII.Weapons.SubTypes.Gyrojet",
+    "machine_gun": "MWII.Weapons.SubTypes.MachineGun",
+    "missile_launcher": "MWII.Weapons.SubTypes.MissileLauncher",
+    "needler": "MWII.Weapons.SubTypes.Needler",
+    "powered": "MWII.Weapons.SubTypes.Powered",
+    "pistol": "MWII.Weapons.SubTypes.Pistol",
+    "rifle": "MWII.Weapons.SubTypes.Rifle",
+    "sonic": "MWII.Weapons.SubTypes.Sonic",
+    "shotgun": "MWII.Weapons.SubTypes.Shotgun",
+    "smg": "MWII.Weapons.SubTypes.SubmachineGun"
 };
 
 MWII.armorDamageAbsortionValueTypes = {
@@ -190,4 +201,14 @@ MWII.armorCriticals = {
     "right_arm": "MWII.Armor.Critical.RightArm",
     "left_leg": "MWII.Armor.Critical.LeftLeg",
     "right_leg": "MWII.Armor.Critical.RightLeg"
+};
+
+MWII.gearSubTypes = {
+    "communicators": "MWII.Items.Subtype.Communicators",
+    "espionage": "MWII.Items.Subtype.Espionage",
+    "life_support": "MWII.Items.Subtype.LifeSupport",
+    "medical": "MWII.Items.Subtype.Medical",
+    "misc": "MWII.Items.Subtype.Miscellaneous",
+    "tech": "MWII.Items.Subtype.Tech",
+    "weapon_accessories": "MWII.Items.Subtype.WeaponAccessories"
 };

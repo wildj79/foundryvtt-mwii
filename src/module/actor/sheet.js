@@ -1,3 +1,5 @@
+import { MWII } from "../config.js";
+
 /**
  * Extend the basic ActorSheet class to do all the Mechwarrior things!
  * 
@@ -34,7 +36,7 @@ export class ActorSheetMWII extends ActorSheet {
             editable: this.isEditable,
             cssClass: isOwner ? "editable" : "locked",
             isCharacter: this.document.data.type === "character",
-            config: CONFIG.MWII
+            config: MWII
         };
 
         data.actor = foundry.utils.duplicate(this.actor.data);
@@ -49,21 +51,24 @@ export class ActorSheetMWII extends ActorSheet {
 
         // Attributes
         for (let [a, att] of Object.entries(data.data.attributes)) {
-            att.label = CONFIG.MWII.attributes[a];
+            att.label = MWII.attributes[a];
         }
 
         // Characteristics
         for (let [c, char] of Object.entries(data.data.characteristics)) {
-            char.label = CONFIG.MWII.characteristics[c];
+            char.label = MWII.characteristics[c];
         }
 
         // Skill labels
         for (let [s, skl] of Object.entries(data.data.skills)) {
             skl.characteristic = data.actor.data.characteristics[skl.characteristic].label;
+            skl.target_display = `${skl.target}+`;
 
-            let skillLabel = CONFIG.MWII.skills[s];
+            let skillLabel = MWII.skills[s];
             if (skl.specialization) {
                 skillLabel += ` (${skl.specialization})`;
+
+                skl.target_display = `${skl.target - 1}+/${skl.target + 1}+ *`;
             }
 
             skl.label = skillLabel;
@@ -74,7 +79,7 @@ export class ActorSheetMWII extends ActorSheet {
         if (!data.data.movement) return data;
 
         for (let [m, movement] of Object.entries(data.data.movement)) {
-            movement.label = CONFIG.MWII.movement[m];
+            movement.label = MWII.movement[m];
         }
 
         return data;
@@ -140,12 +145,27 @@ export class ActorSheetMWII extends ActorSheet {
         html.find('.item-delete').on("click", this._onItemDelete.bind(this));
         html.find('.item-edit').on("click", this._onItemEdit.bind(this));
         html.find('.item-create').on("click", this._onItemCreate.bind(this));
+        html.find('tr.skill').on("contextmenu", this._onEditSkill.bind(this));
+    }
+
+    /**
+     * Edit a skill.
+     * 
+     * @param {JQuery.Event} event The triggering event
+     */
+    _onEditSkill(event) {
+        event.preventDefault();
+        
+        const header = event.currentTarget;
+        const skillId = header.dataset.skill;
+
+        this.actor.editSkill(skillId);
     }
 
     /**
      * Create a new item for the character.
      * 
-     * @param {Event} event The triggering event
+     * @param {JQuery.Event} event The triggering event
      */
     _onItemCreate(event) {
         event.preventDefault();

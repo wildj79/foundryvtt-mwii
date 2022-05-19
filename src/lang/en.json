@@ -18,6 +18,16 @@
             "Title": "Adventure Points"            
         },
         "Age": "Age",
+        "Applications": {
+            "EditSkill": {
+                "NaturalAptitude": "Natural Aptitude",
+                "SkillLevel": "Skill Level",
+                "SkillPoints": "Skill Points",
+                "Specialization": "Specialization",
+                "SubmitButton": "Update Skill",
+                "Title": "Edit Skill: {skill}"
+            }
+        },
         "Armor": {
             "Ballistic": "Ballistic",
             "BuildModifier": "Build Modifier",
@@ -53,6 +63,7 @@
                 "Athletic": "Athletic Modifier"
             },
             "Energy": "Energy",
+            "PatchCost": "Patch Cost",
             "Melee": "Melee",
             "Title": "Armor",
             "Type": {
@@ -101,6 +112,20 @@
         "Gear": "Gear",
         "Height": "Height",
         "ItemCost":"Cost",
+        "Items": {
+            "Cost": "Cost",
+            "Subtype": {
+                "Communicators": "Communicators",
+                "Espionage": "Espionage/Surveillance",
+                "Explosives": "Explosives",
+                "LifeSupport": "Life Support",
+                "Medical": "Medical",
+                "Miscellaneous": "Miscellaneous",
+                "Tech": "Tech",
+                "Title": "Type",
+                "WeaponAccessories": "Weapon Accessories"
+            }
+        },
         "Legality": {
             "A": "A",
             "B": "B",
@@ -127,6 +152,13 @@
             "Title": "Item Properties"
         },
         "Quantity": "Quantity",
+        "Rolls": {
+            "Titles": {
+                "AttributeSave": "{label} Attribute Save",
+                "CharacteristicSave": "{label} Characteristic Save",
+                "SkillCheck": "{label} Skill Check"
+            }
+        },
         "Skills": {            
             "Acrobatics": "Acrobatics",
             "Administration": "Administration",
@@ -296,21 +328,31 @@
             "ReloadCost": "Reload Cost",
             "ReloadTime": "Reload Time",
             "SkillUsed": "Skill Used",
+            "SubTypes": {
+                "Blazer": "Blazer",
+                "Flamer": "Flamer",
+                "Grenade": "Grenade",
+                "Gyrojet": "Gyrojet",
+                "MachineGun": "Machine Gun",
+                "MissileLauncher": "Missile Launcher",
+                "Needler": "Needler",
+                "Pistol": "Pistol",
+                "Powered": "Powered",
+                "Rifle": "Rifle",
+                "Sonic": "Sonic",
+                "Shotgun": "Shotgun",
+                "SubmachineGun": "Submachine Gun",
+                "Title": "Subtype"
+            },
             "Title": "Weapons",
             "Types": {
-                "Melee": "Melee",
                 "Explosive": "Explosive",
-                "Archery": "Archery",
-                "SlugTrhowingPistol": "Slug-Throwing Pistol",
-                "MiscellaneousPistol": "Miscellaneous Pistol",
-                "LaserPistol": "Laser Pistol",
-                "NeedlerPistol": "Needler Pistol",
-                "Rifle": "Rifle",
-                "Shotgun": "Shotgun",
-                "LaserRifle": "Laser Rifle",
-                "SubMachineGun": "Submachine Gun",
-                "GyrojetWeapon": "Gyroject Weapon",
-                "SupportWeapons": "Support Weapon",
+                "Laser": "Laser",
+                "Melee": "Melee",
+                "Miscellaneous": "Miscellaneous",
+                "PrimitiveMissle": "Primitive Missle",
+                "SlugThrowers": "Slug-Throwers",
+                "SupportWeapons": "Heavy/Support Weapon",                
                 "Title": "Weapon Type"
             }            
         },

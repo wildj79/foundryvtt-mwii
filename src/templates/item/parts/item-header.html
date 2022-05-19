@@ -13,7 +13,12 @@
 
         <div class="item-subtitle">
             <h4 class="item-type bt-old">{{itemType}}</h4>
-            <span class="item-status bt-old">{{itemStatus}}</span>
+            {{#if itemSubType}}
+            <div class="item-subtype bt-old">{{itemSubType}}</div>
+            {{/if}}
+            {{#if itemStatus}}
+            <div class="item-status bt-old">{{itemStatus}}</div>
+            {{/if}}
         </div>
     </div>
 </header>

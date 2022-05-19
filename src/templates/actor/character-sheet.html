@@ -122,7 +122,7 @@
                             name="data.skills.{{s}}.level" value="{{skill.level}}" data-dtype="Number" />
                     </td>
                     <td class="center">
-                        <span class="skill-target">{{skill.target}}+</span>
+                        <span class="skill-target">{{skill.target_display}}</span>
                     </td>
                     <td>
                         <input type="text" class="skill-points" title="Skill Points" name="data.skills.{{s}}.sp"
@@ -131,6 +131,12 @@
                 </tr>
                 {{/each}}
             </table>
+            <p class="notes">
+                <small>
+                    * - Target number before the slash is for when a specialization applies
+                    to the roll and the number after is for when a specialization does not apply.
+                </small>
+            </p>
         </div>
 
         {{!-- Equipment Tab --}}

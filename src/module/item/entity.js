@@ -1,3 +1,5 @@
+import { MWII } from "../config.js";
+
 export class ItemMWII extends Item {
     get hasAttack() {
         return this.data.type === "weapons";
@@ -10,7 +12,7 @@ export class ItemMWII extends Item {
     prepareData() {
         super.prepareData();
 
-        const config = CONFIG.MWII;
+        const config = MWII;
         const labels = {};
         const itemData = this.data;
         const data = itemData.data;
