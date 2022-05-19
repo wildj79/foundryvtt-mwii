@@ -44,14 +44,13 @@ export default class DiceMWII {
 
             roll.toMessage({
                 speaker: speaker,
-                flavor: flavor,
-                rollMode: rollMode
-            });
+                flavor: flavor
+            }, {rollMode});
 
             return roll;
         };
 
-        template = template || "systems/mwii/templates/chat/roll-dialog.html";
+        template = template || "systems/mwii/templates/apps/roll-dialog.html";
         let formula = "2d6";
 
         if (isSave || hasNaturalAptitude) formula = "3d6kh2";
