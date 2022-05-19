@@ -16,6 +16,7 @@ import { ItemSheetMWII } from './module/item/sheet.js';
 import { highlightSuccessOrFailure } from './module/dice.js';
 import MWIICombat from './module/combat.js';
 import MWIICombatant from './module/combatant.js';
+import EditSkillApplication from './module/apps/edit-skill-application.js';
 
 /* ------------------------------------ */
 /* Initialize system					*/
@@ -24,7 +25,9 @@ Hooks.once('init', async function () {
 	console.log('Mechwarrior 2 | Initializing ');
 
 	// Assign custom classes and constants here
-	game.mwii = {};
+	game.mwii = {
+		EditSkillApplication
+	};
 
 	CONFIG.MWII = MWII;
 	CONFIG.Actor.documentClass = ActorMWII;
@@ -57,7 +60,7 @@ Hooks.once('setup', function () {
 		"unitsOfMeasureWeight", "unitsOfMeasureDistance", "itemTechLevel",
 		"itemAvailability", "vehicleTypes", "itemLegality", "lethality",
 		"weaponTypes", "armorDamageAbsortionValueTypes", "armorTypes",
-		"armorCoverage", "armorCriticals"
+		"armorCoverage", "armorCriticals", "gearSubTypes", "weaponSubTypes"
 	];
 
 	for (let o of toLocalize) {

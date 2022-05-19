@@ -1,0 +1,20 @@
+<form class="{{cssClass}}" id="edit-skill-form" autocomplete="off">
+    <div class="form-group">
+        <label for="level">{{localize "MWII.Applications.EditSkill.SkillLevel"}}</label>
+        <input type="text" name="level" data-dtype="Number" value="{{skill.level}}" />
+    </div>
+    <div class="form-group">
+        <label for="sp">{{localize "MWII.Applications.EditSkill.SkillPoints"}}</label>
+        <input type="text" name="sp" data-dtype="Number" value="{{skill.sp}}" />
+    </div>
+    <div class="form-group">
+        <label for="specialization">{{localize "MWII.Applications.EditSkill.Specialization"}}</label>
+        <input type="text" name="specialization" value="{{skill.specialization}}" />
+    </div>
+    <label class="checkbox">
+        <input type="checkbox" name="natural_aptitude" data-dtype="Boolean" {{checked skill.natural_aptitude}}>
+        {{localize "MWII.Applications.EditSkill.NaturalAptitude"}}
+    </label>
+
+    <button type="submit" name="submit" value="1"><i class="far fa-save"></i> {{localize "MWII.Applications.EditSkill.SubmitButton"}}</button>
+</form>

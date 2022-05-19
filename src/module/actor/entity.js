@@ -1,5 +1,6 @@
 import DiceMWII from "../dice.js";
 import { MWII } from "../config.js";
+import EditSkillApplication from "../apps/edit-skill-application.js";
 
 export class ActorMWII extends Actor {
 
@@ -90,16 +91,16 @@ export class ActorMWII extends Actor {
             target: attribute.save
         };
 
-        DiceMWII.d6Roll({
+        return await DiceMWII.d6Roll({
             event: options.event,
             data: rollData,
-            title: `${label} Attribute Save`,
+            title: game.i18n.format("MWII.Rolls.Titles.AttributeSave", {label: label}),
             speaker: ChatMessage.getSpeaker({ actor: this }),
             isSave: true
-        }).catch(() => {});
+        });
     }
 
-    rollCharacteristicSave(characteristicId, options = {}) {
+    async rollCharacteristicSave(characteristicId, options = {}) {
         const label = MWII.characteristics[characteristicId];
         const characteristic = this.data.data.characteristics[characteristicId];
 
@@ -107,16 +108,16 @@ export class ActorMWII extends Actor {
             target: characteristic.save
         };
 
-        DiceMWII.d6Roll({
+        return await DiceMWII.d6Roll({
             event: options.event,
             data: rollData,
-            title: `${label} Characteristic Save`,
+            title: game.i18n.format("MWII.Rolls.Titles.CharacteristicSave", {label: label}),
             speaker: ChatMessage.getSpeaker({ actor: this }),
             isSave: true
-        }).catch(() => {});
+        });
     }
 
-    rollSkillCheck(skillId, options = {}) {
+    async rollSkillCheck(skillId, options = {}) {
         const label = MWII.skills[skillId];
         const skill = this.data.data.skills[skillId];
 
@@ -124,13 +125,19 @@ export class ActorMWII extends Actor {
             target: skill.target
         };
             
-        DiceMWII.d6Roll({
+        return await DiceMWII.d6Roll({
             event: options.event,
             data: rollData,
-            title: `${label} Skill Check`,
+            title: game.i18n.format("MWII.Rolls.Titles.SkillCheck", {label: label}),
             speaker: ChatMessage.getSpeaker({ actor: this }),
             isUntrained: skill.level < 1,
             hasNaturalAptitude: skill.natural_aptitude
-        }).catch(() => {});
+        });
+    }
+
+    editSkill(skillId) {
+        new EditSkillApplication(this, {
+            skill: skillId
+        }).render(true);
     }
 }
