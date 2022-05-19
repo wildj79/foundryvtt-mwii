@@ -3,7 +3,12 @@
   "title": "MechWarrior, 2nd Edition",
   "description": "Game system definition of Mechwarrior 2nd Edition for the Foundry Virtual Tabletop",
   "version": "0.1.0",
-  "author": "wildj79",
+  "authors": [
+    {
+      "name": "wildj79",
+      "discord": "wildj79#0980"
+    }
+  ],
   "scripts": [],
   "esmodules": ["mwii.js"],
   "styles": ["mwii.css"],
@@ -13,7 +18,7 @@
       "lang": "en",
       "name": "English",
       "path": "lang/en.json"
-  }
+    }
   ],
   "socket": true,
   "initiative": "2d6 + @attributes.ref.value",
@@ -22,6 +27,6 @@
   "minimumCoreVersion": "0.8.3",
   "compatibleCoreVersion": "9",
   "url": "https://github.com/wildj79/foundryvtt-mwii",
-  "manifest": "https://raw.githubusercontent.com/wildj79/foundryvtt-mwii/master/dist/system.json",
+  "manifest": "https://raw.githubusercontent.com/wildj79/foundryvtt-mwii/master/src/system.json",
   "download": "http://your.packaged.module/directory.zip"
 }
