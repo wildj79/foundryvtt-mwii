@@ -1,4 +1,4 @@
-import { MWII } from "../config.js";
+import MWII from "../config.js";
 
 export class ItemSheetMWII extends ItemSheet {
     constructor(...args) {

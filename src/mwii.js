@@ -8,7 +8,7 @@
 // Import JavaScript modules
 import { registerSettings } from './module/settings.js';
 import { preloadTemplates } from './module/preloadTemplates.js';
-import { MWII } from './module/config.js';
+import MWII from './module/config.js';
 import { ActorMWII } from './module/actor/entity.js';
 import { ItemMWII } from './module/item/entity.js';
 import { ActorSheetMWII } from './module/actor/sheet.js';

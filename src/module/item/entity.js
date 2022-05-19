@@ -1,4 +1,4 @@
-import { MWII } from "../config.js";
+import MWII from "../config.js";
 
 export class ItemMWII extends Item {
     get hasAttack() {

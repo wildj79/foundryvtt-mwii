@@ -1,4 +1,4 @@
-export const MWII = {};
+const MWII = {};
 
 MWII.attributes = {
     "bld": "MWII.Attributes.Build",
@@ -212,3 +212,5 @@ MWII.gearSubTypes = {
     "tech": "MWII.Items.Subtype.Tech",
     "weapon_accessories": "MWII.Items.Subtype.WeaponAccessories"
 };
+
+export default MWII;

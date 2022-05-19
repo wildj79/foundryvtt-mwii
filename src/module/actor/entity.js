@@ -1,5 +1,5 @@
 import DiceMWII from "../dice.js";
-import { MWII } from "../config.js";
+import MWII from "../config.js";
 import EditSkillApplication from "../apps/edit-skill-application.js";
 
 export class ActorMWII extends Actor {

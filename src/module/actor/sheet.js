@@ -1,4 +1,4 @@
-import { MWII } from "../config.js";
+import MWII from "../config.js";
 
 /**
  * Extend the basic ActorSheet class to do all the Mechwarrior things!

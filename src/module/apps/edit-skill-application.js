@@ -1,4 +1,4 @@
-import { MWII } from "../config.js";
+import MWII from "../config.js";
 
 /**
  * A specialized form used in editing a character skill.
