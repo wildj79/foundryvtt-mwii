@@ -735,7 +735,8 @@
         "right_arm": false,
         "left_leg": false,
         "right_leg": false
-      }
+      },
+      "patch_cost": 0
     },
     "weapons": {
       "templates": ["itemDescription", "physicalItem"],
@@ -755,7 +756,8 @@
       "ammo": {
         "max": 10,
         "value": 10
-      }
+      },
+      "subtype": ""
     }
   }
 }
