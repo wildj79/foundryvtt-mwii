@@ -1,32 +1,31 @@
 .dice-roll {
-    .margin-success,
-    .margin-failure {
-        flex: 0;
-        font-weight: bold;
-        position: relative;
-        margin: 0;
+    &.mwii {
         margin-top: 5px;
-        line-height: 24px;
-        text-align: center;
-        background: rgba(0, 0, 0, 0.1);
-        border: 1px solid #999;
-        border-radius: 3px;
-        box-shadow: 0 0 2px #fff inset;
+        border-top: 1px solid #aaa;
     }
+    .breakdown {
+        .margin-success {
+            color: #0b7c0b;
+        }
+    
+        .margin-failure {
+            color: #aa0200;
+        }
 
-    .margin-success {
-        color: #18520b;
-    }
+        .margin-failure.failure,
+        .margin-success.critical {
+            font-weight: bold;
+            font-style: italic;
+        }
 
-    .margin-failure {
-        color: #aa0200;
-    }
+        div {
+            margin: 0 0 5px 0;
+            font-size: var(--font-size-12);
+            color: var(--color-text-dark-secondary);
 
-    .margin-success.critical {
-        color: lightgreen;
-    }
-
-    .margin-failure.failure {
-        color: red;
+            .label {
+                font-style: italic;
+            }
+        }
     }
 }

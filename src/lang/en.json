@@ -153,6 +153,15 @@
         },
         "Quantity": "Quantity",
         "Rolls": {
+            "Breakdown": {
+                "AutomaticSuccess": "Automatic Success",
+                "AutomaticFailure": "Automatic Failure",
+                "BaseTargetNumber": "Base Target Number:",
+                "MarginOfFailure": "Margin of Failure:",
+                "MarginOfSuccess": "Margin of Success:",
+                "Modifiers": "Total Modifiers:",
+                "TargetNumber": "Target Number:"
+            },
             "Titles": {
                 "AttributeSave": "{label} Attribute Save",
                 "CharacteristicSave": "{label} Characteristic Save",

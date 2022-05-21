@@ -32,15 +32,14 @@ export default class DiceMWII {
 
         let rollMode = game.settings.get("core", "rollMode");
         let roll = async (formula) => {
-            let roll = Roll.create(formula);
+            let roll = Roll.create(formula, data, {
+                target: data.target,
+                mod: data.mod || 0,
+                isSave,
+                isUntrained,
+                hasNaturalAptitude
+            });
             await roll.evaluate({async: true});
-
-            let d6 = roll.terms[0];
-            roll.options.target = d6.options.target = data.target;
-            roll.options.mod = d6.options.mod = data.mod || 0;
-            roll.options.isSave = d6.options.isSave = isSave;
-            roll.options.isUntrained = d6.options.isUntrained = isUntrained;
-            roll.options.hasNaturalAptitude = d6.options.hasNaturalAptitude = hasNaturalAptitude;
 
             roll.toMessage({
                 speaker: speaker,
@@ -156,9 +155,9 @@ export const highlightSuccessOrFailure = function (message, html, data) {
             return;
         }
         
-        if (d.total >= (roll.options.target + mod)) {
+        if (roll.total >= (roll.options.target + mod)) {
             html.find('.dice-total').addClass('success');
-            const marginOfSuccess = d.total - (d.options.target + mod);
+            const marginOfSuccess = roll.total - (roll.options.target + mod);
 
             const div = $('<div class="margin-success">');
             div.html(`Margin of Success <span class="mos">${marginOfSuccess}</span>`);
@@ -166,7 +165,7 @@ export const highlightSuccessOrFailure = function (message, html, data) {
             html.find('.dice-result').append(div);
         } else {
             html.find('.dice-total').addClass('failure');
-            const marginOfFailure = (d.options.target + mod) - d.total;
+            const marginOfFailure = (roll.options.target + mod) - roll.total;
 
             const div = $('<div class="margin-failure">');
             div.html(`Margin of Failure <span class="mof">${marginOfFailure}</span>`);

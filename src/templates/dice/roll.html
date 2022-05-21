@@ -1,0 +1,44 @@
+<div class="dice-roll{{#if target}} mwii{{/if}}">
+    {{#if flavor}}
+    <div class="dice-flavor">{{flavor}}</div>
+    {{/if}}
+    {{#if target}}
+    <div class="breakdown flexcol">
+        <div class="flexrow">
+            <span class="label">{{localize "MWII.Rolls.Breakdown.BaseTargetNumber"}}</span>
+            <span>{{baseTarget}}</span>
+        </div>
+        <div class="flexrow">
+            <span class="label">{{localize "MWII.Rolls.Breakdown.Modifiers"}}</span>
+            <span>{{targetModifier}}</span>
+        </div>
+        <div class="flexrow">
+            <span class="label">{{localize "MWII.Rolls.Breakdown.TargetNumber"}}</span>
+            <span>{{target}}</span>
+        </div>
+        {{#if marginOfSuccess}}
+        <div class="margin-success flexrow">
+            <span class="label">{{localize "MWII.Rolls.Breakdown.MarginOfSuccess"}}</span>
+            <span class="success">{{marginOfSuccess}}</span>
+        </div>
+        {{/if}}
+        {{#if marginOfFailure}}
+        <div class="margin-failure flexrow">
+            <span class="label">{{localize "MWII.Rolls.Breakdown.MarginOfFailure"}}</span>
+            <span class="failure">{{marginOfFailure}}</span>
+        </div>
+        {{/if}}
+        {{#if autoSuccess}}
+        <div class="margin-success critical flexrow">{{localize "MWII.Rolls.Breakdown.AutomaticSuccess"}}</div>
+        {{/if}}
+        {{#if autoFailure}}
+        <div class="margin-failure failure flexrow">{{localize "MWII.Rolls.Breakdown.AutomaticFailure"}}</div>
+        {{/if}}
+    </div>
+    {{/if}}
+    <div class="dice-result">
+        <div class="dice-formula">{{formula}}</div>
+        {{{tooltip}}}
+        <h4 class="dice-total {{#if success}}success{{/if}} {{#if failure}}failure{{/if}}">{{total}}</h4>
+    </div>
+</div>

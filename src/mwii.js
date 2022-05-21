@@ -17,6 +17,7 @@ import { highlightSuccessOrFailure } from './module/dice.js';
 import MWIICombat from './module/combat.js';
 import MWIICombatant from './module/combatant.js';
 import EditSkillApplication from './module/apps/edit-skill-application.js';
+import MWIIRoll from './module/dice/roll.js';
 
 /* ------------------------------------ */
 /* Initialize system					*/
@@ -34,6 +35,7 @@ Hooks.once('init', async function () {
 	CONFIG.Item.documentClass = ItemMWII;
 	CONFIG.Combat.documentClass = MWIICombat;
 	CONFIG.Combatant.documentClass = MWIICombatant;
+	CONFIG.Dice.rolls.unshift(MWIIRoll);
 
 	// Register custom system settings
 	registerSettings();
@@ -82,5 +84,5 @@ Hooks.once('ready', function () {
 });
 
 // Add any additional hooks if necessary
-Hooks.on("renderChatMessage", highlightSuccessOrFailure);
+//Hooks.on("renderChatMessage", highlightSuccessOrFailure);
 //Hooks.on("updateCombat", rollInitiative);
