@@ -5,7 +5,6 @@
  * Software License: MIT
  */
 
-// Import JavaScript modules
 import { registerSettings } from './module/settings.js';
 import { preloadTemplates } from './module/preloadTemplates.js';
 import MWII from './module/config.js';
@@ -13,11 +12,11 @@ import { ActorMWII } from './module/actor/entity.js';
 import { ItemMWII } from './module/item/entity.js';
 import { ActorSheetMWII } from './module/actor/sheet.js';
 import { ItemSheetMWII } from './module/item/sheet.js';
-import { highlightSuccessOrFailure } from './module/dice.js';
 import MWIICombat from './module/combat.js';
 import MWIICombatant from './module/combatant.js';
 import EditSkillApplication from './module/apps/edit-skill-application.js';
 import MWIIRoll from './module/dice/roll.js';
+import DiceMWII from './module/dice.js';
 
 /* ------------------------------------ */
 /* Initialize system					*/
@@ -25,9 +24,19 @@ import MWIIRoll from './module/dice/roll.js';
 Hooks.once('init', async function () {
 	console.log('Mechwarrior 2 | Initializing ');
 
-	// Assign custom classes and constants here
 	game.mwii = {
-		EditSkillApplication
+		applications: {
+			EditSkillApplication
+		},
+		config: MWII,
+		dice: DiceMWII,
+		documents: {
+			ActorMWII,
+			ItemMWII,
+			MWIICombat,
+			MWIICombatant,
+		},
+		roll: MWIIRoll
 	};
 
 	CONFIG.MWII = MWII;
@@ -62,7 +71,8 @@ Hooks.once('setup', function () {
 		"unitsOfMeasureWeight", "unitsOfMeasureDistance", "itemTechLevel",
 		"itemAvailability", "vehicleTypes", "itemLegality", "lethality",
 		"weaponTypes", "armorDamageAbsortionValueTypes", "armorTypes",
-		"armorCoverage", "armorCriticals", "gearSubTypes", "weaponSubTypes"
+		"armorCoverage", "armorCriticals", "gearSubTypes", "weaponSubTypes",
+		"hitLocations"
 	];
 
 	for (let o of toLocalize) {

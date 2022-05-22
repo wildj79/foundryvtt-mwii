@@ -91,7 +91,7 @@ export class ActorMWII extends Actor {
             target: attribute.save
         };
 
-        return await DiceMWII.d6Roll({
+        return await DiceMWII.rollCheck({
             event: options.event,
             data: rollData,
             title: game.i18n.format("MWII.Rolls.Titles.AttributeSave", {label: label}),
@@ -108,7 +108,7 @@ export class ActorMWII extends Actor {
             target: characteristic.save
         };
 
-        return await DiceMWII.d6Roll({
+        return await DiceMWII.rollCheck({
             event: options.event,
             data: rollData,
             title: game.i18n.format("MWII.Rolls.Titles.CharacteristicSave", {label: label}),
@@ -122,16 +122,25 @@ export class ActorMWII extends Actor {
         const skill = this.data.data.skills[skillId];
 
         const rollData = {
-            target: skill.target
+            target: skill.target,
+            isRanged: options?.isRanged ?? false,
+            weapon: options?.weapon ?? "",
+            isAttackRoll: options?.isAttackRoll ?? false
         };
+
+        let template = null;
+        if (options.isAttackRoll) {
+            template = "systems/mwii/templates/apps/attack-roll-dialog.html";
+        }
             
-        return await DiceMWII.d6Roll({
+        return await DiceMWII.rollCheck({
             event: options.event,
             data: rollData,
             title: game.i18n.format("MWII.Rolls.Titles.SkillCheck", {label: label}),
             speaker: ChatMessage.getSpeaker({ actor: this }),
             isUntrained: skill.level < 1,
-            hasNaturalAptitude: skill.natural_aptitude
+            hasNaturalAptitude: skill.natural_aptitude,
+            template
         });
     }
 

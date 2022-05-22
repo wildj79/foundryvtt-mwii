@@ -6,6 +6,8 @@
  * @returns {void}
  */
 
+import MWII from "./config.js";
+
 /**
  * Helper class used to handle dice rolls for Mechwarrior's.
  */
@@ -27,7 +29,7 @@ export default class DiceMWII {
      * @param {Boolean}            [params.hasNaturalAptitude] Is this a skill check for a skill that the character has a natural aptitude for
      * @returns {Promise<Roll>} 
      */
-    static async d6Roll({event = jQuery.Event('click'), data = {}, template, title, speaker = ChatMessage.getSpeaker(), flavor, onClose, dialogOptions, isSave = false, isUntrained = false, hasNaturalAptitude = false} = {}) {
+    static async rollCheck({event = jQuery.Event('click'), data = {}, template, title, speaker = ChatMessage.getSpeaker(), flavor, onClose, dialogOptions, isSave = false, isUntrained = false, hasNaturalAptitude = false} = {}) {
         flavor = flavor || title;
 
         let rollMode = game.settings.get("core", "rollMode");
@@ -86,8 +88,55 @@ export default class DiceMWII {
             });
         });        
     }
+
+    /**
+     * Convience method to quickly roll a to-hit location.
+     * 
+     * @returns {string} The location hit by the damage roll.
+     */
+    static async rollHitLocation() {
+        const roll1 = await Roll.create("1d6").evaluate({async: true});
+        const roll2 = await Roll.create("1d6").evaluate({async: true});
+        const location = MWII.hitLocationTable[roll1.total][roll2.total];
+
+        return {
+            location,
+            label: MWII.hitLocations[location]
+        };
+    }
+
+    static async rollDamage({event = jQuery.Event('click'), formula, data, flavor, title, template} = {}) {
+        const content = await renderTemplate(template, dialogData);
+
+        return new Promise((resolve) => {
+            const dialog = new Dialog({
+                title: title,
+                content: content,
+                buttons: {
+                    normal: {
+                        label: "",
+                        callback: html => {
+    
+                        }
+                    },
+                    default: "normal",
+                    close: html => {
+                        resolve(null);
+                    }
+                }
+            }, dialogOptions);
+    
+            dialog.render(true);
+        });        
+    }
 }
 
+/**
+ * This method has been deprecated. I'm keeping it here for historical reference
+ * for the moment. Needs to be removed before launch.
+ * 
+ * @deprecated This functionality has been moved to the @see {MWIIRoll} class.
+ */
 export const highlightSuccessOrFailure = function (message, html, data) {
     if (!message.isRoll || !message.isContentVisible) return;
     console.log(data);

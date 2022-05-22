@@ -111,6 +111,21 @@
         "Faction": "Faction",
         "Gear": "Gear",
         "Height": "Height",
+        "HitLocation": {
+            "Critical": {
+                "LeftArm": "Left Arm (Critical)",
+                "LeftLeg": "Left Leg (Critical)",
+                "RightArm": "Right Arm (Critical)",                
+                "RightLeg": "Right Leg (Critical)",                
+                "Torso": "Torso (Critical)"
+            },
+            "Head": "Head",
+            "LeftArm": "Left Arm",
+            "LeftLeg": "Left Leg",
+            "RightArm": "Right Arm",            
+            "RightLeg": "Right Leg",
+            "Torso": "Torso"
+        },
         "ItemCost":"Cost",
         "Items": {
             "Cost": "Cost",
@@ -322,6 +337,9 @@
                     "Ballistic": "Ballistic",
                     "Melee": "Melee"
                 }
+            },
+            "Errors": {
+                "NoSkillUsed": "Cannot roll an attack for {weapon}. It does not have any skill associated with it. Please choose a skill to use for this attack."
             },
             "Lethality": {
                 "Title": "Lethality",

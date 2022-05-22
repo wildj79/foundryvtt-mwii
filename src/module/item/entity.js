@@ -1,4 +1,5 @@
 import MWII from "../config.js";
+import DiceMWII from "../dice.js";
 
 export class ItemMWII extends Item {
     get hasAttack() {
@@ -7,6 +8,16 @@ export class ItemMWII extends Item {
 
     get hasDamage() {
         return !!(this.data.data.damage);
+    }
+
+    get skillUsed() {
+        if (this.data.type === "weapons") return this.data.data.skill;
+        
+        return null;
+    }
+
+    get isRanged() {
+        return this.data.data.type !== "melee";
     }
 
     prepareData() {
@@ -25,6 +36,51 @@ export class ItemMWII extends Item {
         }
 
         this.labels = labels;
+    }
+
+
+    sendToChat() {
+
+    }
+
+    /**
+     * Roll an attack for this weapon.
+     * 
+     * @param {JQuery.Event} event The triggering event
+     * @returns {Promise<Roll>} Returns the roll object used to make the check
+     */
+    async rollAttack(event) {
+        if (!this.hasAttack) throw new Error("Shit be broken!");
+
+        const skillUsed = this.skillUsed;
+        const isRanged = this.isRanged;
+
+        if (!skillUsed) {
+            ui.notifications.warn(game.i18n.format("MWII.Weapons.Errors.NoSkillUsed", {weapon: this.data.name}));
+            return null;
+        }
+
+        return this.actor.rollSkillCheck(skillUsed, {event, isAttackRoll: true, isRanged, weapon: this.data.name});
+    }
+
+    async rollDamage(event) {
+        if (!this.hasDamage) throw new Error("Shit be even more broken!");
+
+        const hitLocation = await DiceMWII.rollHitLocation();
+
+        return await DiceMWII.rollCheck({
+            event,
+            data: {},
+            template: "",
+            title: "",
+            speaker: ChatMessage.getSpeaker(),
+            flavor: "",
+            onClose: (html) => {},
+            dialogOptions: {},
+            isSave: false,
+            isUntrained: false,
+            hasNaturalAptitude: false
+        });
     }
 
     _calculateArmorDamageAbsorption(damageType) {

@@ -213,4 +213,28 @@ MWII.gearSubTypes = {
     "weapon_accessories": "MWII.Items.Subtype.WeaponAccessories"
 };
 
+MWII.hitLocations = {
+    "right_arm": "MWII.HitLocation.RightArm",
+    "left_arm": "MWII.HitLocation.LeftArm",
+    "right_leg": "MWII.HitLocation.RightLeg",
+    "left_leg": "MWII.HitLocation.LeftLeg",
+    "head": "MWII.HitLocation.Head",
+    "torso": "MWII.HitLocation.Torso",
+    "right_arm_critical": "MWII.HitLocation.Critical.RightArm",
+    "left_arm_critical": "MWII.HitLocation.Critical.LeftArm",
+    "right_leg_critical": "MWII.HitLocation.Critical.RightLeg",
+    "left_leg_critical": "MWII.HitLocation.Critical.LeftLeg",
+    "torso_critical": "MWII.HitLocation.Critical.Torso"
+};
+
+MWII.hitLocationTable = [
+    [null],
+    [null, "left_arm_critical", "right_leg", "head", "torso", "torso", "right_arm"],
+    [null, "left_arm", "right_leg_critical", "left_arm", "torso", "torso", "left_leg"],
+    [null, "left_arm", "right_leg", "torso_critical", "torso", "right_arm", "left_leg"],
+    [null, "left_arm", "head", "torso", "torso_critical", "right_arm", "left_leg"],
+    [null, "right_leg", "head", "torso", "torso", "right_arm_critical", "left_leg"],
+    [null, "right_leg", "head", "torso", "torso", "right_arm", "left_leg_critical"]
+]
+
 export default MWII;
