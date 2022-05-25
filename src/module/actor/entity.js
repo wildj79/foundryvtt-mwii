@@ -120,6 +120,11 @@ export class ActorMWII extends Actor {
     async rollSkillCheck(skillId, options = {}) {
         const label = MWII.skills[skillId];
         const skill = this.data.data.skills[skillId];
+        let title = game.i18n.format("MWII.Rolls.Titles.SkillCheck", {label: label});
+
+        if (options?.isAttackRoll) {
+            title = game.i18n.format("MWII.Rolls.Titles.AttackCheck", {weapon: options.weapon});
+        }
 
         const rollData = {
             target: skill.target,
@@ -136,7 +141,7 @@ export class ActorMWII extends Actor {
         return await DiceMWII.rollCheck({
             event: options.event,
             data: rollData,
-            title: game.i18n.format("MWII.Rolls.Titles.SkillCheck", {label: label}),
+            title: title,
             speaker: ChatMessage.getSpeaker({ actor: this }),
             isUntrained: skill.level < 1,
             hasNaturalAptitude: skill.natural_aptitude,

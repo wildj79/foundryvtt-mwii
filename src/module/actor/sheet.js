@@ -97,6 +97,8 @@ export class ActorSheetMWII extends ActorSheet {
         let [items, advantages, vehicles] = data.items.reduce((arr, item) => {
             item.img = item.img || DEFAULT_TOKEN;
             item.isStack = item.data.quantity ? item.data.quantity > 1 : false;
+            item.hasAttack = item.type === 'weapons';
+            item.hasDamage = !!(item.data.damage);
             if (item.type === "advantage") arr[1].push(item);
             else if (item.type === "vehicle") arr[2].push(item);
             else if (Object.keys(equipment).includes(item.type)) arr[0].push(item);
@@ -146,6 +148,36 @@ export class ActorSheetMWII extends ActorSheet {
         html.find('.item-edit').on("click", this._onItemEdit.bind(this));
         html.find('.item-create').on("click", this._onItemCreate.bind(this));
         html.find('tr.skill').on("contextmenu", this._onEditSkill.bind(this));
+        html.find('.roll-attack').on('click', this._onRollAttack.bind(this));
+        html.find('.roll-damage').on('click', this._onRollDamage.bind(this));
+    }
+
+    /**
+     * Roll damage for a weapon.
+     * 
+     * @param {JQuery.Event} event The triggering click event
+     */
+    _onRollDamage(event) {
+        event.preventDefault();
+
+        const weaponId = $(event.currentTarget).data('weaponId');
+        const weapon = this.actor.items.find(i => i.id === weaponId);
+
+        weapon.rollDamage(event);
+    }
+
+    /**
+     * Roll an attack check for a weapon.
+     * 
+     * @param {JQuery.Event} event The triggering click event
+     */
+    _onRollAttack(event) {
+        event.preventDefault();
+
+        const weaponId = $(event.currentTarget).data('weaponId');
+        const weapon = this.actor.items.find(i => i.id === weaponId);
+
+        weapon.rollAttack(event);
     }
 
     /**

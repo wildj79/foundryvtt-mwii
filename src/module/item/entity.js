@@ -50,7 +50,11 @@ export class ItemMWII extends Item {
      * @returns {Promise<Roll>} Returns the roll object used to make the check
      */
     async rollAttack(event) {
-        if (!this.hasAttack) throw new Error("Shit be broken!");
+        if (!this.hasAttack) {
+            const message = game.i18n.format("MWII.Items.Errors.NotAWeapon", {item: this.data.name})
+            ui.notifications.error(message);
+            throw new Error(message);
+        }
 
         const skillUsed = this.skillUsed;
         const isRanged = this.isRanged;
@@ -64,23 +68,16 @@ export class ItemMWII extends Item {
     }
 
     async rollDamage(event) {
-        if (!this.hasDamage) throw new Error("Shit be even more broken!");
+        if (!this.hasDamage) {
+            const message = game.i18n.format("MWII.Weapons.Errors.NoDamage", {weapon: this.data.name});
+            ui.notifications.error(message);
+            throw new Error(message);
+        }
 
         const hitLocation = await DiceMWII.rollHitLocation();
+        console.log(hitLocation);
 
-        return await DiceMWII.rollCheck({
-            event,
-            data: {},
-            template: "",
-            title: "",
-            speaker: ChatMessage.getSpeaker(),
-            flavor: "",
-            onClose: (html) => {},
-            dialogOptions: {},
-            isSave: false,
-            isUntrained: false,
-            hasNaturalAptitude: false
-        });
+        return await DiceMWII.rollDamage();
     }
 
     _calculateArmorDamageAbsorption(damageType) {

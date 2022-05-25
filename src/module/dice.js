@@ -6,6 +6,7 @@
  * @returns {void}
  */
 
+import RollDialog from "./apps/roll-dialog.js";
 import MWII from "./config.js";
 
 /**
@@ -29,7 +30,7 @@ export default class DiceMWII {
      * @param {Boolean}            [params.hasNaturalAptitude] Is this a skill check for a skill that the character has a natural aptitude for
      * @returns {Promise<Roll>} 
      */
-    static async rollCheck({event = jQuery.Event('click'), data = {}, template, title, speaker = ChatMessage.getSpeaker(), flavor, onClose, dialogOptions, isSave = false, isUntrained = false, hasNaturalAptitude = false} = {}) {
+    static async rollCheck({event = jQuery.Event('click'), data = {}, template, title, speaker = ChatMessage.getSpeaker(), flavor, onClose, dialogOptions={}, isSave = false, isUntrained = false, hasNaturalAptitude = false} = {}) {
         flavor = flavor || title;
 
         let rollMode = game.settings.get("core", "rollMode");
@@ -39,7 +40,10 @@ export default class DiceMWII {
                 mod: data.mod || 0,
                 isSave,
                 isUntrained,
-                hasNaturalAptitude
+                hasNaturalAptitude,
+                attackMods: data.attackMods || [],
+                isAttackRoll: data.isAttackRoll || false,
+                isRanged: data.isRanged || false
             });
             await roll.evaluate({async: true});
 
@@ -64,16 +68,35 @@ export default class DiceMWII {
             rollModes: CONFIG.Dice.rollModes
         };
 
+        if (data.isAttackRoll) {
+            dialogData.config = {};
+
+            if (data.isRanged) {
+                dialogData.config.modifiers = MWII.rangedCombatModifiers;
+                dialogData.config.modifierTable = MWII.rangedCombatModifiersTable;
+                dialogData.tableName = game.i18n.localize("MWII.Modifiers.Ranged.Title");
+            } else {
+                dialogData.config.modifiers = MWII.meleeModifiers;
+                dialogData.config.modifierTable = MWII.meleeModifiersTable;
+                dialogData.tableName = game.i18n.localize("MWII.Modifiers.Melee.Title");
+            }
+        }
+
         return new Promise((resolve) => {
             renderTemplate(template, dialogData).then(dlg => {
                 new Dialog({
                     title: title,
-                    content: dlg,
+                    content: dlg,                    
                     buttons: {
                         normal: {
                             label: "Roll",
                             callback: html => {
                                 if (onClose) onClose(html);
+                                const attackMods = [];
+                                html.find('[name="modifier.enabled"]:checked').each((idx, el) => {
+                                    attackMods.push($(el).val());
+                                });
+                                data['attackMods'] = attackMods;
                                 rollMode = html.find('[name="rollMode"]').val();
                                 data['mod'] = html.find('[name="mod"]').val();
                                 resolve(roll(formula));
@@ -105,8 +128,9 @@ export default class DiceMWII {
         };
     }
 
-    static async rollDamage({event = jQuery.Event('click'), formula, data, flavor, title, template} = {}) {
-        const content = await renderTemplate(template, dialogData);
+    static async rollDamage({event = jQuery.Event('click'), formula, data, flavor, title, template, dialogOptions={}} = {}) {
+        template = template || "systems/mwii/templates/apps/roll-dialog.html";
+        const content = await renderTemplate(template, {});
 
         return new Promise((resolve) => {
             const dialog = new Dialog({

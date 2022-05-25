@@ -27,6 +27,12 @@
                         {{#if item.isStack}}({{item.data.quantity}}) {{/if}}
                         {{~item.name~}}
                     </h4>
+                    {{#if item.hasAttack}}
+                    <button type="button" class="tag roll-attack" data-weapon-id="{{item._id}}">{{localize "MWII.Buttons.Roll.Attack"}}</button>
+                    {{/if}}
+                    {{#if item.hasDamage}}
+                    <button type="button" class="tag roll-damage" data-weapon-id="{{item._id}}">{{localize "MWII.Buttons.Roll.Damage"}}</button>
+                    {{/if}}
                 </div>
                 {{#if ../../owner}}
                 <div class="item-controls flexrow">

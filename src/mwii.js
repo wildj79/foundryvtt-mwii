@@ -72,7 +72,7 @@ Hooks.once('setup', function () {
 		"itemAvailability", "vehicleTypes", "itemLegality", "lethality",
 		"weaponTypes", "armorDamageAbsortionValueTypes", "armorTypes",
 		"armorCoverage", "armorCriticals", "gearSubTypes", "weaponSubTypes",
-		"hitLocations"
+		"hitLocations", "rangedCombatModifiers", "meleeModifiers"
 	];
 
 	for (let o of toLocalize) {

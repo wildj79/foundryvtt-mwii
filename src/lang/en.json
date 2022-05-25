@@ -88,6 +88,12 @@
             "Title": "Availability"
         },
         "Biography": "Biography",
+        "Buttons": {
+            "Roll": {
+                "Attack": "Roll Attack",
+                "Damage": "Roll Damage"
+            }
+        },
         "CBills": "C-Bills",
         "Characteristics": {
             "Athletic": "Athletic",
@@ -129,6 +135,9 @@
         "ItemCost":"Cost",
         "Items": {
             "Cost": "Cost",
+            "Errors": {
+                "NotAWeapon": "{item} is not a weapon and cannot make an attack!"
+            },
             "Subtype": {
                 "Communicators": "Communicators",
                 "Espionage": "Espionage/Surveillance",
@@ -147,6 +156,78 @@
             "C": "C",
             "D": "D",
             "Title": "Legality"
+        },
+        "Modifiers": {
+            "Melee": {
+                "AttackerSituation": {
+                    "AimedShot": {
+                        "Head": "Aimed shot: head",
+                        "ArmOrLeg": "Aimed shot: arm or leg",
+                        "Torso": "Aimed shot: torso"
+                    },
+                    "DrawingWeapon": "Drawing Weapon this round",
+                    "ParitalDarkness": "Partial darkness",
+                    "RanTackleOnly": "Ran (Tackle Only)",
+                    "SprintedTackleOnly": "Sprinted (Tackle Only)",
+                    "Title": "Attacker Situation",
+                    "TotalDarkness": "Total darkness",
+                    "UsingWrongHand": "Using wrong hand",
+                    "Walked": "Walked"
+                },
+                "TargetSituation": {
+                    "Evading": "Evading",
+                    "MakingAllOutAttack": "Making all-out-attack",
+                    "OnHigherGround": "On higher elevation",
+                    "ParitalConcealment": "In parital concealment",
+                    "Ran": "Ran",
+                    "RangedAttackThisRound": "Ranged attack this round",
+                    "Sprinted": "Sprinted",
+                    "Stationary": "Stationary",
+                    "Title": "Target Situation"
+                },
+                "Title": "Melee Modifiers Table"
+            },
+            "Ranged": {
+                "AttackerSituation": {
+                    "AimedShot": {
+                        "Head": "Aimed Shot: Head",
+                        "ArmOrLeg": "Aimed Shot: Arm or Leg",
+                        "Torso": "Aimed Shot: Torso"
+                    },
+                    "CarefulAim": "Careful Aim",
+                    "DrewWeapon": "Drew weapon this round",
+                    "FiringBurst": "Firing Burst (SMG)",
+                    "Ran": "Ran",
+                    "Sprinted": "Sprinted",
+                    "Title": "Attacker Situation",
+                    "UsingOffHand": "Using Off Hand",
+                    "Walked": "Walked"
+                },
+                "Range": {
+                    "Long": "Long",
+                    "Medium": "Medium",
+                    "Short": "Short",
+                    "Title": "Range"
+                },
+                "SpecialSituations": {
+                    "PartialDarkness": "Partial Dakness (night)",
+                    "Title": "Special Situations",
+                    "TotalDarkness": "Total Darkness"
+                },
+                "TargetSituation": {
+                    "Evading": "Evading",
+                    "FullCover": "In Full Cover (arm/head only exposed)",
+                    "ParitalCover": "In Partial Cover",
+                    "Prone": "Prone",
+                    "Running": "Running",
+                    "Sprinting": "Sprinting",
+                    "Stationary": "Stationary",
+                    "Title": "Target Situation",
+                    "Walking": "Walking"
+                },
+                "Title": "Ranged Combat Modifiers Table"
+            },
+            "Title": "Modifier"          
         },
         "Movement": {
             "Evade": "Evade",
@@ -178,6 +259,7 @@
                 "TargetNumber": "Target Number:"
             },
             "Titles": {
+                "AttackCheck": "Attack Check: {weapon}",
                 "AttributeSave": "{label} Attribute Save",
                 "CharacteristicSave": "{label} Characteristic Save",
                 "SkillCheck": "{label} Skill Check"
@@ -339,6 +421,7 @@
                 }
             },
             "Errors": {
+                "NoDamage": "{weapon} does not have a damage formula setup!",
                 "NoSkillUsed": "Cannot roll an attack for {weapon}. It does not have any skill associated with it. Please choose a skill to use for this attack."
             },
             "Lethality": {

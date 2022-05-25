@@ -18,6 +18,24 @@
         </select>
     </div>
     <div>
-        This is for attack rolls!
+        {{log this}}
+        <h3 class="modifier-table-title">{{tableName}}</h3>
+        <ul class="modifier-list">
+            {{#each config.modifierTable as |sub key|}}
+            <h3 class="modifier-list-title">{{lookup ../config.modifiers key}}</h3>
+            <li class="modifier-list-header flexrow">
+                <div class="modifier-list-header-enabled"></div>
+                <h3 class="modifier-list-header-name">{{lookup ../config.modfiers key}}</h3>
+                <div class="modifier-list-header-modifier">{{localize "MWII.Modifiers.Title"}}</div>
+            </li>
+            {{#each sub as |modifier m|}}
+            <li class="modifier flexrow toggle-modifier">
+                <input type="checkbox" name="modifier.enabled" data-modifier-id="{{m}}" class="modifier-enabled" title="{{lookup ../../config.modifiers m}}" value="{{modifier}}" />
+                <h4 class="modifier-name">{{lookup ../../config.modifiers m}}</h4>
+                <span class="modifier-modifier">{{modifier}}</span>
+            </li>
+            {{/each}}
+            {{/each}}
+        </ul>
     </div>
 </form>

@@ -42,7 +42,11 @@ export default class MWIIRoll extends Roll {
         const isSave = this.options?.isSave ?? false;
         const isUntrained = this.options?.isUntrained ?? false;
         const hasNaturalAptitude = this.options?.hasNaturalAptitude ?? false;
+        const isAttackRoll = this.options?.isAttackRoll ?? false;
         const mod = Roll.safeEval(this.options?.mod ?? "0");
+        const attackMods = this.options?.attackMods ?? [];
+        const allMods = mod + attackMods.map(x => parseInt(x)).reduce((a, b) => a + b, 0);
+        const target = this.options.target + allMods;
         let autoSuccess = false;
         let autoFailure = false;
         let success = false;
@@ -50,10 +54,14 @@ export default class MWIIRoll extends Roll {
         let marginOfSuccess = 0;
         let marginOfFailure = 0;
         const term = this.terms[0];
+        
 
         const addRolls = () => term.results.map(el => el.result).reduce((a, b) => a + b, 0);
 
-        if (isSave || hasNaturalAptitude) {
+        if (isAttackRoll && target > 12) {
+            autoFailure = true;
+            failure = true;
+        } else if (isSave || hasNaturalAptitude) {
             if (term.total === 12) {
                 autoSuccess = true;
                 success = true;
@@ -80,19 +88,19 @@ export default class MWIIRoll extends Roll {
         }
 
         if (!autoSuccess && !autoFailure) {
-            if (this.total >= (this.options.target + mod)) {
+            if (this.total >= target) {
                 success = true;
-                marginOfSuccess = this.total - (this.options.target + mod);
+                marginOfSuccess = this.total - target;
             } else {
                 failure = true;
-                marginOfFailure = (this.options.target + mod) - this.total;
+                marginOfFailure = target - this.total;
             }
         }
 
         return {
             baseTarget: this.options.target,
-            targetModifier: mod,
-            target: this.options.target + mod,
+            targetModifier: allMods,
+            target: target,
             success: success,
             failure: failure,
             autoSuccess: autoSuccess,

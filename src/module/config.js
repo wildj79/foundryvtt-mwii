@@ -235,6 +235,119 @@ MWII.hitLocationTable = [
     [null, "left_arm", "head", "torso", "torso_critical", "right_arm", "left_leg"],
     [null, "right_leg", "head", "torso", "torso", "right_arm_critical", "left_leg"],
     [null, "right_leg", "head", "torso", "torso", "right_arm", "left_leg_critical"]
-]
+];
+
+MWII.rangedCombatModifiers = {
+    "range": "MWII.Modifiers.Ranged.Range.Title",
+    "short": "MWII.Modifiers.Ranged.Range.Short",
+    "medium": "MWII.Modifiers.Ranged.Range.Medium",
+    "long": "MWII.Modifiers.Ranged.Range.Long",
+    "target_situation": "MWII.Modifiers.Ranged.TargetSituation.Title",
+    "stationary": "MWII.Modifiers.Ranged.TargetSituation.Stationary",
+    "walking": "MWII.Modifiers.Ranged.TargetSituation.Walking",
+    "running": "MWII.Modifiers.Ranged.TargetSituation.Running",
+    "sprinting": "MWII.Modifiers.Ranged.TargetSituation.Sprinting",
+    "evading": "MWII.Modifiers.Ranged.TargetSituation.Evading",
+    "partial_cover": "MWII.Modifiers.Ranged.TargetSituation.ParitalCover",
+    "full_cover": "MWII.Modifiers.Ranged.TargetSituation.FullCover",
+    "prone": "MWII.Modifiers.Ranged.TargetSituation.Prone",
+    "attacker_situation": "MWII.Modifiers.Ranged.AttackerSituation.Title",
+    "walked": "MWII.Modifiers.Ranged.AttackerSituation.Walked",
+    "ran": "MWII.Modifiers.Ranged.AttackerSituation.Ran",
+    "sprinted": "MWII.Modifiers.Ranged.AttackerSituation.Sprinted",
+    "using_off_hand": "MWII.Modifiers.Ranged.AttackerSituation.UsingOffHand",
+    "drew_weapon": "MWII.Modifiers.Ranged.AttackerSituation.DrewWeapon",
+    "aimed_shot_head": "MWII.Modifiers.Ranged.AttackerSituation.AimedShot.Head",
+    "aimed_shot_arm_leg": "MWII.Modifiers.Ranged.AttackerSituation.AimedShot.ArmOrLeg",
+    "aimed_shot_torso": "MWII.Modifiers.Ranged.AttackerSituation.AimedShot.Torso",
+    "firing_burst": "MWII.Modifiers.Ranged.AttackerSituation.FiringBurst",
+    "careful_aim": "MWII.Modifiers.Ranged.AttackerSituation.CarefulAim",
+    "special_situations": "MWII.Modifiers.Ranged.SpecialSituations.Title",
+    "partial_darkness": "MWII.Modifiers.Ranged.SpecialSituations.PartialDarkness",
+    "total_darkness": "MWII.Modifiers.Ranged.SpecialSituations.TotalDarkness"
+};
+
+MWII.rangedCombatModifiersTable = {
+    range: {
+        short: 0,
+        medium: 2,
+        long: 4
+    },
+    target_situation: {
+        stationary: -1,
+        walking: 0,
+        running: 1,
+        sprinting: 2,
+        evading: 3,
+        parital_cover: 1,
+        full_cover: 3,
+        prone: 1
+    },
+    attacker_situation: {
+        walked: 1,
+        ran: 2,
+        sprinted: 3,
+        using_off_hand: 2,
+        drew_weapon: 2,
+        aimed_shot_head: 6,
+        aimed_shot_arm_leg: 4,
+        aimed_shot_torso: 2,
+        firing_burst: -2,
+        careful_aim: -1
+    },
+    special_situations: {
+        partial_darkness: 2,
+        total_darkness: 4
+    }
+}
+
+MWII.meleeModifiers = {
+    "target_situation": "MWII.Modifiers.Melee.TargetSituation.Title",
+    "stationary": "MWII.Modifiers.Melee.TargetSituation.Stationary",
+    "ranged_attack_this_round": "MWII.Modifiers.Melee.TargetSituation.RangedAttackThisRound",
+    "on_higher_elevation": "MWII.Modifiers.Melee.TargetSituation.OnHigherGround",
+    "ran": "MWII.Modifiers.Melee.TargetSituation.Ran",
+    "sprinted": "MWII.Modifiers.Melee.TargetSituation.Sprinted",
+    "evading": "MWII.Modifiers.Melee.TargetSituation.Evading",
+    "making_all_out_attack": "MWII.Modifiers.Melee.TargetSituation.MakingAllOutAttack",
+    "partial_concealment": "MWII.Modifiers.Melee.TargetSituation.ParitalConcealment",
+    "attacker_situation": "MWII.Modifiers.Melee.AttackerSituation.Title",
+    "walked": "MWII.Modifiers.Melee.AttackerSituation.Walked",
+    "ran_tackle_only": "MWII.Modifiers.Melee.AttackerSituation.RanTackleOnly",
+    "sprinted_tackle_only": "MWII.Modifiers.Melee.AttackerSituation.SprintedTackleOnly",
+    "using_wrong_hand": "MWII.Modifiers.Melee.AttackerSituation.UsingWrongHand",
+    "drawing_weapon": "MWII.Modifiers.Melee.AttackerSituation.DrawingWeapon",
+    "aimed_shot_head": "MWII.Modifiers.Melee.AttackerSituation.AimedShot.Head",
+    "aimed_shot_arm_leg": "MWII.Modifiers.Melee.AttackerSituation.AimedShot.ArmOrLeg",
+    "aimed_shot_torso": "MWII.Modifiers.Melee.AttackerSituation.AimedShot.Torso",
+    "parital_darkness": "MWII.Modifiers.Melee.AttackerSituation.ParitalDarkness",
+    "total_darkness": "MWII.Modifiers.Melee.AttackerSituation.TotalDarkness"
+};
+MWII.meleeModifiersTable = {
+    target_situation: {
+        stationary: -1,
+        ranged_attack_this_round: -1,
+        on_higher_elevation: 2,
+        ran: 1,
+        sprinted: 2,
+        evading: 3,
+        making_all_out_attack: -2,
+        parital_concealment: 1
+    },
+    attacker_situation: {
+        walked: 1,
+        ran_tackle_only: 2,
+        sprinted_tackle_only: 3,
+        making_all_out_attack: -2,
+        on_higher_elevation: -2,
+        using_wrong_hand: 2,
+        drawing_weapon: 2,
+        aimed_shot_head: 4,
+        aimed_shot_arm_leg: 3,
+        aimed_shot_torso: 2,
+        parital_darkness: 1,
+        total_darkness: 2
+    }
+};
 
 export default MWII;
