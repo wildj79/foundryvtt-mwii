@@ -183,6 +183,11 @@
                 border-bottom: 1px solid #bbb;
                 &:last-child { border-bottom: none; }
 
+                .tag {
+                    flex: 0 0 90px;
+                    font-size: var(--font-size-11);
+                }
+
                 .item-name {
                     cursor: pointer;
 
@@ -196,12 +201,8 @@
                         margin: 0;
                     }
 
-                    &:hover .item-image {
-                        background-image: url('../../icons/svg/d6-grey.svg') !important;
-                    }
-
                     .item-image:hover {
-                        background-image: url('../../icons/dice/d6black.svg') !important;
+                        background-image: url('../../icons/svg/d6-grey.svg') !important;
                     }
                 }
             }

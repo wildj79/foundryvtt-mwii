@@ -279,7 +279,7 @@ MWII.rangedCombatModifiersTable = {
         running: 1,
         sprinting: 2,
         evading: 3,
-        parital_cover: 1,
+        partial_cover: 1,
         full_cover: 3,
         prone: 1
     },
@@ -332,7 +332,7 @@ MWII.meleeModifiersTable = {
         sprinted: 2,
         evading: 3,
         making_all_out_attack: -2,
-        parital_concealment: 1
+        partial_concealment: 1
     },
     attacker_situation: {
         walked: 1,

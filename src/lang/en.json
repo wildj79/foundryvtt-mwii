@@ -91,7 +91,8 @@
         "Buttons": {
             "Roll": {
                 "Attack": "Roll Attack",
-                "Damage": "Roll Damage"
+                "Damage": "Roll Damage",
+                "Title": "Roll"
             }
         },
         "CBills": "C-Bills",
@@ -149,6 +150,10 @@
                 "Title": "Type",
                 "WeaponAccessories": "Weapon Accessories"
             }
+        },
+        "Labels": {
+            "Formula": "Formula",
+            "RollMode": "Roll Mode"
         },
         "Legality": {
             "A": "A",
@@ -253,16 +258,25 @@
                 "AutomaticSuccess": "Automatic Success",
                 "AutomaticFailure": "Automatic Failure",
                 "BaseTargetNumber": "Base Target Number:",
+                "DamageType": "Damage Type:",
+                "HitLocation": "Hit Location:",
+                "Lethality": "Lethality:",
                 "MarginOfFailure": "Margin of Failure:",
                 "MarginOfSuccess": "Margin of Success:",
                 "Modifiers": "Total Modifiers:",
+                "SkillUsed": "Skill Used:",
                 "TargetNumber": "Target Number:"
+            },
+            "Labels": {
+                "SpecializationApplies": "Does this specialization apply: {specialization}"
             },
             "Titles": {
                 "AttackCheck": "Attack Check: {weapon}",
-                "AttributeSave": "{label} Attribute Save",
-                "CharacteristicSave": "{label} Characteristic Save",
-                "SkillCheck": "{label} Skill Check"
+                "AttributeSave": "Attribute Save: {label}",
+                "CharacteristicSave": "Characteristic Save: {label}",
+                "Damage": "Damage Roll: {weapon}",
+                "SkillCheck": "Skill Check: {label}",
+                "SkillCheckWithSpecialization": "Skill Check: {label} ({specialization})"
             }
         },
         "Skills": {            
@@ -307,6 +321,9 @@
             "Impersonation": "Impersonation",
             "Interrogation": "Interrogation",
             "JumpPack": "Jump Pack",
+            "Labels": {
+                "SkillUsed": "Skill Used"
+            },
             "Leadership": "Leadership",
             "Levels": "Skill Levels",
             "Medtech": "Medtech",

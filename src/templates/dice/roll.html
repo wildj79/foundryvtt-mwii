@@ -1,9 +1,15 @@
-<div class="dice-roll{{#if target}} mwii{{/if}}">
+<div class="dice-roll{{#if (or target isDamageRoll)}} mwii{{/if}}">
     {{#if flavor}}
     <div class="dice-flavor">{{flavor}}</div>
     {{/if}}
     {{#if target}}
     <div class="breakdown flexcol">
+        {{#if skillUsed}}
+        <div class="flexrow">
+            <span class="label">{{localize "MWII.Rolls.Breakdown.SkillUsed"}}</span>
+            <span>{{skillUsed}}</span>
+        </div>
+        {{/if}}
         <div class="flexrow">
             <span class="label">{{localize "MWII.Rolls.Breakdown.BaseTargetNumber"}}</span>
             <span>{{baseTarget}}</span>
@@ -33,6 +39,25 @@
         {{/if}}
         {{#if autoFailure}}
         <div class="margin-failure failure flexrow">{{localize "MWII.Rolls.Breakdown.AutomaticFailure"}}</div>
+        {{/if}}
+    </div>
+    {{/if}}
+    {{#if isDamageRoll}}
+    <div class="breakdown flexcol">
+        <div class="flexrow">
+            <span class="label">{{localize "MWII.Rolls.Breakdown.DamageType"}}</span>
+            <span>{{damageType}}</span>
+        </div>
+        <div class="flexrow">
+            <span class="label">{{localize "MWII.Rolls.Breakdown.Lethality"}}</span>
+            <span>{{lethality}}</span>
+        </div>
+        <div class="flexrow">
+            <span class="label">{{localize "MWII.Rolls.Breakdown.HitLocation"}}</span>
+            <span>{{hitLocation.label}}</span>
+        </div>
+        {{#if hitLocation.isCritical}}
+        <div class="damage critical flexrow">{{localize "Critical Hit!"}}</div>
         {{/if}}
     </div>
     {{/if}}

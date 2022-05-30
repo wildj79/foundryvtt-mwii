@@ -120,7 +120,10 @@ export class ActorMWII extends Actor {
     async rollSkillCheck(skillId, options = {}) {
         const label = MWII.skills[skillId];
         const skill = this.data.data.skills[skillId];
-        let title = game.i18n.format("MWII.Rolls.Titles.SkillCheck", {label: label});
+        const hasSpecialization = skill.specialization?.trim()?.length > 0 ?? false;
+        let title = !hasSpecialization ? 
+            game.i18n.format("MWII.Rolls.Titles.SkillCheck", {label: label}) : 
+            game.i18n.format("MWII.Rolls.Titles.SkillCheckWithSpecialization", {label: label, specialization: skill.specialization});
 
         if (options?.isAttackRoll) {
             title = game.i18n.format("MWII.Rolls.Titles.AttackCheck", {weapon: options.weapon});
@@ -130,13 +133,11 @@ export class ActorMWII extends Actor {
             target: skill.target,
             isRanged: options?.isRanged ?? false,
             weapon: options?.weapon ?? "",
-            isAttackRoll: options?.isAttackRoll ?? false
+            isAttackRoll: options?.isAttackRoll ?? false,
+            hasSpecialization: skill.specialization?.trim()?.length > 0 ?? false,
+            specialization: skill.specialization,
+            skillUsed: label
         };
-
-        let template = null;
-        if (options.isAttackRoll) {
-            template = "systems/mwii/templates/apps/attack-roll-dialog.html";
-        }
             
         return await DiceMWII.rollCheck({
             event: options.event,
@@ -144,8 +145,7 @@ export class ActorMWII extends Actor {
             title: title,
             speaker: ChatMessage.getSpeaker({ actor: this }),
             isUntrained: skill.level < 1,
-            hasNaturalAptitude: skill.natural_aptitude,
-            template
+            hasNaturalAptitude: skill.natural_aptitude
         });
     }
 

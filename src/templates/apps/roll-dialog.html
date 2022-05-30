@@ -1,14 +1,22 @@
-<form>
+<form autocomplete="off">
+    {{#if data.isAttackRoll}}
     <div class="form-group">
-        <label>Formula</label>
+        <label>{{localize "MWII.Skills.Labels.SkillUsed"}}</label>
+        <input type="text" name="skill-used" value="{{data.skillUsed}}" disabled/>
+    </div>
+    {{/if}}
+    <div class="form-group">
+        <label>{{localize "MWII.Labels.Formula"}}</label>
         <input type="text" name="formula" value="{{formula}}" disabled/>
     </div>
+    {{#unless isDamageRoll}}
     <div class="form-group">
         <label>{{localize "MWII.TargetModifiers"}}</label>
         <input type="text" name="mod" value="" placeholder="e.g. +/-4" />
     </div>
+    {{/unless}}
     <div class="form-group">
-        <label>Roll Mode</label>
+        <label>{{localize "MWII.Labels.RollMode"}}</label>
         <select name="rollMode">
         {{#select rollMode}}
         {{#each rollModes as |label mode|}}
@@ -17,4 +25,33 @@
         {{/select}}
         </select>
     </div>
+    {{#if data.hasSpecialization}}
+    <div class="form-group">
+        <label class="checkbox">
+            <input type="checkbox" name="modifier.applySpecialization" />
+            {{localize "MWII.Rolls.Labels.SpecializationApplies" specialization=data.specialization}}
+        </label>
+    </div>
+    {{/if}}
+    {{#if data.isAttackRoll}}
+    <div class="modifiers">
+        <h3 class="modifier-table-title">{{tableName}}</h3>
+        <ul class="modifier-list">
+            {{#each config.modifierTable as |sub key|}}
+            <li class="modifier-list-header flexrow">
+                <div class="modifier-list-header-enabled">{{lookup ../config.modifiers key}}</div>
+                <div class="modifier-list-header-name"></div>
+                <div class="modifier-list-header-modifier">{{localize "MWII.Modifiers.Title"}}</div>
+            </li>
+            {{#each sub as |modifier m|}}
+            <li class="modifier flexrow toggle-modifier">
+                <input type="checkbox" name="modifier.enabled" data-modifier-id="{{m}}" class="modifier-enabled" title="{{lookup ../../config.modifiers m}}" value="{{modifier}}" />
+                <h4 class="modifier-name">{{lookup ../../config.modifiers m}}</h4>
+                <span class="modifier-modifier">{{numberFormat modifier sign=true}}</span>
+            </li>
+            {{/each}}
+            {{/each}}
+        </ul>
+    </div>
+    {{/if}}
 </form>

@@ -17,7 +17,7 @@ export class ItemMWII extends Item {
     }
 
     get isRanged() {
-        return this.data.data.type !== "melee";
+        return this.data.data.type !== "melee" || this.data.data.skill === 'throwing_weapons';
     }
 
     prepareData() {
@@ -75,9 +75,20 @@ export class ItemMWII extends Item {
         }
 
         const hitLocation = await DiceMWII.rollHitLocation();
-        console.log(hitLocation);
 
-        return await DiceMWII.rollDamage();
+        const data = this.actor.getRollData();
+        data.hitLocation = hitLocation;
+        data.damageType = this.data.data.damageType;
+        data.lethality = this.data.data.lethality;
+
+        const title = game.i18n.format("MWII.Rolls.Titles.Damage", {weapon: this.data.name});
+
+        return await DiceMWII.rollDamage({
+            event,
+            data,
+            formula: this.data.data.damage,
+            title
+        });
     }
 
     _calculateArmorDamageAbsorption(damageType) {

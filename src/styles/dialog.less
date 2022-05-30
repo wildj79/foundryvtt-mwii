@@ -1,0 +1,38 @@
+.dialog-content {
+    .modifiers {
+        h3 {
+            font-size: 1.025em;
+            &.modifier-table-title {
+                margin-top: 10px;
+            }
+        }
+
+        .modifier-list {
+            padding: 0;
+
+            .modifier-list-header {
+                font-size: var(--font-size-12);
+                font-style: italic;
+                margin-bottom: 5px;
+            }
+
+            .modifier {
+                align-items: normal;
+
+                input[type="checkbox"].modifier-enabled {
+                    height: 15px;
+                    width: 15px;
+                    flex: 0 0 15px;
+                }
+
+                h4.modifier-name {
+                    font-size: var(--font-size-12);
+                }
+
+                .modifier-modifier {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

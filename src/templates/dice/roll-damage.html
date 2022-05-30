@@ -2,6 +2,18 @@
     {{#if flavor}}
     <div class="dice-flavor">{{flavor}}</div>
     {{/if}}
+    {{#if isDamageRoll}}
+    <div class="breakdown flexcol">
+        <div class="flexrow">
+            <span class="label">{{localize "Damage Type"}}</span>
+            <span>{{damageType}}</span>
+        </div>
+        <div class="flexrow">
+            <span class="label">{{localize "Lethality"}}</span>
+            <span>{{lethality}}</span>
+        </div>
+    </div>
+    {{/if}}
     <div class="dice-result">
         <div class="dice-formula">{{formula}}</div>
         {{{tooltip}}}

@@ -43,7 +43,9 @@ export default class DiceMWII {
                 hasNaturalAptitude,
                 attackMods: data.attackMods || [],
                 isAttackRoll: data.isAttackRoll || false,
-                isRanged: data.isRanged || false
+                isRanged: data.isRanged || false,
+                specializationMod: data.specializationMod || 0,
+                skillUsed: data.skillUsed || ""
             });
             await roll.evaluate({async: true});
 
@@ -89,7 +91,7 @@ export default class DiceMWII {
                     content: dlg,                    
                     buttons: {
                         normal: {
-                            label: "Roll",
+                            label: game.i18n.localize("MWII.Buttons.Roll.Title"),
                             callback: html => {
                                 if (onClose) onClose(html);
                                 const attackMods = [];
@@ -99,6 +101,13 @@ export default class DiceMWII {
                                 data['attackMods'] = attackMods;
                                 rollMode = html.find('[name="rollMode"]').val();
                                 data['mod'] = html.find('[name="mod"]').val();
+                                if (data?.hasSpecialization ?? false) {
+                                    if (html.find('[name="modifier.applySpecialization"]').is(':checked')) {
+                                        data['specializationMod'] = -1;
+                                    } else {
+                                        data['specializationMod'] = 1;
+                                    }
+                                }
                                 resolve(roll(formula));
                             }
                         }
@@ -113,24 +122,66 @@ export default class DiceMWII {
     }
 
     /**
+     * Describes the hit location.
+     * 
+     * @typedef {object} HitLocationData
+     * @property {string}  location   The key for the location that was hit
+     * @property {string}  label      The label for the location that was hit
+     * @property {boolean} isCritical Was this a critical hit
+     */
+
+    /**
      * Convience method to quickly roll a to-hit location.
      * 
-     * @returns {string} The location hit by the damage roll.
+     * @returns {HitLocationData} Data about the hit location.
      */
     static async rollHitLocation() {
         const roll1 = await Roll.create("1d6").evaluate({async: true});
         const roll2 = await Roll.create("1d6").evaluate({async: true});
         const location = MWII.hitLocationTable[roll1.total][roll2.total];
+        const isCritical = roll1.total === roll2.total;
 
         return {
             location,
-            label: MWII.hitLocations[location]
+            label: MWII.hitLocations[location],
+            isCritical
         };
     }
 
-    static async rollDamage({event = jQuery.Event('click'), formula, data, flavor, title, template, dialogOptions={}} = {}) {
+    static async rollDamage({event = jQuery.Event('click'), formula, data, flavor, title, template, dialogOptions={}, speaker = ChatMessage.getSpeaker()} = {}) {
+        flavor = flavor || title;
+        let rollMode = game.settings.get("core", "rollMode");
+
+        const roll = async (formula) => {
+            let roll = Roll.create(formula, data, {
+                hitLocation: data.hitLocation,
+                isDamageRoll: true,
+                damageType: data.damageType,
+                lethality: data.lethality
+            });
+            await roll.evaluate({async: true});
+
+            if (data.hitLocation.isCritical) {
+                roll._total *= 2;
+            }
+
+            roll.toMessage({
+                speaker: speaker,
+                flavor: flavor
+            }, {rollMode});
+
+            return roll;
+        };
+
+        const dialogData = {
+            formula: formula,
+            data: data,
+            rollMode: rollMode,
+            rollModes: CONFIG.Dice.rollModes,
+            isDamageRoll: true
+        };
         template = template || "systems/mwii/templates/apps/roll-dialog.html";
-        const content = await renderTemplate(template, {});
+        const content = await renderTemplate(template, dialogData);
 
         return new Promise((resolve) => {
             const dialog = new Dialog({
@@ -138,15 +189,16 @@ export default class DiceMWII {
                 content: content,
                 buttons: {
                     normal: {
-                        label: "",
+                        label: game.i18n.localize("MWII.Buttons.Roll.Title"),
                         callback: html => {
-    
+                            rollMode = html.find('[name="rollMode"]').val();
+                            resolve(roll(formula));
                         }
-                    },
-                    default: "normal",
-                    close: html => {
-                        resolve(null);
                     }
+                },
+                default: "normal",
+                close: html => {
+                    resolve(null);
                 }
             }, dialogOptions);
     
@@ -154,96 +206,3 @@ export default class DiceMWII {
         });        
     }
 }
-
-/**
- * This method has been deprecated. I'm keeping it here for historical reference
- * for the moment. Needs to be removed before launch.
- * 
- * @deprecated This functionality has been moved to the @see {MWIIRoll} class.
- */
-export const highlightSuccessOrFailure = function (message, html, data) {
-    if (!message.isRoll || !message.isContentVisible) return;
-    console.log(data);
-
-    const d = message.roll.terms[0];
-    const roll = message.roll;
-    if (roll.options && roll.options.target) {
-        let isSave = roll.options.isSave || false;
-        let isUntrained = roll.options.isUntrained || false;
-        let hasNaturalAptitude = roll.options.hasNaturalAptitude || false;
-        let mod = Roll.safeEval(roll.options.mod) || 0;
-        let title = `Target = Base(${roll.options.target}) + Mod(${mod}) = ${(roll.options.target + mod)}`;
-
-        let autoSuccess = () => {
-            html.find('.dice-total').addClass('success');
-
-            const div = $('<div class="margin-success critical">');
-            div.html("Automatic Success");
-            div.attr('title', title);
-            html.find('.dice-result').append(div);
-        };
-
-        let autoFailure = () => {
-            html.find('.dice-total').addClass('failure');
-
-            const div = $('<div class="margin-failure failure">');
-            div.html("Automatic Failure");
-            div.attr('title', title);
-            html.find('.dice-result').append(div);
-        };
-
-        let addRolls = () => d.results.map(el => el.result).reduce((a, b) => a + b, 0);
-
-        if (isSave || hasNaturalAptitude) {
-            if (d.total === 12) {
-                autoSuccess();
-
-                return;
-            } else if (d.results.length === 3 && addRolls() === 3) {
-                autoFailure();
-
-                return;
-            }
-        }
-
-        if (isUntrained) {
-            if (d.results.length === 3 && addRolls() === 18) {
-                autoSuccess();
-
-                return;
-            } else if (d.total === 2) {
-                autoFailure();
-
-                return;
-            }
-        }
-
-        if (d.total === 12) {
-            autoSuccess();
-            
-            return;
-        } else if (d.total === 2) {
-            autoFailure();
-
-            return;
-        }
-        
-        if (roll.total >= (roll.options.target + mod)) {
-            html.find('.dice-total').addClass('success');
-            const marginOfSuccess = roll.total - (roll.options.target + mod);
-
-            const div = $('<div class="margin-success">');
-            div.html(`Margin of Success <span class="mos">${marginOfSuccess}</span>`);
-            div.attr('title', title);
-            html.find('.dice-result').append(div);
-        } else {
-            html.find('.dice-total').addClass('failure');
-            const marginOfFailure = (roll.options.target + mod) - roll.total;
-
-            const div = $('<div class="margin-failure">');
-            div.html(`Margin of Failure <span class="mof">${marginOfFailure}</span>`);
-            div.attr('title', title);
-            html.find('.dice-result').append(div);
-        }
-    }
-};

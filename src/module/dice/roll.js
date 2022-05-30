@@ -1,3 +1,5 @@
+import MWII from '../config.js';
+
 export default class MWIIRoll extends Roll {
     constructor(formula, data={}, options={}) {
         super(formula, data, options);
@@ -15,7 +17,9 @@ export default class MWIIRoll extends Roll {
     async render({flavor, template=this.constructor.CHAT_TEMPLATE, isPrivate=false}={}) {
         if (!this._evaluated) await this.evaluate({async: true});
 
-        const systemData = this._processSystemDataForRender(isPrivate);
+        const attackData = this._processAttackDataForRender(isPrivate);
+        const damageData = this._processDamageDataForRender(isPrivate);
+        const systemData = foundry.utils.mergeObject(attackData, damageData);
 
         const chatData = foundry.utils.mergeObject({
             formula: isPrivate ? "???" : this._formula,
@@ -28,6 +32,17 @@ export default class MWIIRoll extends Roll {
         return renderTemplate(template, chatData);
     }
 
+    _processDamageDataForRender(isPrivate) {
+        if (isPrivate || !("isDamageRoll" in this.options)) return {};
+
+        return {
+            isDamageRoll: this.options.isDamageRoll,
+            hitLocation: this.options.hitLocation,
+            damageType: MWII.damageTypes[this.options.damageType],
+            lethality: MWII.lethality[this.options.lethality]
+        }
+    }
+
     /**
      * Pull data from the roll options and prepare them for use in the custom 
      * Roll chat cards used by the system.
@@ -36,7 +51,7 @@ export default class MWIIRoll extends Roll {
      * @returns {object} Extra data used by the MWII system for rolls
      * @private
      */
-    _processSystemDataForRender(isPrivate) {
+    _processAttackDataForRender(isPrivate) {
         if (isPrivate || !("target" in this.options)) return {};
 
         const isSave = this.options?.isSave ?? false;
@@ -44,8 +59,9 @@ export default class MWIIRoll extends Roll {
         const hasNaturalAptitude = this.options?.hasNaturalAptitude ?? false;
         const isAttackRoll = this.options?.isAttackRoll ?? false;
         const mod = Roll.safeEval(this.options?.mod ?? "0");
+        const specializationMod = Roll.safeEval(this.options?.specializationMod ?? "0");
         const attackMods = this.options?.attackMods ?? [];
-        const allMods = mod + attackMods.map(x => parseInt(x)).reduce((a, b) => a + b, 0);
+        const allMods = mod + specializationMod + attackMods.map(x => parseInt(x)).reduce((a, b) => a + b, 0);
         const target = this.options.target + allMods;
         let autoSuccess = false;
         let autoFailure = false;
@@ -106,7 +122,8 @@ export default class MWIIRoll extends Roll {
             autoSuccess: autoSuccess,
             autoFailure: autoFailure,
             marginOfSuccess: marginOfSuccess,
-            marginOfFailure: marginOfFailure
+            marginOfFailure: marginOfFailure,
+            skillUsed: this.options.skillUsed
         };
     }
 }
