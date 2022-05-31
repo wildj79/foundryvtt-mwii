@@ -224,7 +224,7 @@ export async function onHitLocationConfirmed(message) {
     
     const answer = await Dialog.confirm({
         title: "Test",
-        content: `<div>${userForSender.name} has rolled rolled a hit location of ${payload.label}. Is this OK?</div>`
+        content: `<div>${userForSender.name} has rolled a hit location of ${payload.label}. Is this OK?</div>`
     });
 
     if (answer) {
