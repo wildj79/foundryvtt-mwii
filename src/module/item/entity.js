@@ -43,6 +43,10 @@ export class ItemMWII extends Item {
 
     }
 
+    static initializeSocketListeners() {
+        game.mwii.socket.registerCallback('hitLocationConfirmed', 'local', this._onHitLocationConfirmed);
+    }
+
     /**
      * Roll an attack for this weapon.
      * 
@@ -67,14 +71,36 @@ export class ItemMWII extends Item {
         return this.actor.rollSkillCheck(skillUsed, {event, isAttackRoll: true, isRanged, weapon: this.data.name});
     }
 
-    async rollDamage(event) {
+    async rollHitLocation(event) {
+        const hitLocation = await DiceMWII.rollHitLocation(this.id, this.actor.id);
+        game.mwii.socket.sendMessageTo('gm', 'confirmHitLocation', hitLocation);
+    }
+
+    /**
+     * Handle confirmation of the hit location roll.
+     * 
+     * @param {MWIIMessageData} message The message being handled
+     */
+    static _onHitLocationConfirmed(message) {
+        const { payload } = message;
+
+        if (!payload) return;
+
+        const actor = game.actors.get(payload.actorId);
+        const item = actor.items.get(payload.itemId);
+
+        item.rollDamage(jQuery.Event('click'), payload);
+    }
+
+    async rollDamage(event, hitLocation = null) {
         if (!this.hasDamage) {
             const message = game.i18n.format("MWII.Weapons.Errors.NoDamage", {weapon: this.data.name});
             ui.notifications.error(message);
             throw new Error(message);
         }
 
-        const hitLocation = await DiceMWII.rollHitLocation();
+        if (!hitLocation)
+            hitLocation = await DiceMWII.rollHitLocation();
 
         const data = this.actor.getRollData();
         data.hitLocation = hitLocation;

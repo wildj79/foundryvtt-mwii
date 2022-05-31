@@ -5,8 +5,6 @@
  * @param {JQuery} html The html of the dialog
  * @returns {void}
  */
-
-import RollDialog from "./apps/roll-dialog.js";
 import MWII from "./config.js";
 
 /**
@@ -133,9 +131,11 @@ export default class DiceMWII {
     /**
      * Convience method to quickly roll a to-hit location.
      * 
+     * @property {string} itemId The weapon being fired.
+     * @property {string} actorId The actor firing the weapon.
      * @returns {HitLocationData} Data about the hit location.
      */
-    static async rollHitLocation() {
+    static async rollHitLocation(itemId, actorId) {
         const roll1 = await Roll.create("1d6").evaluate({async: true});
         const roll2 = await Roll.create("1d6").evaluate({async: true});
         const location = MWII.hitLocationTable[roll1.total][roll2.total];
@@ -144,7 +144,9 @@ export default class DiceMWII {
         return {
             location,
             label: MWII.hitLocations[location],
-            isCritical
+            isCritical,
+            itemId,
+            actorId
         };
     }
 
@@ -153,6 +155,10 @@ export default class DiceMWII {
         let rollMode = game.settings.get("core", "rollMode");
 
         const roll = async (formula) => {
+            if (data.hitLocation.isCritical) {
+                formula = `(${formula}) * 2`;
+            }
+
             let roll = Roll.create(formula, data, {
                 hitLocation: data.hitLocation,
                 isDamageRoll: true,
@@ -160,10 +166,6 @@ export default class DiceMWII {
                 lethality: data.lethality
             });
             await roll.evaluate({async: true});
-
-            if (data.hitLocation.isCritical) {
-                roll._total *= 2;
-            }
 
             roll.toMessage({
                 speaker: speaker,
@@ -204,5 +206,31 @@ export default class DiceMWII {
     
             dialog.render(true);
         });        
+    }
+}
+
+export function initializeHitLocationSocket() {
+    game.mwii.socket.registerCallback('confirmHitLocation', 'gm', onHitLocationConfirmed);
+}
+
+export async function onHitLocationConfirmed(message) {
+    const { sender, payload } = message;
+
+    if (!payload) return null;
+    if (!sender) return null;
+
+    /** @type {User} */
+    const userForSender = game.users.get(sender);
+    
+    const answer = await Dialog.confirm({
+        title: "Test",
+        content: `<div>${userForSender.name} has rolled rolled a hit location of ${payload.label}. Is this OK?</div>`
+    });
+
+    if (answer) {
+        game.mwii.socket.sendMessageTo(sender, 'hitLocationConfirmed', payload);
+    } else {
+        const hitLocation = await DiceMWII.rollHitLocation(payload.itemId, payload.actorId);
+        game.mwii.socket.sendMessageTo(sender, 'hitLocationConfirmed', hitLocation);
     }
 }

@@ -163,7 +163,8 @@ export class ActorSheetMWII extends ActorSheet {
         const weaponId = $(event.currentTarget).data('weaponId');
         const weapon = this.actor.items.find(i => i.id === weaponId);
 
-        weapon.rollDamage(event);
+        //weapon.rollDamage(event);
+        weapon.rollHitLocation(event);
     }
 
     /**

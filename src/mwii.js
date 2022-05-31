@@ -16,13 +16,14 @@ import MWIICombat from './module/combat.js';
 import MWIICombatant from './module/combatant.js';
 import EditSkillApplication from './module/apps/edit-skill-application.js';
 import MWIIRoll from './module/dice/roll.js';
-import DiceMWII from './module/dice.js';
+import DiceMWII, { initializeHitLocationSocket } from './module/dice.js';
+import MWIISocket from './module/socket.js';
 
 /* ------------------------------------ */
 /* Initialize system					*/
 /* ------------------------------------ */
 Hooks.once('init', async function () {
-	console.log('Mechwarrior 2 | Initializing ');
+	console.log('Mechwarrior 2nd Edition | Initializing ');
 
 	game.mwii = {
 		applications: {
@@ -36,7 +37,8 @@ Hooks.once('init', async function () {
 			MWIICombat,
 			MWIICombatant,
 		},
-		roll: MWIIRoll
+		roll: MWIIRoll,
+		socket: new MWIISocket()
 	};
 
 	CONFIG.MWII = MWII;
@@ -66,6 +68,9 @@ Hooks.once('init', async function () {
 /* Setup system							*/
 /* ------------------------------------ */
 Hooks.once('setup', function () {
+	game.mwii.socket.initialize();
+	initializeHitLocationSocket();
+	ItemMWII.initializeSocketListeners();
 	const toLocalize = [
 		"attributes", "characteristics", "skills", "movement", "damageTypes",
 		"unitsOfMeasureWeight", "unitsOfMeasureDistance", "itemTechLevel",
@@ -90,7 +95,7 @@ Hooks.once('setup', function () {
 Hooks.once('ready', function () {
 	// Do anything once the system is ready
 
-	console.log("Mechwarrior 2 | Reactor: online, Sensors: online, Weapons: online. All systems nominal");
+	console.log("Mechwarrior 2nd Edition | Reactor: online, Sensors: online, Weapons: online. All systems nominal");
 });
 
 // Add any additional hooks if necessary
