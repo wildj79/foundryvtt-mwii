@@ -162,9 +162,10 @@ export class ActorSheetMWII extends ActorSheet {
 
         const weaponId = $(event.currentTarget).data('weaponId');
         const weapon = this.actor.items.find(i => i.id === weaponId);
+        const shouldSendConfirmationToGM = game.settings.get('mwii', 'sendHitLocationConfirmationToGM');
 
-        //weapon.rollDamage(event);
-        weapon.rollHitLocation(event);
+        if (shouldSendConfirmationToGM) weapon.rollHitLocation(event);
+        else weapon.rollDamage(event);
     }
 
     /**

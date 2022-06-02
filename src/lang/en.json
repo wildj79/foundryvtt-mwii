@@ -119,6 +119,12 @@
         "Gear": "Gear",
         "Height": "Height",
         "HitLocation": {
+            "Confirm": {
+                "SendToGMHint": "Should the system send a confirmation to the GM when a damage is rolled so that thye can confirm if the location hit is valid for this attack or not.",
+                "SendToGMTitle": "Send a hit location confirmation to the GM when damage is rolled?",
+                "Text": "{actor} has rolled a hit location of {hitLocation}. Is this a valid hit location for this attack?",
+                "Title": "Confirm Hit Location"
+            },
             "Critical": {
                 "LeftArm": "Left Arm (Critical)",
                 "LeftLeg": "Left Leg (Critical)",
@@ -408,6 +414,8 @@
             "Millimeter": "millimeter",
             "Title": "Unit of Measure"
         },
+        "UseTacticalInitiative": "Use Tactical Initiative?",
+        "UseTacticalInitiativeHint": "Use the Tactical Initiative optional rule from MechWarrior Companion, p. 41",
         "Vehicle": {
             "Chasis": "Chasis",          
             "Title": "Vehicle",

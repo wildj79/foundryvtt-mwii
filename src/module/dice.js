@@ -126,6 +126,8 @@ export default class DiceMWII {
      * @property {string}  location   The key for the location that was hit
      * @property {string}  label      The label for the location that was hit
      * @property {boolean} isCritical Was this a critical hit
+     * @property {string}  itemId     The ID of the weapon rolling damage
+     * @property {string}  actorId    The ID of the actor making the attack.
      */
 
     /**
@@ -210,21 +212,21 @@ export default class DiceMWII {
 }
 
 export function initializeHitLocationSocket() {
-    game.mwii.socket.registerCallback('confirmHitLocation', 'gm', onHitLocationConfirmed);
+    game.mwii.socket.registerCallback('confirmHitLocation', 'gm', onConfirmHitLocation);
 }
 
-export async function onHitLocationConfirmed(message) {
+export async function onConfirmHitLocation(message) {
     const { sender, payload } = message;
 
     if (!payload) return null;
     if (!sender) return null;
 
-    /** @type {User} */
-    const userForSender = game.users.get(sender);
+    /** @type {ActorMWII} */
+    const actor = game.actors.get(payload.actorId);
     
     const answer = await Dialog.confirm({
-        title: "Test",
-        content: `<div>${userForSender.name} has rolled a hit location of ${payload.label}. Is this OK?</div>`
+        title: game.i18n.localize('MWII.HitLocation.Confirm.Title'),
+        content: `<div>${game.i18n.format("MWII.HitLocation.Confirm.Text", {actor: actor.name, hitLocation: payload.label})}</div>`
     });
 
     if (answer) {
