@@ -137,7 +137,8 @@
             "LeftLeg": "Left Leg",
             "RightArm": "Right Arm",            
             "RightLeg": "Right Leg",
-            "Torso": "Torso"
+            "Torso": "Torso",
+            "WaitingForGM": "Waiting for the GM to confirm the hit."
         },
         "ItemCost":"Cost",
         "Items": {

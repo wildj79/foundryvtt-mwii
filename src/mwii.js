@@ -18,6 +18,7 @@ import EditSkillApplication from './module/apps/edit-skill-application.js';
 import MWIIRoll from './module/dice/roll.js';
 import DiceMWII, { initializeHitLocationSocket } from './module/dice.js';
 import MWIISocket from './module/socket.js';
+import Overlay from './module/apps/overlay.js';
 
 /* ------------------------------------ */
 /* Initialize system					*/
@@ -37,6 +38,7 @@ Hooks.once('init', async function () {
 			MWIICombat,
 			MWIICombatant,
 		},
+		overlay: new Overlay(),
 		roll: MWIIRoll,
 		socket: new MWIISocket()
 	};
@@ -93,8 +95,9 @@ Hooks.once('setup', function () {
 /* When ready							*/
 /* ------------------------------------ */
 Hooks.once('ready', function () {
-	// Do anything once the system is ready
-
+	game.mwii.overlay.initialize();
+	game.mwii.overlay.initializeSocketListeners();
+	
 	console.log("Mechwarrior 2nd Edition | Reactor: online, Sensors: online, Weapons: online. All systems nominal");
 });
 

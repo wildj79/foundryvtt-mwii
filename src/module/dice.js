@@ -235,4 +235,6 @@ export async function onConfirmHitLocation(message) {
         const hitLocation = await DiceMWII.rollHitLocation(payload.itemId, payload.actorId);
         game.mwii.socket.sendMessageTo(sender, 'hitLocationConfirmed', hitLocation);
     }
+    
+    game.mwii.socket.sendMessageTo(sender, 'hideOverlay');
 }

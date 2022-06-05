@@ -73,6 +73,7 @@ export class ItemMWII extends Item {
 
     async rollHitLocation(event) {
         const hitLocation = await DiceMWII.rollHitLocation(this.id, this.actor.id);
+        await game.mwii.overlay.show({content: game.i18n.localize("MWII.HitLocation.WaitingForGM")});
         game.mwii.socket.sendMessageTo('gm', 'confirmHitLocation', hitLocation);
     }
 
