@@ -618,7 +618,11 @@
       "condition": {
         "max": 0,
         "lethal": 0,
-        "bruise": 0
+        "bruise": 0,
+        "wound_factor": 0,
+        "condition": "",
+        "save": 0,
+        "is_conscious": true
       },
       "hit_location": {
         "head": {

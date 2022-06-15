@@ -46,23 +46,16 @@ export class ActorMWII extends Actor {
             skl.target = data.characteristics[skl.characteristic].save - skl.level;
         }
 
-        const build = data.attributes.bld;
-        const head = data.hit_location.head;
-        const torso = data.hit_location.torso;
-        const leftArm = data.hit_location.left_arm;
-        const rightArm = data.hit_location.right_arm;
-        const leftLeg = data.hit_location.left_leg;
-        const rightLeg = data.hit_location.right_leg;
+        this._processHitLocationDamageThresholds(data);
+        this._processConditionMonitor(data);
+        this._processMovement(data);
+    }
 
-        head.damage_threshold = build.save * 2;
-        torso.damage_threshold = build.save * 6;
-        leftArm.damage_threshold = build.save * 3;
-        rightArm.damage_threshold = build.save * 3;
-        leftLeg.damage_threshold = build.save * 3;
-        rightLeg.damage_threshold = build.save * 3;
+    prepareBaseData() { super.prepareBaseData(); }
+    prepareEmbeddedDocuments() { super.prepareEmbeddedDocuments(); }
+    prepareDerivedData() { super.prepareDerivedData(); }
 
-        data.condition.max = build.value * 2 * 5;
-
+    _processMovement(data) {
         if (!data.movement) data.movement = {
             walking: {},
             running: {},
@@ -79,9 +72,71 @@ export class ActorMWII extends Actor {
         data.movement.evade.value = attributes['ref'].value;
     }
 
-    prepareBaseData() { super.prepareBaseData(); }
-    prepareEmbeddedDocuments() { super.prepareEmbeddedDocuments(); }
-    prepareDerivedData() { super.prepareDerivedData(); }
+    _processHitLocationDamageThresholds(data) {
+        const build = data.attributes.bld;
+        const head = data.hit_location.head;
+        const torso = data.hit_location.torso;
+        const leftArm = data.hit_location.left_arm;
+        const rightArm = data.hit_location.right_arm;
+        const leftLeg = data.hit_location.left_leg;
+        const rightLeg = data.hit_location.right_leg;
+
+        head.damage_threshold = build.value * 2;
+        torso.damage_threshold = build.value * 6;
+        leftArm.damage_threshold = build.value * 3;
+        rightArm.damage_threshold = build.value * 3;
+        leftLeg.damage_threshold = build.value * 3;
+        rightLeg.damage_threshold = build.value * 3;
+    }
+
+    _processConditionMonitor(data) {
+        const build = data.attributes.bld;
+        const condition = data.condition;
+
+        condition.max = build.value * 2 * 5;
+
+        const threshold1 = build.value * 2;
+        const threshold2 = threshold1 * 2;
+        const threshold3 = threshold1 * 3;
+        const threshold4 = threshold1 * 4;
+        const threshold5 = threshold1 * 5;
+
+        if (condition.lethal.between(1, threshold1)) {
+            condition.wound_factor = 1;            
+        } else if (condition.lethal.between(threshold1 + 1, threshold2)) {
+            condition.wound_factor = 2;
+        } else if (condition.lethal.between(threshold2 + 1, threshold3)) {
+            condition.wound_factor = 3;
+        } else if (condition.lethal.between(threshold3 + 1, threshold4)) {
+            condition.wound_factor = 4;
+        } else if (condition.lethal.between(threshold4 + 1, threshold5)) {
+            condition.wound_factor = 5;
+        } else if (condition.lethal === 0) {
+            condition.wound_factor = 0;
+        }
+
+        const total = condition.lethal + condition.bruise;
+
+        if (total.between(1, threshold1)) {
+            condition.save = 3;
+            condition.condition = game.i18n.localize("MWII.Condition.Good");
+        } else if (total.between(threshold1 + 1, threshold2)) {
+            condition.save = 5;
+            condition.condition = game.i18n.localize("MWII.Condition.Fair");
+        } else if (total.between(threshold2 + 1, threshold3)) {
+            condition.save = 7;
+            condition.condition = game.i18n.localize("MWII.Condition.Poor");
+        } else if (total.between(threshold3 + 1, threshold4)) {
+            condition.save = 10;
+            condition.condition = game.i18n.localize("MWII.Condition.Serious");
+        } else if (total.between(threshold4 + 1, threshold5)) {
+            condition.save = 11;
+            condition.condition = game.i18n.localize("MWII.Condition.Critical");
+        } else if (total === 0) {
+            condition.save = 0;
+            condition.condition = "";
+        }
+    }
 
     async rollAttributeSave(attributeId, options = {}) {
         const label = MWII.attributes[attributeId];

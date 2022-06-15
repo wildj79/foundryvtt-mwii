@@ -104,6 +104,13 @@
             "Title": "Characteristics"
         },
         "CharacterName": "Name",
+        "Condition": {
+            "Critical": "CRITICAL",
+            "Fair": "FAIR",
+            "Good": "GOOD",
+            "Poor": "POOR",
+            "Serious": "SERIOUS"
+        },
         "ConditionMonitor": "Condition Monitor",
         "CreateItem": "Create Item",
         "Description": "Description",
