@@ -118,12 +118,11 @@ export class ActorMWII extends Actor {
     }
 
     async rollSkillCheck(skillId, options = {}) {
-        const label = MWII.skills[skillId];
         const skill = this.data.data.skills[skillId];
         const hasSpecialization = skill.specialization?.trim()?.length > 0 ?? false;
-        let title = !hasSpecialization ? 
-            game.i18n.format("MWII.Rolls.Titles.SkillCheck", {label: label}) : 
-            game.i18n.format("MWII.Rolls.Titles.SkillCheckWithSpecialization", {label: label, specialization: skill.specialization});
+        const label = !hasSpecialization ? MWII.skills[skillId] : `${MWII.skills[skillId]} (${skill.specialization})`;
+
+        let title = game.i18n.format("MWII.Rolls.Titles.SkillCheck", {label: label});
 
         if (options?.isAttackRoll) {
             title = game.i18n.format("MWII.Rolls.Titles.AttackCheck", {weapon: options.weapon});
@@ -134,9 +133,9 @@ export class ActorMWII extends Actor {
             isRanged: options?.isRanged ?? false,
             weapon: options?.weapon ?? "",
             isAttackRoll: options?.isAttackRoll ?? false,
-            hasSpecialization: skill.specialization?.trim()?.length > 0 ?? false,
+            hasSpecialization: hasSpecialization,
             specialization: skill.specialization,
-            skillUsed: label
+            skillUsed: options?.isAttackRoll ?? false ? label : null
         };
             
         return await DiceMWII.rollCheck({
