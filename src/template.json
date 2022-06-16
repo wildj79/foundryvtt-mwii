@@ -622,7 +622,8 @@
         "wound_factor": 0,
         "condition": "",
         "save": 0,
-        "is_conscious": true
+        "is_conscious": true,
+        "has_coma": false
       },
       "hit_location": {
         "head": {

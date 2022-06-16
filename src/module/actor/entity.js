@@ -65,11 +65,37 @@ export class ActorMWII extends Actor {
 
         const attributes = data.attributes;
         const skills = data.skills;
+        const rightLeg = data.hit_location.right_leg;
+        const leftLeg = data.hit_location.left_leg;
 
-        data.movement.walking.value = attributes['bld'].value;
-        data.movement.running.value = attributes['bld'].value + attributes['ref'].value + skills['running'].level;
-        data.movement.sprinting.value = (attributes['bld'].value * 2) + attributes['ref'].value + skills['running'].level;
-        data.movement.evade.value = attributes['ref'].value;
+        let walking = attributes['bld'].value;
+        let running = walking + attributes['ref'].value + skills['running'].level;
+        let sprinting = (walking * 2) + attributes['ref'].value + skills['running'].level;
+        let evade = attributes['ref'].value;
+
+        if (rightLeg.incapacitated || leftLeg.incapacitated) {
+            walking = Math.floor(walking / 2);
+            running = 0;
+            sprinting = 0;
+            evade = Math.floor(evade / 2);
+        }
+
+        if (rightLeg.incapacitated && leftLeg.incapacitated) {
+            walking = Math.floor(walking / 2);
+            evade = Math.floor(evade / 2);
+        }
+
+        if (rightLeg.disabled || leftLeg.disabled) {
+            walking = 0;
+            running = 0;
+            sprinting = 0;
+            evade = 0;
+        }
+
+        data.movement.walking.value = walking;
+        data.movement.running.value = running;
+        data.movement.sprinting.value = sprinting;
+        data.movement.evade.value = evade;
     }
 
     _processHitLocationDamageThresholds(data) {
