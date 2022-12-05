@@ -106,6 +106,7 @@
         "CharacterName": "Name",
         "Condition": {
             "Critical": "CRITICAL",
+            "Dead": "DEAD",
             "Fair": "FAIR",
             "Good": "GOOD",
             "Poor": "POOR",

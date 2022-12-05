@@ -26,8 +26,11 @@ export class ActorMWII extends Actor {
         return this.items.filter(i => i.data.type === "armor" && i.data.data.equipped).length > 0;
     }
 
-    prepareData() {
-        super.prepareData();
+    prepareData() { super.prepareData(); }
+    prepareBaseData() { super.prepareBaseData(); }
+    prepareEmbeddedDocuments() { super.prepareEmbeddedDocuments(); }
+    prepareDerivedData() { 
+        super.prepareDerivedData();
 
         const data = this.data.data;
 
@@ -50,10 +53,6 @@ export class ActorMWII extends Actor {
         this._processConditionMonitor(data);
         this._processMovement(data);
     }
-
-    prepareBaseData() { super.prepareBaseData(); }
-    prepareEmbeddedDocuments() { super.prepareEmbeddedDocuments(); }
-    prepareDerivedData() { super.prepareDerivedData(); }
 
     _processMovement(data) {
         if (!data.movement) data.movement = {
@@ -161,6 +160,11 @@ export class ActorMWII extends Actor {
         } else if (total === 0) {
             condition.save = 0;
             condition.condition = "";
+        }
+
+        if (condition.lethal >= condition.max) {
+            condition.save = Infinity;
+            condition.condition = game.i18n.localize("MWII.Condition.Dead");
         }
     }
 
