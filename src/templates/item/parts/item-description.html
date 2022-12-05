@@ -3,20 +3,20 @@
         {{#if isPhysical}}
         <div class="form-group">
             <label class="checkbox bt-old">
-                {{localize "MWII.Equipped"}} <input type="checkbox" name="data.equipped" {{checked data.equipped}}/>
+                {{localize "MWII.Equipped"}} <input type="checkbox" name="system.equipped" {{checked system.equipped}}/>
             </label>            
         </div>
 
         <div class="form-group">
             <label class="bt-old">{{localize "MWII.Quantity"}}</label>
-            <input type="text" name="data.quantity" value="{{data.quantity}}" data-dtype="Number" />
+            <input type="text" name="system.quantity" value="{{system.quantity}}" data-dtype="Number" />
         </div>
 
         <div class="form-group multiple">
             <label class="bt-old">{{localize "MWII.Weight"}}</label>
-            <input class="larger" type="text" name="data.weight.value" value="{{data.weight.value}}" data-dtype="Number" />
-            <select class="smaller" name="data.weight.uom">
-                {{#select data.weight.uom}}
+            <input class="larger" type="text" name="system.weight.value" value="{{system.weight.value}}" data-dtype="Number" />
+            <select class="smaller" name="system.weight.uom">
+                {{#select system.weight.uom}}
                 {{#each config.unitsOfMeasureWeight as |name type|}}
                 <option value="{{type}}">{{~name~}}</option>
                 {{/each}}
@@ -26,20 +26,20 @@
 
         <div class="form-group">
             <label class="bt-old">{{localize "MWII.Items.Cost"}}</label>
-            <input type="text" name="data.cost" value="{{data.cost}}" data-dtype="Number" />            
+            <input type="text" name="system.cost" value="{{system.cost}}" data-dtype="Number" />            
         </div>
 
         {{#if hasPatchCost}}
         <div class="form-group">
             <label class="bt-old">{{localize "MWII.Armor.PatchCost"}}</label>
-            <input type="text" name="data.patch_cost" value="{{data.patch_cost}}" data-dtype="Number" />            
+            <input type="text" name="system.patch_cost" value="{{system.patch_cost}}" data-dtype="Number" />            
         </div>
         {{/if}}
 
         <div class="form-group">
             <label class="bt-old">{{localize "MWII.TechLevel.Title"}}</label>
-            <select name="data.tech_level">
-                {{#select data.tech_level}}
+            <select name="system.tech_level">
+                {{#select system.tech_level}}
                 {{#each config.itemTechLevel as |v k|}}
                 <option value="{{k}}">{{~v~}}</option>
                 {{/each}}
@@ -49,8 +49,8 @@
 
         <div class="form-group">
             <label class="bt-old">{{localize "MWII.Availability.Title"}}</label>
-            <select name="data.availability">
-                {{#select data.availability}}
+            <select name="system.availability">
+                {{#select system.availability}}
                 {{#each config.itemAvailability as |v k|}}
                 <option value="{{k}}">{{~v~}}</option>
                 {{/each}}
@@ -60,8 +60,8 @@
 
         <div class="form-group">
             <label class="bt-old">{{localize "MWII.Legality.Title"}}</label>
-            <select name="data.legality">
-                {{#select data.legality}}
+            <select name="system.legality">
+                {{#select system.legality}}
                 {{#each config.itemLegality as |v k|}}
                 <option value="{{k}}">{{~v~}}</option>
                 {{/each}}
@@ -72,8 +72,8 @@
         {{#if hasSubType}}
         <div class="form-group">
             <label class="bt-old">{{localize "MWII.Items.Subtype.Title"}}</label>
-            <select name="data.type">
-                {{#select data.type}}
+            <select name="system.type">
+                {{#select system.type}}
                 {{#each config.gearSubTypes as |type id|}}
                 <option value="{{id}}">{{type}}</option>
                 {{/each}}
@@ -85,16 +85,16 @@
         {{#if isPowerPack}}
         <div class="form-group">
             <label class="bt-old">{{localize "MWII.Power.Capacity"}}</label>
-            <input type="text" name="data.capacity.min" value="{{data.capacity.min}}" data-dtype="Number" />
+            <input type="text" name="system.capacity.min" value="{{system.capacity.min}}" data-dtype="Number" />
             <span class="sep"> / </span>
-            <input type="text" name="data.capacity.max" value="{{data.capacity.max}}" data-dtype="Number" />            
+            <input type="text" name="system.capacity.max" value="{{system.capacity.max}}" data-dtype="Number" />            
         </div>
         {{else}}
         <div class="form-group">
             <label class="bt-old">{{localize "MWII.Power.Usage"}}</label>
-            <input type="text" name="data.power_use.value" value="{{data.power_use.value}}" data-dtype="Number" />
+            <input type="text" name="system.power_use.value" value="{{system.power_use.value}}" data-dtype="Number" />
             <span class="sep"> / </span>
-            <input type="text" name="data.power_use.per" value="{{data.power_use.per}}" />            
+            <input type="text" name="system.power_use.per" value="{{system.power_use.per}}" />            
         </div>
         {{/if}}
         {{/if}}
@@ -102,8 +102,8 @@
         {{#if isVehicle}}
         <div class="form-group">
             <label class="bt-old">{{localize "MWII.Vehicle.Types.Title"}}</label>
-            <select name="data.type">
-                {{#select data.type}}
+            <select name="system.type">
+                {{#select system.type}}
                 {{#each config.vehicleTypes as |vee type|}}
                 <option value="{{type}}">{{~vee~}}</option>
                 {{/each}}
@@ -112,24 +112,24 @@
         </div>
         <div class="form-group">
             <label class="bt-old">{{localize "MWII.Vehicle.Chasis"}}</label>
-            <input type="text" name="data.chasis" value="{{data.chasis}}" />            
+            <input type="text" name="system.chasis" value="{{system.chasis}}" />            
         </div>
         <div class="form-group">
             <label class="bt-old">{{localize "MWII.Vehicle.Weight.Class"}}</label>
-            <input type="text" name="data.weight_class" value="{{data.weight_class}}" />            
+            <input type="text" name="system.weight_class" value="{{system.weight_class}}" />            
         </div>
         <div class="form-group">
             <label class="bt-old">{{localize "MWII.Vehicle.Weight.Title"}}</label>
-            <input type="text" name="data.weight" value="{{data.weight}}" data-dtype="Number" />            
+            <input type="text" name="system.weight" value="{{system.weight}}" data-dtype="Number" />            
         </div>
         {{/if}}
 
         {{#if isAdvantage}}
         <div class="form-group">
             <label class="bt-old">{{localize "MWII.PointCost"}}</label>
-            <input type="text" name="data.cost.min" value="{{data.cost.min}}" data-dtype="Number" />
+            <input type="text" name="system.cost.min" value="{{system.cost.min}}" data-dtype="Number" />
             <span class="sep"> / </span>
-            <input type="text" name="data.cost.max" value="{{data.cost.max}}" data-dtype="Number" />            
+            <input type="text" name="system.cost.max" value="{{system.cost.max}}" data-dtype="Number" />            
         </div>
         {{/if}}
 
@@ -143,5 +143,5 @@
         {{/if}}
     </div>
 
-    {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+    {{editor enrichedDescription target="system.description" button=true editable=editable}}
 </div>

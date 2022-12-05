@@ -13,8 +13,8 @@
         <div class="tab details flexrow" data-group="primary" data-tab="details">
             <div class="form-group">
                 <label class="bt-old">{{localize "MWII.Armor.Type.Title"}}</label>
-                <select name="data.type">
-                    {{#select data.type}}
+                <select name="system.type">
+                    {{#select system.type}}
                     {{#each config.armorTypes as |type t|}}
                     <option value="{{t}}">{{type}}</option>
                     {{/each}}
@@ -25,22 +25,22 @@
                 <label class="bt-old">{{localize "MWII.Armor.Coverage.Title"}}</label>
                 {{#each config.armorCoverage as |name prop|}}
                 <label class="checkbox">
-                    <input type="checkbox" name="data.coverage.{{prop}}" {{checked (lookup ../data.coverage prop)}} /> {{name}}
+                    <input type="checkbox" name="system.coverage.{{prop}}" {{checked (lookup ../system.coverage prop)}} /> {{name}}
                 </label>
                 {{/each}}
             </div>
             {{#if isBA}}
             <div class="form-group">
                 <label class="bt-old">{{localize "MWII.Armor.BuildMod"}}</label>
-                <input type="text" name="data.build" value="{{data.build}}" data-dtype="Number" />
+                <input type="text" name="system.build" value="{{system.build}}" data-dtype="Number" />
             </div>
             {{/if}}
             <h4 class="bt-old">{{localize "MWII.Armor.Damage.Title"}}</h4>
             <div class="form-group multiple">
                 <label class="bt-old">{{localize "MWII.Armor.Energy"}}</label>
-                <input type="text" name="data.energy.value" value="{{data.energy.value}}" />
-                <select name="data.energy.type">
-                    {{#select data.energy.type}}
+                <input type="text" name="system.energy.value" value="{{system.energy.value}}" />
+                <select name="system.energy.type">
+                    {{#select system.energy.type}}
                     {{#each config.armorDamageAbsortionValueTypes as |v k|}}
                     <option value="{{k}}">{{v}}</option>
                     {{/each}}
@@ -49,9 +49,9 @@
             </div>
             <div class="form-group multiple">
                 <label class="bt-old">{{localize "MWII.Armor.Ballistic"}}</label>
-                <input type="text" name="data.ballistic.value" value="{{data.ballistic.value}}" />
-                <select name="data.ballistic.type">
-                    {{#select data.ballistic.type}}
+                <input type="text" name="system.ballistic.value" value="{{system.ballistic.value}}" />
+                <select name="system.ballistic.type">
+                    {{#select system.ballistic.type}}
                     {{#each config.armorDamageAbsortionValueTypes as |v k|}}
                     <option value="{{k}}">{{v}}</option>
                     {{/each}}
@@ -60,9 +60,9 @@
             </div>
             <div class="form-group multiple">
                 <label class="bt-old">{{localize "MWII.Armor.Melee"}}</label>
-                <input type="text" name="data.melee.value" value="{{data.melee.value}}" />
-                <select name="data.melee.type">
-                    {{#select data.melee.type}}
+                <input type="text" name="system.melee.value" value="{{system.melee.value}}" />
+                <select name="system.melee.type">
+                    {{#select system.melee.type}}
                     {{#each config.armorDamageAbsortionValueTypes as |v k|}}
                     <option value="{{k}}">{{v}}</option>
                     {{/each}}
@@ -71,29 +71,29 @@
             </div>
             <div class="form-group multiple">
                 <label class="bt-old">{{localize "MWII.Armor.Damage.Capacity"}}</label>
-                <input type="text" name="data.damage_capacity.value" value="{{data.damage_capacity.value}}" data-dtype="Number" />
+                <input type="text" name="system.damage_capacity.value" value="{{system.damage_capacity.value}}" data-dtype="Number" />
                 <span class="sep"> / </span>
-                <input type="text" name="data.damage_capacity.max" value="{{data.damage_capacity.max}}" data-dtype="Number" />
+                <input type="text" name="system.damage_capacity.max" value="{{system.damage_capacity.max}}" data-dtype="Number" />
             </div>
             <h4 class="bt-old">{{localize "MWII.Armor.Encumbrance.Title"}}</h4>
             <div class="form-group">
                 <label class="bt-old">{{localize "MWII.Armor.Encumbrance.Movement"}}</label>
-                <input type="text" name="data.encumbrance.movement" value="{{data.encumbrance.movement}}" />
+                <input type="text" name="system.encumbrance.movement" value="{{system.encumbrance.movement}}" />
             </div>
             <div class="form-group">
                 <label class="bt-old">{{localize "MWII.Armor.Encumbrance.Physical"}}</label>
-                <input type="text" name="data.encumbrance.physical" value="{{data.encumbrance.physical}}" />
+                <input type="text" name="system.encumbrance.physical" value="{{system.encumbrance.physical}}" />
             </div>
             <div class="form-group">
                 <label class="bt-old">{{localize "MWII.Armor.Encumbrance.Athletic"}}</label>
-                <input type="text" name="data.encumbrance.athletic" value="{{data.encumbrance.athletic}}" />
+                <input type="text" name="system.encumbrance.athletic" value="{{system.encumbrance.athletic}}" />
             </div>
             {{#if isBA}}
             <h4 class="bt-old">{{localize "MWII.Armor.Critical.Damage"}}</h4>
             <div class="form-group stacked">
                 {{#each config.armorCriticals as |name prop|}}
                 <label class="checkbox">
-                    <input type="checkbox" name="data.critical.{{prop}}" {{checked (lookup ../data.critical prop)}} /> {{name}}
+                    <input type="checkbox" name="system.critical.{{prop}}" {{checked (lookup ../system.critical prop)}} /> {{name}}
                 </label>
                 {{/each}}
             </div>

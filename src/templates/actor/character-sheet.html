@@ -9,8 +9,8 @@
                     <label class="bt-old">{{localize "MWII.CharacterName"}}</label>
                 </h1>
                 <div class="adventure-points">
-                    <input type="text" title="{{localize "MWII.AdventurePoints.Title"}}" name="data.details.ap"
-                        value="{{data.details.ap}}" data-dtype="Number" />
+                    <input type="text" title="{{localize "MWII.AdventurePoints.Title"}}" name="system.details.ap"
+                        value="{{system.details.ap}}" data-dtype="Number" />
                     <label class="bt-old">{{localize "MWII.AdventurePoints.Abbreviation"}}</label>
                 </div>
             </div>
@@ -34,10 +34,10 @@
                 <div class="attributes">
                     <h3 class="attributes-title bt-old">{{localize "MWII.Attributes.Title"}}</h3>
                     <ul>
-                        {{#each data.attributes as |attribute id|}}
+                        {{#each system.attributes as |attribute id|}}
                         <li class="attribute flexrow" data-attribute="{{id}}">
                             <h4 class="attribute-name box-title rollable">{{attribute.label}}</h4>
-                            <input class="attribute-score" name="data.attributes.{{id}}.value" type="text"
+                            <input class="attribute-score" name="system.attributes.{{id}}.value" type="text"
                                 value="{{attribute.value}}" data-dtype="Number" placeholder="10" />
                             <div class="attribute-save flexrow">
                                 <span class="attribute-save" title="Save">{{attribute.save}}+</span>
@@ -51,7 +51,7 @@
                 <div class="characteristics">
                     <h3 class="characteristics-title bt-old">{{localize "MWII.Characteristics.Title"}}</h3>
                     <ul>
-                        {{#each data.characteristics as |char id|}}
+                        {{#each system.characteristics as |char id|}}
                         <li class="characteristic flexrow" data-characteristic="{{id}}">
                             <h4 class="characteristic-name box-title rollable">
                                 {{char.label}}
@@ -68,11 +68,11 @@
                 <div class="edge flexrow">
                     <h3 class="bt-old flexrow">{{localize "MWII.Edge.Title"}}</h3>
                     <div class="flexrow">
-                        <input type="text" title="{{localize "MWII.Edge.Current"}}" name="data.edge.value"
-                            value="{{data.edge.value}}" data-dtype="Number" />
+                        <input type="text" title="{{localize "MWII.Edge.Current"}}" name="system.edge.value"
+                            value="{{system.edge.value}}" data-dtype="Number" />
                         <span class="sep"> | </span>
-                        <input type="text" title="{{localize "MWII.Edge.Max"}}" name="data.edge.max"
-                            value="{{data.edge.max}}" data-dtype="Number" />
+                        <input type="text" title="{{localize "MWII.Edge.Max"}}" name="system.edge.max"
+                            value="{{system.edge.max}}" data-dtype="Number" />
                     </div>
                 </div>
 
@@ -83,7 +83,7 @@
                 <div class="movement">
                     <h3 class="bt-old">{{localize "MWII.Movement.Title"}}</h3>
                     <ol class="movement-list flexrow">
-                        {{#each data.movement as |movement m|}}
+                        {{#each system.movement as |movement m|}}
                         <li class="flexrow" title="In hexes">{{movement.label}}: {{movement.value}}</li>
                         {{/each}}
                     </ol>
@@ -106,11 +106,11 @@
                     <th>{{localize "MWII.Skills.Header.TargetNumber"}}</th>
                     <th>{{localize "MWII.Skills.Header.SkillPoints"}}</th>
                 </tr>
-                {{#each data.skills as |skill s|}} 
+                {{#each system.skills as |skill s|}} 
                 <tr class="skill flexrow" data-skill="{{s}}">
                     <td class="col-natural-aptitude">
                         <input type="checkbox" title="{{localize "MWII.NaturalAptitude"}}"
-                            name="data.skills.{{s}}.natural_aptitude" {{checked skill.natural_aptitude}} />
+                            name="system.skills.{{s}}.natural_aptitude" {{checked skill.natural_aptitude}} />
                     </td>
                     <td class="col-skill-name">
                         <h4 class="skill-name rollable" title="{{skill.characteristic}}">
@@ -119,13 +119,13 @@
                     </td>
                     <td>
                         <input type="text" class="skill-level" title="{{localize "MWII.Skills.Levels"}}"
-                            name="data.skills.{{s}}.level" value="{{skill.level}}" data-dtype="Number" />
+                            name="system.skills.{{s}}.level" value="{{skill.level}}" data-dtype="Number" />
                     </td>
                     <td class="center">
                         <span class="skill-target">{{skill.target_display}}</span>
                     </td>
                     <td>
-                        <input type="text" class="skill-points" title="Skill Points" name="data.skills.{{s}}.sp"
+                        <input type="text" class="skill-points" title="Skill Points" name="system.skills.{{s}}.sp"
                             value="{{skill.sp}}" data-dtype="Number" />
                     </td>
                 </tr>
@@ -152,40 +152,40 @@
                 {{!-- Character Summary --}}
                 <ul class="summary flexrow">
                     <li class="faction">
-                        <input type="text" name="data.details.faction" value="{{data.details.faction}}" />
+                        <input type="text" name="system.details.faction" value="{{system.details.faction}}" />
                         <label class="bt-old">{{localize "MWII.Faction"}}</label>
                     </li>
                     <li class="subfaction">
-                        <input type="text" name="data.details.subfaction" value="{{data.details.subfaction}}" />
+                        <input type="text" name="system.details.subfaction" value="{{system.details.subfaction}}" />
                         <label class="bt-old">{{localize "MWII.SubFaction"}}</label>
                     </li>
                     <li class="planet">
-                        <input type="text" name="data.details.planet" value="{{data.details.planet}}" />
+                        <input type="text" name="system.details.planet" value="{{system.details.planet}}" />
                         <label class="bt-old">{{localize "MWII.Planet"}}</label>
                     </li>
                     <li class="unit">
-                        <input type="text" name="data.details.unit" value="{{data.details.unit}}" />
+                        <input type="text" name="system.details.unit" value="{{system.details.unit}}" />
                         <label class="bt-old">{{localize "MWII.Unit"}}</label>
                     </li>
                     <li class="age">
-                        <input type="text" name="data.details.age" value="{{data.details.age}}" data-dtype="Number" />
+                        <input type="text" name="system.details.age" value="{{system.details.age}}" data-dtype="Number" />
                         <label class="bt-old">{{localize "MWII.Age"}}</label>
                     </li>
                     <li class="height">
-                        <input type="text" name="data.details.height" value="{{data.details.height}}" />
+                        <input type="text" name="system.details.height" value="{{system.details.height}}" />
                         <label class="bt-old">{{localize "MWII.Height"}}</label>
                     </li>
                     <li class="weight">
-                        <input type="text" name="data.details.weight" value="{{data.details.weight}}" />
+                        <input type="text" name="system.details.weight" value="{{system.details.weight}}" />
                         <label class="bt-old">{{localize "MWII.Weight"}}</label>
                     </li>
                     <li class="battlemech">
-                        <input type="text" name="data.details.battlemech" value="{{data.details.battlemech}}" />
+                        <input type="text" name="system.details.battlemech" value="{{system.details.battlemech}}" />
                         <label class="bt-old">{{localize "MWII.Vehicle.Title"}}</label>
                     </li>
                 </ul>
             </div>
-            {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
+            {{editor enrichedBiography target="system.details.biography.value" button=true editable=editable}}
         </div>
     </section>
 </form>

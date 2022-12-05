@@ -23,7 +23,7 @@ export class ActorMWII extends Actor {
     }
 
     get hasArmor() {
-        return this.items.filter(i => i.data.type === "armor" && i.data.data.equipped).length > 0;
+        return this.items.filter(i => i.type === "armor" && i.system.equipped).length > 0;
     }
 
     prepareData() { super.prepareData(); }
@@ -32,7 +32,7 @@ export class ActorMWII extends Actor {
     prepareDerivedData() { 
         super.prepareDerivedData();
 
-        const data = this.data.data;
+        const data = this.system;
 
         // Attribute Saves
         for (let attr of Object.values(data.attributes)) {
@@ -170,7 +170,7 @@ export class ActorMWII extends Actor {
 
     async rollAttributeSave(attributeId, options = {}) {
         const label = MWII.attributes[attributeId];
-        const attribute = this.data.data.attributes[attributeId];
+        const attribute = this.system.attributes[attributeId];
 
         const rollData = {
             target: attribute.save
@@ -187,7 +187,7 @@ export class ActorMWII extends Actor {
 
     async rollCharacteristicSave(characteristicId, options = {}) {
         const label = MWII.characteristics[characteristicId];
-        const characteristic = this.data.data.characteristics[characteristicId];
+        const characteristic = this.system.characteristics[characteristicId];
 
         const rollData = {
             target: characteristic.save
@@ -203,7 +203,7 @@ export class ActorMWII extends Actor {
     }
 
     async rollSkillCheck(skillId, options = {}) {
-        const skill = this.data.data.skills[skillId];
+        const skill = this.system.skills[skillId];
         const hasSpecialization = skill.specialization?.trim()?.length > 0 ?? false;
         const label = !hasSpecialization ? MWII.skills[skillId] : `${MWII.skills[skillId]} (${skill.specialization})`;
 

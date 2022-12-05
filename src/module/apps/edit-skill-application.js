@@ -29,7 +29,7 @@ export default class EditSkillApplication extends FormApplication {
     }
 
     getData() {
-        const skill = foundry.utils.getProperty(this.object.data, `data.skills.${this.skill}`);
+        const skill = foundry.utils.getProperty(this.object.system, `system.skills.${this.skill}`);
 
         return {
             skill
@@ -43,7 +43,7 @@ export default class EditSkillApplication extends FormApplication {
      * @param {FormDataExtended} formData The data from the form
      */
     _updateObject(event, formData) {
-        const key = `data.skills.${this.skill}`;
+        const key = `system.skills.${this.skill}`;
         this.object.update({
             [`${key}.level`]: formData.level,
             [`${key}.sp`]: formData.sp,

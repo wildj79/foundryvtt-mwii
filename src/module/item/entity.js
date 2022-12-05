@@ -3,21 +3,21 @@ import DiceMWII from "../dice.js";
 
 export class ItemMWII extends Item {
     get hasAttack() {
-        return this.data.type === "weapons";
+        return this.type === "weapons";
     }
 
     get hasDamage() {
-        return !!(this.data.data.damage);
+        return !!(this.system.damage);
     }
 
     get skillUsed() {
-        if (this.data.type === "weapons") return this.data.data.skill;
+        if (this.type === "weapons") return this.system.skill;
         
         return null;
     }
 
     get isRanged() {
-        return this.data.data.type !== "melee" || this.data.data.skill === 'throwing_weapons';
+        return this.system.type !== "melee" || this.system.skill === 'throwing_weapons';
     }
 
     prepareData() {
@@ -25,10 +25,10 @@ export class ItemMWII extends Item {
 
         const config = MWII;
         const labels = {};
-        const itemData = this.data;
-        const data = itemData.data;
+        const itemData = this.system;
+        const data = itemData;
 
-        if (itemData.type === 'armor') {
+        if (this.type === 'armor') {
             labels.energy = data.energy.value ? `Energy ${this._calculateArmorDamageAbsorption(data.energy)}` : "";
             labels.ballistic = data.ballistic.value ? `Ballistic ${this._calculateArmorDamageAbsorption(data.ballistic)}` : "";
             labels.melee = data.melee.value ? `Melee ${this._calculateArmorDamageAbsorption(data.melee)}` : "";
@@ -55,7 +55,7 @@ export class ItemMWII extends Item {
      */
     async rollAttack(event) {
         if (!this.hasAttack) {
-            const message = game.i18n.format("MWII.Items.Errors.NotAWeapon", {item: this.data.name})
+            const message = game.i18n.format("MWII.Items.Errors.NotAWeapon", {item: this.name})
             ui.notifications.error(message);
             throw new Error(message);
         }
@@ -64,11 +64,11 @@ export class ItemMWII extends Item {
         const isRanged = this.isRanged;
 
         if (!skillUsed) {
-            ui.notifications.warn(game.i18n.format("MWII.Weapons.Errors.NoSkillUsed", {weapon: this.data.name}));
+            ui.notifications.warn(game.i18n.format("MWII.Weapons.Errors.NoSkillUsed", {weapon: this.name}));
             return null;
         }
 
-        return this.actor.rollSkillCheck(skillUsed, {event, isAttackRoll: true, isRanged, weapon: this.data.name});
+        return this.actor.rollSkillCheck(skillUsed, {event, isAttackRoll: true, isRanged, weapon: this.name});
     }
 
     async rollHitLocation(event) {
@@ -95,7 +95,7 @@ export class ItemMWII extends Item {
 
     async rollDamage(event, hitLocation = null) {
         if (!this.hasDamage) {
-            const message = game.i18n.format("MWII.Weapons.Errors.NoDamage", {weapon: this.data.name});
+            const message = game.i18n.format("MWII.Weapons.Errors.NoDamage", {weapon: this.name});
             ui.notifications.error(message);
             throw new Error(message);
         }
@@ -105,15 +105,15 @@ export class ItemMWII extends Item {
 
         const data = this.actor.getRollData();
         data.hitLocation = hitLocation;
-        data.damageType = this.data.data.damageType;
-        data.lethality = this.data.data.lethality;
+        data.damageType = this.system.damageType;
+        data.lethality = this.system.lethality;
 
-        const title = game.i18n.format("MWII.Rolls.Titles.Damage", {weapon: this.data.name});
+        const title = game.i18n.format("MWII.Rolls.Titles.Damage", {weapon: this.name});
 
         return await DiceMWII.rollDamage({
             event,
             data,
-            formula: this.data.data.damage,
+            formula: this.system.damage,
             title
         });
     }

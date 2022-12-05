@@ -27,7 +27,7 @@ export class ActorSheetMWII extends ActorSheet {
         return path + "character-sheet.html";
     }
 
-    getData() {
+    async getData() {
         let isOwner = this.document.isOwner;
         const data = {
             owner: isOwner,
@@ -35,33 +35,32 @@ export class ActorSheetMWII extends ActorSheet {
             options: this.options,
             editable: this.isEditable,
             cssClass: isOwner ? "editable" : "locked",
-            isCharacter: this.document.data.type === "character",
+            isCharacter: this.document.type === "character",
             config: MWII
         };
 
-        data.actor = foundry.utils.duplicate(this.actor.data);
-        data.items = this.actor.items.map(i => {
-            i.data.labels = i.labels;
-            return i.data;
-        });
+        data.actor = foundry.utils.duplicate(this.actor);
+        data.items = [...this.actor.items.values()];
+
+        data.enrichedBiography = await TextEditor.enrichHTML(this.actor.system.details.biography.value, {async: true});
 
         data.items.sort((a, b) => (a.sort || 0) - (b.sort || 0));
-        data.data = foundry.utils.duplicate(this.actor.data.data);
+        data.system = foundry.utils.duplicate(this.actor.system);
         data.labels = this.actor.labels || {};
 
         // Attributes
-        for (let [a, att] of Object.entries(data.data.attributes)) {
+        for (let [a, att] of Object.entries(data.system.attributes)) {
             att.label = MWII.attributes[a];
         }
 
         // Characteristics
-        for (let [c, char] of Object.entries(data.data.characteristics)) {
+        for (let [c, char] of Object.entries(data.system.characteristics)) {
             char.label = MWII.characteristics[c];
         }
 
         // Skill labels
-        for (let [s, skl] of Object.entries(data.data.skills)) {
-            skl.characteristic = data.actor.data.characteristics[skl.characteristic].label;
+        for (let [s, skl] of Object.entries(data.system.skills)) {
+            skl.characteristic = data.actor.system.characteristics[skl.characteristic].label;
             skl.target_display = `${skl.target}+`;
 
             let skillLabel = MWII.skills[s];
@@ -76,9 +75,9 @@ export class ActorSheetMWII extends ActorSheet {
 
         this._prepareItems(data);
 
-        if (!data.data.movement) return data;
+        if (!data.system.movement) return data;
 
-        for (let [m, movement] of Object.entries(data.data.movement)) {
+        for (let [m, movement] of Object.entries(data.system.movement)) {
             movement.label = MWII.movement[m];
         }
 
@@ -96,9 +95,12 @@ export class ActorSheetMWII extends ActorSheet {
 
         let [items, advantages, vehicles] = data.items.reduce((arr, item) => {
             item.img = item.img || DEFAULT_TOKEN;
-            item.isStack = item.data.quantity ? item.data.quantity > 1 : false;
-            item.hasAttack = item.type === 'weapons';
-            item.hasDamage = !!(item.data.damage);
+            item.config = {
+                isStack: item.system.quantity ? item.system.quantity > 1 : false,
+                hasAttack: item.type === 'weapons',
+                hasDamage: !!(item.system.damage)
+            };
+
             if (item.type === "advantage") arr[1].push(item);
             else if (item.type === "vehicle") arr[2].push(item);
             else if (Object.keys(equipment).includes(item.type)) arr[0].push(item);
@@ -109,12 +111,12 @@ export class ActorSheetMWII extends ActorSheet {
         equipment['vehicle'].items = vehicles;
 
         for (let item of items) {
-            item.data.quantity = item.data.quantity || 0;
-            item.data.weight = item.data.weight || 0;
+            item.system.quantity = item.system.quantity || 0;
+            item.system.weight = item.system.weight || 0;
 
-            let weight = parseFloat(item.data.weight);
+            let weight = parseFloat(item.system.weight);
 
-            item.totalWeight = item.data.quantity * weight;
+            item.totalWeight = item.system.quantity * weight;
             equipment[item.type].items.push(item);
         }
 
@@ -209,10 +211,10 @@ export class ActorSheetMWII extends ActorSheet {
         const itemData = {
             name: `New ${type.capitalize()}`,
             type: type,
-            data: duplicate(header.dataset)
+            system: duplicate(header.dataset)
         };
 
-        delete itemData.data['type'];
+        delete itemData.system['type'];
 
         return this.actor.createEmbeddedDocuments("Item", [itemData]);
     }

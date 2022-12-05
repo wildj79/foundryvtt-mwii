@@ -19,33 +19,34 @@ export class ItemSheetMWII extends ItemSheet {
     get template() {
         const path = "systems/mwii/templates/item";
         
-        return `${path}/${this.item.data.type}.html`;
+        return `${path}/${this.item.type}.html`;
     }
 
-    getData() {
+    async getData() {
         const data = super.getData();
         data.labels = this.item.labels;
 
         data.config = MWII;
-        data.item = data.item.data;
 
         data.hasSubType = data.item.type === 'gear';
         data.itemType = data.item.type.replace('_', ' ').titleCase();
         data.itemSubType = this._getItemSubType(data.item);
         data.itemStatus = this._getItemStatus(data.item);
         data.itemProperties = this._getItemProperties(data.item);
-        data.isPhysical = data.item.data.hasOwnProperty("quantity");
+        data.isPhysical = data.item.system.hasOwnProperty("quantity");
         data.isPowerPack = data.item.type === "power_pack";
         data.isAdvantage = data.item.type === "advantage";
         data.isVehicle = data.item.type === "vehicle";
-        data.isHeavyWeapon = data.item.type === "weapons" && data.item.data.type === "support";
-        data.isMelee = data.item.type === "weapons" && data.item.data.type === "melee";
-        data.hasAreaOfEffect = data.item.type === "weapons" && ["support", "explosive"].includes(data.item.data.type);
-        data.hasAmmo = data.item.type === "weapons" && ["support", "primitive_missle", "slug_throwers"].includes(data.item.data.type);
-        data.isBA = data.item.type === "armor" && data.item.data.type === "barmor";
+        data.isHeavyWeapon = data.item.type === "weapons" && data.item.system.type === "support";
+        data.isMelee = data.item.type === "weapons" && data.item.system.type === "melee";
+        data.hasAreaOfEffect = data.item.type === "weapons" && ["support", "explosive"].includes(data.item.system.type);
+        data.hasAmmo = data.item.type === "weapons" && ["support", "primitive_missle", "slug_throwers"].includes(data.item.system.type);
+        data.isBA = data.item.type === "armor" && data.item.system.type === "barmor";
         data.hasPatchCost = data.item.type === "armor";
 
-        data.data = foundry.utils.duplicate(this.item.data.data);
+        data.enrichedDescription = await TextEditor.enrichHTML(this.item.system.description, {async: true});
+
+        data.system = foundry.utils.duplicate(this.item.system);
 
         return data;
     }
@@ -64,18 +65,18 @@ export class ItemSheetMWII extends ItemSheet {
     }
 
     _getItemStatus(item) {
-        if (["weapons", "armor"].includes(item.type)) return item.data.equipped ? "Equipped" : "Unequipped";
+        if (["weapons", "armor"].includes(item.type)) return item.system.equipped ? "Equipped" : "Unequipped";
         
         return null;
     }
 
     _getItemSubType(item) {
-        if (item.type === "vehicle") return MWII.vehicleTypes[item.data.type];
-        else if (item.type === "gear") return MWII.gearSubTypes[item.data.type];
-        else if (item.type === "armor") return MWII.armorTypes[item.data.type];
+        if (item.type === "vehicle") return MWII.vehicleTypes[item.system.type];
+        else if (item.type === "gear") return MWII.gearSubTypes[item.system.type];
+        else if (item.type === "armor") return MWII.armorTypes[item.system.type];
         else if (item.type === "weapons") {
-            const subtype = item.data.subtype;
-            const type = item.data.type;
+            const subtype = item.system.subtype;
+            const type = item.system.type;
             
             if (!!subtype) {
                 return `${MWII.weaponTypes[type]} (${MWII.weaponSubTypes[subtype]})`;
@@ -91,8 +92,8 @@ export class ItemSheetMWII extends ItemSheet {
         const props = [];
         const labels = this.item.labels;
 
-        if (item.data.damageType) {
-            props.push(MWII.damageTypes[item.data.damageType]);
+        if (item.system.damageType) {
+            props.push(MWII.damageTypes[item.system.damageType]);
         }
 
         return props.filter(p => !!p);

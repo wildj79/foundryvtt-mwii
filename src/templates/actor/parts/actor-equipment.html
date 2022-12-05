@@ -1,6 +1,6 @@
 <div class="currency flexrow">
     <label class="bt-old">{{localize "MWII.CBills"}}:</label>
-    <input type="text" name="data.currency.cbill" value="{{data.currency.cbill}}" />
+    <input type="text" name="system.currency.cbill" value="{{system.currency.cbill}}" />
 </div>
 
 <div class="equipment flexrow">
@@ -24,13 +24,13 @@
                 <div class="item-name flexrow rollable">
                     <div class="item-image" style="background-image: url({{item.img}});"></div>
                     <h4>
-                        {{#if item.isStack}}({{item.data.quantity}}) {{/if}}
+                        {{#if item.config.isStack}}({{item.system.quantity}}) {{/if}}
                         {{~item.name~}}
                     </h4>
-                    {{#if item.hasAttack}}
+                    {{#if item.config.hasAttack}}
                     <button type="button" class="tag roll-attack" data-weapon-id="{{item._id}}">{{localize "MWII.Buttons.Roll.Attack"}}</button>
                     {{/if}}
-                    {{#if item.hasDamage}}
+                    {{#if item.config.hasDamage}}
                     <button type="button" class="tag roll-damage" data-weapon-id="{{item._id}}">{{localize "MWII.Buttons.Roll.Damage"}}</button>
                     {{/if}}
                 </div>

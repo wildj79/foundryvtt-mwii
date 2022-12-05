@@ -13,8 +13,8 @@
         <div class="tab details flexrow" data-group="primary" data-tab="details">
             <div class="form-group">
                 <label class="bt-old">{{localize "MWII.Weapons.Types.Title"}}</label>
-                <select name="data.type">
-                    {{#select data.type}}
+                <select name="system.type">
+                    {{#select system.type}}
                     {{#each config.weaponTypes as |type id|}}
                     <option value="{{id}}">{{type}}</option>
                     {{/each}}
@@ -23,8 +23,8 @@
             </div>
             <div class="form-group">
                 <label class="bt-old">{{localize "MWII.Weapons.SubTypes.Title"}}</label>
-                <select name="data.subtype">
-                    {{#select data.subtype}}
+                <select name="system.subtype">
+                    {{#select system.subtype}}
                     <option value=""></option>
                     {{#each config.weaponSubTypes as |subtype id|}}
                     <option value="{{id}}">{{subtype}}</option>
@@ -34,8 +34,8 @@
             </div>
             <div class="form-group">
                 <label class="bt-old">{{localize "MWII.Weapons.SkillUsed"}}</label>
-                <select name="data.skill">
-                    {{#select data.skill}}
+                <select name="system.skill">
+                    {{#select system.skill}}
                     {{#each config.skills as |skill s|}}
                     <option value="{{s}}">{{skill}}</option>
                     {{/each}}
@@ -44,25 +44,25 @@
             </div>
             <div class="form-group">
                 <label class="bt-old">{{localize "MWII.Weapons.Damage.Title"}}</label>
-                <input type="text" name="data.damage" value="{{data.damage}}" />
+                <input type="text" name="system.damage" value="{{system.damage}}" />
             </div>
             {{#unless isMelee}}
             <div class="form-group multiple">
                 <label class="bt-old">{{localize "MWII.Weapons.Range.Title"}}</label>
-                <label class="bt-old range-label" for="data.range.short">{{localize "MWII.Weapons.Range.Short"}}</label>
-                <input type="text" name="data.range.short" value="{{data.range.short}}" />
+                <label class="bt-old range-label" for="system.range.short">{{localize "MWII.Weapons.Range.Short"}}</label>
+                <input type="text" name="system.range.short" value="{{system.range.short}}" />
                 <span class="sep"> / </span>
-                <label class="bt-old range-label" for="data.range.medium">{{localize "MWII.Weapons.Range.Medium"}}</label>
-                <input type="text" name="data.range.medium" value="{{data.range.medium}}" />
+                <label class="bt-old range-label" for="system.range.medium">{{localize "MWII.Weapons.Range.Medium"}}</label>
+                <input type="text" name="system.range.medium" value="{{system.range.medium}}" />
                 <span class="sep"> / </span>
-                <label class="bt-old range-label" for="data.range.long">{{localize "MWII.Weapons.Range.Long"}}</label>
-                <input type="text" name="data.range.long" value="{{data.range.long}}" />
+                <label class="bt-old range-label" for="system.range.long">{{localize "MWII.Weapons.Range.Long"}}</label>
+                <input type="text" name="system.range.long" value="{{system.range.long}}" />
             </div>
             {{/unless}}
             <div class="form-group">
                 <label class="bt-old">{{localize "MWII.Weapons.Lethality.Title"}}</label>
-                <select name="data.lethality">
-                    {{#select data.lethality}}
+                <select name="system.lethality">
+                    {{#select system.lethality}}
                     {{#each config.lethality as |v k|}}
                     <option value="{{k}}">{{v}}</option>
                     {{/each}}
@@ -71,8 +71,8 @@
             </div>
             <div class="form-group">
                 <label class="bt-old">{{localize "MWII.Weapons.Damage.Types.Title"}}</label>
-                <select name="data.damageType">
-                    {{#select data.damageType}}
+                <select name="system.damageType">
+                    {{#select system.damageType}}
                     {{#each config.damageTypes as |type id|}}
                     <option value="{{id}}">{{type}}</option>
                     {{/each}}
@@ -82,31 +82,31 @@
             {{#if hasAreaOfEffect}}
             <div class="form-group">
                 <label class="bt-old">{{localize "MWII.Weapons.AreaOfEffect"}}</label>
-                <input type="text" name="data.aoe" value="{{data.aoe}}" data-dtype="Number" />
+                <input type="text" name="system.aoe" value="{{system.aoe}}" data-dtype="Number" />
             </div>
             {{/if}}
 
             {{#if hasAmmo}}
             <div class="form-group multiple">
                 <label class="bt-old">{{localize "MWII.Weapons.Ammo"}}</label>
-                <input type="text" name="data.ammo.value" value="{{data.ammo.value}}" data-dtype="Number" />
+                <input type="text" name="system.ammo.value" value="{{system.ammo.value}}" data-dtype="Number" />
                 <span class="sep"> / </span>
-                <input type="text" name="data.ammo.max" value="{{data.ammo.max}}" data-dtype="Number" />
+                <input type="text" name="system.ammo.max" value="{{system.ammo.max}}" data-dtype="Number" />
             </div>
             <div class="form-group">
                 <label class="bt-old">{{localize "MWII.Weapons.ReloadCost"}}</label>
-                <input type="text" name="data.reload_cost" value="{{data.reload_cost}}" data-dtype="Number" />
+                <input type="text" name="system.reload_cost" value="{{system.reload_cost}}" data-dtype="Number" />
             </div>
             {{/if}}
 
             {{#if isHeavyWeapon}}
             <div class="form-group">
                 <label class="bt-old">{{localize "MWII.Weapons.Crew"}}</label>
-                <input type="text" name="data.crew" value="{{data.crew}}" data-dtype="Number" />
+                <input type="text" name="system.crew" value="{{system.crew}}" data-dtype="Number" />
             </div>
             <div class="form-group">
                 <label class="bt-old">{{localize "MWII.Weapons.ReloadTime"}}</label>
-                <input type="text" name="data.reload_time" value="{{data.reload_time}}" data-dtype="Number" />
+                <input type="text" name="system.reload_time" value="{{system.reload_time}}" data-dtype="Number" />
             </div> 
             {{/if}}
         </div>

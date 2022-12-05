@@ -8,12 +8,12 @@ export default class MWIICombat extends Combat {
 		let tacticsA = 0;
 		let tacticsB = 0;
 		if (game.settings.get('mwii', 'useTacticalInitiative')) {
-			tacticsA = a.actor.data.data.skills.tactics.level;
-			tacticsB = b.actor.data.data.skills.tactics.level;
+			tacticsA = a.actor.system.skills.tactics.level;
+			tacticsB = b.actor.system.skills.tactics.level;
 		}
 
-		const aInt = a.actor.data.data.attributes.int.value + tacticsA;
-		const bInt = a.actor.data.data.attributes.int.value + tacticsB;
+		const aInt = a.actor.system.attributes.int.value + tacticsA;
+		const bInt = a.actor.system.attributes.int.value + tacticsB;
 		const deltaInt = aInt - bInt;
 		if (deltaInt !== 0) return deltaInt;
 
